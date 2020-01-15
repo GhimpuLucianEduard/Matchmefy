@@ -11,7 +11,9 @@ login -> with spotify account
 3 tabs:
 
 Search & Match -> search other users and see the match score
+
 Your Matches -> sorted list with past matches -> details for each match
+
 Settings -> logout & invite friend
 
 =================================
