@@ -1,0 +1,25 @@
+{
+  "name": "matchmefy-api",
+  "version": "1.0.0",
+  "description": "Support API for Matchmefy mobile App",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GhimpuLucianEduard/Matchmefy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GhimpuLucianEduard/Matchmefy/issues"
+  },
+  "homepage": "https://github.com/GhimpuLucianEduard/Matchmefy#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2"
+  }
+}

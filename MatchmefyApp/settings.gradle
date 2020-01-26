@@ -1,0 +1,2 @@
+include ':app', ':spotify-auth-release-1.2.1'
+rootProject.name='Matchmefy'
