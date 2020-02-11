@@ -28,8 +28,8 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         Log.i(LOG_TAG, "Spotify version: ${com.spotify.sdk.android.auth.BuildConfig.VERSION_NAME}")
 
         loginButton.setOnClickListener {
-            val request = spotifyAuthService.getAuthenticationRequest(AuthorizationResponse.Type.TOKEN)
-            AuthorizationClient.openLoginActivity(activity, spotifyAuthService.AUTH_TOKEN_REQUEST_CODE, request)
+//            val request = spotifyAuthService.getAuthenticationRequest(AuthorizationResponse.Type.TOKEN)
+//            AuthorizationClient.openLoginActivity(activity, spotifyAuthService.AUTH_TOKEN_REQUEST_CODE, request)
         }
     }
 }

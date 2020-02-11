@@ -1,7 +1,7 @@
 package com.lucianghimpu.matchmefy.utilities
 
 object LogConstants {
-    val LOG_TAG = "MatchmefyApp"
+    val LOG_TAG = "MMF_APP"
 }
 
 object SpotifyCredentials {

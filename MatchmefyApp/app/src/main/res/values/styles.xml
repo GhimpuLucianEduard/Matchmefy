@@ -1,11 +1,49 @@
-<resources>
+<resources
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/pastelRose</item>
+        <item name="colorPrimaryDark">@color/pastelRoseDarker</item>
+        <item name="colorAccent">@color/pastelRose</item>
+    </style>
+
+    <!-- TEXT VIEWS -->
+
+    <style name="TitleText">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@color/pureWhite</item>
+    </style>
+
+    <style name="SecondaryTitleText">
+        <item name="android:fontFamily">@font/lato_black</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="BoldParagraphText">
+        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!-- BUTTONS -->
+
+    <style name="BaseRoundedButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="cornerRadius">168dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:fontFamily">@font/lato_black</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
     </style>
 
 </resources>

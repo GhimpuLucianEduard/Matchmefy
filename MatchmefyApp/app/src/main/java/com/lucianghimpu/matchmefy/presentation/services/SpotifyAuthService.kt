@@ -1,13 +1,14 @@
 package com.lucianghimpu.matchmefy.presentation.services
 
 import android.util.Log
+import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.SpotifyCredentials
 import com.spotify.sdk.android.auth.AuthorizationRequest
 import com.spotify.sdk.android.auth.AuthorizationResponse
 
 class SpotifyAuthService {
 
-    val SPOTIFY_AUTH_TAG = "SPOTIFY_AUTH"
+    val SPOTIFY_AUTH_TAG = "${LOG_TAG}_AUTH"
 
     val AUTH_TOKEN_REQUEST_CODE = 508
 
