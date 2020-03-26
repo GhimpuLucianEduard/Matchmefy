@@ -10,15 +10,20 @@
     </style>
 
     <!-- TEXT VIEWS -->
-
     <style name="TitleText">
         <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textSize">42sp</item>
         <item name="android:textColor">@color/pureWhite</item>
     </style>
 
-    <style name="SecondaryTitleText">
+    <style name="SecondaryTitleTextBlack">
         <item name="android:fontFamily">@font/lato_black</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SecondaryTitleTextBold">
+        <item name="android:fontFamily">@font/lato_bold</item>
         <item name="android:textColor">@color/pureWhite</item>
         <item name="android:textSize">20sp</item>
     </style>
@@ -31,7 +36,6 @@
     </style>
 
     <!-- BUTTONS -->
-
     <style name="BaseRoundedButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">50dp</item>

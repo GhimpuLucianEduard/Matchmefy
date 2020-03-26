@@ -1,12 +1,13 @@
-package com.lucianghimpu.matchmefy.presentation.services
+package com.lucianghimpu.matchmefy.services
 
 import android.util.Log
+import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.SpotifyCredentials
 import com.spotify.sdk.android.auth.AuthorizationRequest
 import com.spotify.sdk.android.auth.AuthorizationResponse
 
-class SpotifyAuthService {
+class SpotifyAuthService() {
 
     val SPOTIFY_AUTH_TAG = "${LOG_TAG}_AUTH"
 
@@ -21,28 +22,37 @@ class SpotifyAuthService {
             .build()
     }
 
-    fun onAuthResponse(response: AuthorizationResponse)
+    fun onAuthResponse(response: AuthorizationResponse): String
     {
         when (response.type) {
 
-            AuthorizationResponse.Type.CODE ->
+            AuthorizationResponse.Type.CODE -> {
                 Log.i(SPOTIFY_AUTH_TAG, "Code response")
+                return String.empty
+            }
 
             AuthorizationResponse.Type.TOKEN -> {
-                accessToken = response.accessToken
                 Log.i(SPOTIFY_AUTH_TAG, "AccesToken retrieved successfully")
+                return response.accessToken
             }
 
             AuthorizationResponse.Type.ERROR -> {
                 Log.e(SPOTIFY_AUTH_TAG, "Error retrieving the AccesToken:")
                 Log.e(SPOTIFY_AUTH_TAG, response.error)
+                return String.empty
             }
 
-            AuthorizationResponse.Type.EMPTY ->
+            AuthorizationResponse.Type.EMPTY -> {
                 Log.i(SPOTIFY_AUTH_TAG, "Empty response ${response.error}")
+                return String.empty
+            }
 
-            AuthorizationResponse.Type.UNKNOWN ->
+            AuthorizationResponse.Type.UNKNOWN -> {
                 Log.i(SPOTIFY_AUTH_TAG, "Unknown response")
+                return String.empty
+            }
+
+            else -> return String.empty
         }
     }
 }

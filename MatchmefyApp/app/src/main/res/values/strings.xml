@@ -4,4 +4,6 @@
     <string name="sign_in_with_spotify">Sign In with Spotify</string>
     <string name="welcome">Welcome</string>
     <string name="welcome_paragraph">In order to user our App, you must Sign In \n with your Spotify account</string>
+    <string name="welcomeTitle">Welcome</string>
+    <string name="continueText">continue</string>
 </resources>

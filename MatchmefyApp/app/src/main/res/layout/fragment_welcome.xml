@@ -2,13 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.views.LoginFragment">
+    tools:context=".presentation.welcome.WelcomeFragment">
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.lucianghimpu.matchmefy.presentation.login.LoginViewModel" />
+            type="com.lucianghimpu.matchmefy.presentation.welcome.WelcomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,44 +15,43 @@
         android:layout_height="match_parent"
         android:background="@color/backgroundBlack">
 
-
-        <ImageView
-            android:id="@+id/logo"
+        <TextView
+            android:id="@+id/titleText"
+            style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
-            android:background="@drawable/logo_with_name"
+            android:text="@string/welcomeTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/subtitle"
-            style="@style/SecondaryTitleTextBlack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:text="@string/welcome"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="36dp"
+            app:civ_border_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
+            app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
         <TextView
-            android:id="@+id/paragraph"
-            style="@style/BoldParagraphText"
+            android:id="@+id/usernameText"
+            style="@style/SecondaryTitleTextBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_paragraph"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Ghimpu Lucian"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+            app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginButton"
+            android:id="@+id/continueButton"
             style="@style/BaseRoundedButton"
             android:layout_marginBottom="64dp"
-            android:text="@string/sign_in_with_spotify"
+            android:text="@string/continueText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
