@@ -1,5 +1,9 @@
 package com.lucianghimpu.matchmefy.utilities
 
+import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
+import com.lucianghimpu.matchmefy.presentation.login.LoginFragmentDirections
+
 object LogConstants {
     const val LOG_TAG = "MMF_APP"
 }
@@ -15,4 +19,8 @@ object Preferences {
 
 object ApiConstants {
     const val SPOTIFY_API_BASE_URL = "https://api.spotify.com"
+}
+
+object NavigationDirections {
+    val LOGIN_TO_WELCOME = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
 }

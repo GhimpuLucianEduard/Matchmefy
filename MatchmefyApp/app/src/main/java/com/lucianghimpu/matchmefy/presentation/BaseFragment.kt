@@ -8,14 +8,19 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.utilities.Event
+import com.lucianghimpu.matchmefy.utilities.EventObserver
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
-
-    protected abstract val viewModel: VM
 
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
+    protected abstract val viewModel: VM
     protected lateinit var binding: DB
 
     fun initBinding(inflater: LayoutInflater, container: ViewGroup) {
@@ -33,5 +38,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         initBinding(inflater, container!!)
         setViewDataBindingViewModel()
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel.navigationEvent.observe(viewLifecycleOwner, EventObserver {
+            Navigation.findNavController(activity!!, R.id.nav_host_fragment)
+                .navigate(it)
+        })
     }
 }
