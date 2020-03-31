@@ -2,6 +2,7 @@ package com.lucianghimpu.matchmefy.dependencyInjection
 
 import com.lucianghimpu.matchmefy.presentation.SharedViewModel
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
+import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
 import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
 import com.lucianghimpu.matchmefy.presentation.welcome.WelcomeViewModel
@@ -14,4 +15,5 @@ val appModule = module {
     single { SharedViewModel(get(), get(), get()) }
     viewModel { LoginViewModel() }
     viewModel { WelcomeViewModel() }
+    viewModel { SearchViewModel() }
 }

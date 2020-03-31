@@ -15,16 +15,9 @@ fun ImageView.bindImageFromUriWithGlide(imageUrl: String?) {
     }
 }
 
-@set:BindingAdapter("invisible")
-var View.invisible
-    get() = visibility == INVISIBLE
+@set:BindingAdapter("visibleOrGone")
+var View.visibleOrGone
+    get() = visibility == VISIBLE
     set(value) {
-        visibility = if (value) INVISIBLE else VISIBLE
-    }
-
-@set:BindingAdapter("gone")
-var View.gone
-    get() = visibility == GONE
-    set(value) {
-        visibility = if (value) GONE else VISIBLE
+        visibility = if (value) VISIBLE else GONE
     }

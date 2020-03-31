@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/tab_bar_search"
+        android:title="Search" />
+    <item
+        android:id="@+id/fragment_matches"
+        android:icon="@drawable/tab_bar_matches"
+        android:title="Matches" />
+    <item
+        android:id="@+id/fragment_settings"
+        android:icon="@drawable/tab_bar_settings"
+        android:title="Settings" />
+</menu>

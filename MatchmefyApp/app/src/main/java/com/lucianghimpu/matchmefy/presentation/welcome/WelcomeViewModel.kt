@@ -6,4 +6,8 @@ import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 
 class WelcomeViewModel : BaseViewModel() {
     var userProfile = MutableLiveData<User>()
+
+    fun onContinueClicked() {
+        navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
+    }
 }

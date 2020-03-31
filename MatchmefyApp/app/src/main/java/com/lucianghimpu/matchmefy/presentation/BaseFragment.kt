@@ -14,6 +14,7 @@ import androidx.navigation.Navigation
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.utilities.Event
 import com.lucianghimpu.matchmefy.utilities.EventObserver
+import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
 
@@ -22,6 +23,8 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
 
     protected abstract val viewModel: VM
     protected lateinit var binding: DB
+
+    protected lateinit var mainActivity: MainActivity
 
     fun initBinding(inflater: LayoutInflater, container: ViewGroup) {
         binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
@@ -47,5 +50,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
             Navigation.findNavController(activity!!, R.id.nav_host_fragment)
                 .navigate(it)
         })
+        mainActivity = activity as MainActivity
+        mainActivity.setBottomNavigationBarVisibility(View.GONE)
     }
 }

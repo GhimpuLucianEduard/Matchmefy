@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Layout
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -18,6 +19,7 @@ import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.Preferences.SPOTIFY_TOKEN
 import com.spotify.sdk.android.auth.AuthorizationClient
+import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.OkHttpClient
 import org.koin.android.ext.android.inject
 
@@ -53,6 +55,10 @@ class MainActivity : AppCompatActivity() {
 //
 //        graph.startDestination = R.id.loginFragment
 
+    }
+
+    fun setBottomNavigationBarVisibility(visibility: Int = View.GONE) {
+        bottomNavigationBar.visibility = visibility
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

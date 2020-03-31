@@ -4,4 +4,5 @@
     <color name="backgroundBlack">#121212</color>
     <color name="pastelRose">#E07C7C</color>
     <color name="pastelRoseDarker">#DB6666</color>
+    <color name="primaryGray">#2E2E2E</color>
 </resources>
