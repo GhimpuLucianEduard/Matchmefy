@@ -2,7 +2,9 @@ package com.lucianghimpu.matchmefy.presentation
 
 import android.text.Layout
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.services.SpotifyService
 import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
 import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
@@ -30,6 +32,7 @@ class SharedViewModel(
     private val encryptedSharedPreferencesServiceImpl: EncryptedSharedPreferencesServiceImpl
 ) : BaseViewModel() {
 
+    var userProfile = MutableLiveData<User>()
 
     fun onSpotifyAuthResponse(response: AuthorizationResponse) {
 
@@ -44,13 +47,12 @@ class SharedViewModel(
     fun getUserProfile() {
         viewModelScope.launch {
             try {
-                val user = withContext(Dispatchers.IO) {
+                userProfile.value = withContext(Dispatchers.IO) {
                     spotifyService.getUserProfile()
                 }
-
+                var ce = userProfile.value
+                Log.i(LOG_TAG, "Fetched user profile for: ${userProfile.value!!.display_name}")
                 navigate(LOGIN_TO_WELCOME)
-
-                Log.i(LOG_TAG, user.display_name)
             } catch (ex: Exception) {
                 Log.e(LOG_TAG, ex.toString())
             }

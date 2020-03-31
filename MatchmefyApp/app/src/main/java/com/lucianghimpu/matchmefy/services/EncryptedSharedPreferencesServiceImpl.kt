@@ -6,7 +6,7 @@ import androidx.security.crypto.MasterKeys
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import com.lucianghimpu.matchmefy.utilities.Preferences.PREFERENCES_FILE
 
-
+// TODO: add Interface to this
 class EncryptedSharedPreferencesServiceImpl(context: Context) {
 
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)

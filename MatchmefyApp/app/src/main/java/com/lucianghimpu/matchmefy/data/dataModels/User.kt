@@ -1,11 +1,13 @@
 package com.lucianghimpu.matchmefy.data.dataModels
 
+import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+
 data class User(
-    val display_name : String,
-    val email : String,
-    val href : String,
-    val id : String,
-    val images : List<UserImage>,
-    val type : String,
-    val uri : String
+    val display_name : String = String.empty,
+    val email : String = String.empty,
+    val href : String = String.empty,
+    val id : String = String.empty,
+    val images : List<UserImage> = emptyList(),
+    val type : String = String.empty,
+    val uri : String = String.empty
 )
