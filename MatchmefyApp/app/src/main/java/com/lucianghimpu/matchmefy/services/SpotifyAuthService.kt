@@ -18,7 +18,7 @@ class SpotifyAuthService() {
     fun getAuthenticationRequest(type: AuthorizationResponse.Type): AuthorizationRequest {
         return AuthorizationRequest.Builder(SpotifyCredentials.CLIENT_ID, type, "http://localhost:8888/callback")
             .setShowDialog(true)
-            .setScopes(arrayOf("user-read-email"))
+            .setScopes(arrayOf("user-read-email", "user-top-read"))
             .build()
     }
 

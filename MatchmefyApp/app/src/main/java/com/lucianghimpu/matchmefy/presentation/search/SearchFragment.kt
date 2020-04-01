@@ -15,7 +15,6 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        mainActivity!!.setBottomNavigationBarVisibility(View.VISIBLE)
-
+        mainActivity.setBottomNavigationBarVisibility(View.VISIBLE)
     }
 }
