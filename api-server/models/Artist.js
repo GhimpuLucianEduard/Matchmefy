@@ -17,7 +17,7 @@ const artistSchema = mongoose.Schema({
         width : String
     }],
     name : String,
-    popularity : Int,
+    popularity : Number,
     type : String,
     uri : String
 }, { versionKey: false })

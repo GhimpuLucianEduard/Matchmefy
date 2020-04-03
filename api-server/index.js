@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const router = express.Router()
 const mongoose = require('mongoose')
 const User = require('./models/User.js')
+const Artist = require('./models/Artist.js')
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -30,28 +31,38 @@ mongoose.connect(uri)
     console.log(err)
 })
 
-var home = router.get('/', function (req, res, next) {
-    return res.status(200).json("Hello!")
-})
+const postTest = router.post('/', async (req, res, next) => {
 
+    // const newUser = new User(req.body.user);
+    // newUser._id = req.body.id
 
+    // try {
+    //     await newUser.save()
+    // } catch (e) {
+    //     console.log(e)
+    // }
 
-var testPost = router.post('/', async (req, res, next) => {
+    var bulkOps = [];
+    req.body.artists.forEach(element => {
+        const artist = new Artist(element)
+        artist._id = element.id
 
-    const newUser = new User(req.body);
-    newUser._id = req.body.id
-    console.log(newUser);
-    try {
-        await newUser.save()
-    } catch (e) {
-        console.log(e)
-    }
+        let upsertDoc = {
+            'updateOne': {
+              'filter': { '_id': element.id },
+              'update': artist,
+              'upsert': true
+            }};
+          bulkOps.push(upsertDoc);
+    });
+
+    await Artist.collection.bulkWrite(bulkOps)
 
 
     return res.status(200).json("Ok")
 })
 
-app.use(home);
+app.use(postTest)
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')
