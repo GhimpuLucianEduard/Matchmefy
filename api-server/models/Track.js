@@ -6,7 +6,7 @@ const trackSchema = mongoose.Schema({
     _id: String,
     album : {
         type: String,
-        ref: 'Album'
+        ref: Album
     },
     artists : {
         type: [String],
@@ -25,9 +25,9 @@ const trackSchema = mongoose.Schema({
     href : String,
     is_local : Boolean,
     name : String,
-    popularity : Int,
+    popularity : Number,
     preview_url : String,
-    track_number : Int,
+    track_number : Number,
     type : String,
     uri : String
 }, { versionKey: false })

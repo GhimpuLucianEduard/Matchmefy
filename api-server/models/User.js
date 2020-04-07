@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const Artist = require('../models/Artist')
+const Track = require('../models/Track')
 
 const userSchema = mongoose.Schema({
     _id: String,
@@ -18,7 +20,15 @@ const userSchema = mongoose.Schema({
         width : String
     }],
     type: String,
-    uri: String
+    uri: String,
+    artists : {
+        type: [String],
+        ref: Artist
+    },
+    tracks : {
+        type: [String],
+        ref: Track
+    },
     
 }, { versionKey: false })
 

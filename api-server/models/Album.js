@@ -5,8 +5,8 @@ const albumSchema = mongoose.Schema({
     _id: String,
     album_type : String,
     artists : {
-        type: String,
-        ref: 'Artist'
+        type: [String],
+        ref: Artist
     },
     available_markets : [String],
     external_urls: { 
