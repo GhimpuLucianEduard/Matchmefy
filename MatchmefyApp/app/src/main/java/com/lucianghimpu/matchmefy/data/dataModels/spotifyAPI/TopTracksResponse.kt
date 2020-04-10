@@ -1,4 +1,6 @@
-package com.lucianghimpu.matchmefy.data.dataModels
+package com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI
+
+import com.lucianghimpu.matchmefy.data.dataModels.Track
 
 data class TopTracksResponse (
     val items : List<Track>,

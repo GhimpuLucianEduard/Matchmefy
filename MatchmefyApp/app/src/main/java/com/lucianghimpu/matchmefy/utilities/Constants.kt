@@ -19,6 +19,7 @@ object Preferences {
 
 object ApiConstants {
     const val SPOTIFY_API_BASE_URL = "https://api.spotify.com"
+    const val MATCHMEFY_API_BASE_URL = "https://matchmefy-api.herokuapp.com"
 }
 
 object NavigationDirections {

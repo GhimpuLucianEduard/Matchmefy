@@ -12,7 +12,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     // TODO: move these in a Presentation Module
-    single { SharedViewModel(get(), get(), get()) }
+    single { SharedViewModel(get(), get(), get(), get()) }
     viewModel { LoginViewModel() }
     viewModel { WelcomeViewModel() }
     viewModel { SearchViewModel() }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
+import com.lucianghimpu.matchmefy.data.services.MatchmefyService
 import com.lucianghimpu.matchmefy.data.services.SpotifyService
 import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
 import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
@@ -29,6 +30,7 @@ import java.lang.Exception
 class SharedViewModel(
     private val spotifyAuthService: SpotifyAuthService,
     private val spotifyService : SpotifyService,
+    private val matchmefyService: MatchmefyService,
     private val encryptedSharedPreferencesServiceImpl: EncryptedSharedPreferencesServiceImpl
 ) : BaseViewModel() {
 
@@ -71,7 +73,14 @@ class SharedViewModel(
                 val tracks = data.third
                 Log.i(LOG_TAG, "Fetched top tracks, with count: ${tracks.size} and top track: ${tracks[0].name}")
 
-                navigate(LOGIN_TO_WELCOME)
+                val data2 = withContext(Dispatchers.IO) {
+                    matchmefyService.getUserData("sandelghimup")
+                }
+
+                Log.i(LOG_TAG, "Fetched ${data2.user}")
+
+
+                //navigate(LOGIN_TO_WELCOME)
             } catch (ex: Exception) {
                 Log.e(LOG_TAG, ex.toString())
             }

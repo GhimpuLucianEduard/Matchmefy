@@ -1,5 +1,6 @@
 package com.lucianghimpu.matchmefy.dependencyInjection
 
+import com.lucianghimpu.matchmefy.data.networking.MatchmefyRetrofitServiceFactory
 import com.lucianghimpu.matchmefy.data.networking.SpotifyRetrofitServiceFactory
 import com.lucianghimpu.matchmefy.data.networking.authorizationInterceptor.AuthorizationInterceptor
 import com.lucianghimpu.matchmefy.data.networking.authorizationInterceptor.AuthorizationInterceptorImpl
@@ -17,6 +18,7 @@ val networkingModule = module {
     single { AuthorizationInterceptorImpl(get()) as AuthorizationInterceptor }
     single { okHttpClient(get(), get()) }
     single { SpotifyRetrofitServiceFactory(get()) }
+    single { MatchmefyRetrofitServiceFactory(get()) }
 }
 
 private fun okHttpClient (

@@ -1,7 +1,7 @@
 package com.lucianghimpu.matchmefy.data.networking.retrofitInterfaces
 
-import com.lucianghimpu.matchmefy.data.dataModels.TopArtistsReponse
-import com.lucianghimpu.matchmefy.data.dataModels.TopTracksResponse
+import com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI.TopArtistsReponse
+import com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI.TopTracksResponse
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import retrofit2.http.GET
 

@@ -10,4 +10,6 @@ class WelcomeViewModel : BaseViewModel() {
     fun onContinueClicked() {
         navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
     }
+
+
 }
