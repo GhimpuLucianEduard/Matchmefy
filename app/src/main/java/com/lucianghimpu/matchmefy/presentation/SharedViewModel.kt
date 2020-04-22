@@ -73,14 +73,13 @@ class SharedViewModel(
                 val tracks = data.third
                 Log.i(LOG_TAG, "Fetched top tracks, with count: ${tracks.size} and top track: ${tracks[0].name}")
 
-                val data2 = withContext(Dispatchers.IO) {
-                    matchmefyService.getUserData("sandelghimup")
+                val addUserResult = withContext(Dispatchers.IO) {
+                    matchmefyService.getUserData(userProfile.value!!.id)
                 }
 
-                Log.i(LOG_TAG, "Fetched ${data2.user}")
-
-
-                //navigate(LOGIN_TO_WELCOME)
+                Log.i(LOG_TAG, "Added user data to Matchmefy API")
+                navigate(LOGIN_TO_WELCOME)
+                
             } catch (ex: Exception) {
                 Log.e(LOG_TAG, ex.toString())
             }
