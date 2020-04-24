@@ -1,11 +1,15 @@
 # Matchmefy
 
-![Spotify Signin](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/signin.png)
-![Welcome Page](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/welcome.png)
-![Search Page](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/search.png)
-![Match](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png)
-![Match 81-100](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match80.png)
-![Match 61-80](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match60.png)
-![Match 41-60](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match40.png)
-![Match 21-40](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match20.png)
-![Match 1-20](https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match0.png)
+Android mobile app used to showcase the usage of the latest Android Jetpack libraries, coroutines, and the latest best practices in android.
+
+The app retrieves data about the user from the Spotify API, stores it in a secure database.
+Then the user can search for friends or strangers and get a "match score" which calculates how compatible their music tastes are. In the end, the user gets a Spotify playlist with songs from his match.
+
+The app used 2 APIs:
+
+1. [The Spotify API used to retrieve data about the user](https://developer.spotify.com/documentation/web-api/)
+2. [Matchmefy API used to store the data](https://github.com/GhimpuLucianEduard/matchmefy-api)
+
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/signin.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/welcome.png" width="250">
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png" width="250"> 
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match80.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match60.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match40.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match20.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match0.png" width="250"> 
