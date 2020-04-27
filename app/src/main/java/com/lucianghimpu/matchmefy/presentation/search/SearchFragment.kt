@@ -1,12 +1,18 @@
 package com.lucianghimpu.matchmefy.presentation.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentSearchBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
+import com.lucianghimpu.matchmefy.utilities.NetworkState
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_search.progressIndicator
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
@@ -27,13 +33,31 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
         adapter = SearchListAdapter()
         searchResultsRecyclerView.adapter = adapter
+        searchResultsRecyclerView.isNestedScrollingEnabled = true
         viewModel.users.observe(this@SearchFragment, Observer {
-            adapter.setItems(it)
+            adapter.submitList(it)
+            Log.d(LOG_TAG, "submit list with count ${it.size}")
 //            if (it.isNotEmpty()) {
 //                emptyState.visibility = View.GONE
 //            } else {
 //                emptyState.visibility = View.VISIBLE
 //            }
         })
+
+//        viewModel.searchText.observe(this@SearchFragment, Observer {
+//            viewModel.getSearchResults(it)
+//        })
+
+        viewModel.networkState?.observe(this@SearchFragment, Observer {
+            if (it == NetworkState.RUNNING) {
+                progressIndicator.visibility = View.VISIBLE
+            } else {
+                progressIndicator.visibility = View.GONE
+            }
+        })
+
+        searchEditText.addTextChangedListener {
+            viewModel.getSearchResults(it.toString())
+        }
     }
 }

@@ -10,6 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.services.SpotifyService
 import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
@@ -42,18 +43,18 @@ class MainActivity : AppCompatActivity() {
                 .navigate(it)
         })
 
-//        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
-//        // set bottom navigation
-//        bottom_nav.setupWithNavController(navController)
+        // set bottom navigation
+        bottomNavigationBar.setupWithNavController(navController)
 
-//        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-//        navController = navHost!!.navController
-//
-//        val navInflater = navController.navInflater
-//        val graph = navInflater.inflate(R.navigation.navigation_graph)
-//
-//        graph.startDestination = R.id.loginFragment
+        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
+        navController = navHost!!.navController
+
+        val navInflater = navController.navInflater
+        val graph = navInflater.inflate(R.navigation.navigation_graph)
+
+        graph.startDestination = R.id.searchFragment
 
     }
 

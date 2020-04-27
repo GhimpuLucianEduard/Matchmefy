@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -32,9 +32,14 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.lucianghimpu.matchmefy.presentation.search.SearchFragment"
         android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/matchFragment"
+        android:name="com.lucianghimpu.matchmefy.presentation.match.MatchFragment"
+        android:label="MatchFragment" />
 
 </navigation>

@@ -54,6 +54,7 @@ dependencies {
     def koin_version = "2.0.1"
     def spotifySdk_version = "1.2.2"
     def lottieVersion = "3.4.0"
+    def paging_version = "2.1.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -99,6 +100,9 @@ dependencies {
 
     // airbnb lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // paging
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

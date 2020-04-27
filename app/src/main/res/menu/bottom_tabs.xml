@@ -5,7 +5,7 @@
         android:icon="@drawable/tab_bar_search"
         android:title="Search" />
     <item
-        android:id="@+id/fragment_matches"
+        android:id="@+id/matchFragment"
         android:icon="@drawable/tab_bar_matches"
         android:title="Matches" />
     <item
