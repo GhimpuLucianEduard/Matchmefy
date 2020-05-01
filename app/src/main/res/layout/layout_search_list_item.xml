@@ -21,6 +21,7 @@
             android:layout_height="56dp"
             app:civ_border_width="0dp"
             app:imageFromUriWithGlide="@{user.images}"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -5,26 +5,17 @@ import androidx.paging.DataSource
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.services.MatchmefyService
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
-import kotlinx.coroutines.CoroutineScope
+import java.util.concurrent.Executor
 
 class SearchResultsDataSourceFactory(
     private val matchmefyService: MatchmefyService,
     private var query: String = String.empty,
-    private val scope: CoroutineScope
+    private val retryExecutor: Executor
 ): DataSource.Factory<String, User>() {
-
     val source = MutableLiveData<SearchResultsDataSource>()
-
     override fun create(): DataSource<String, User> {
-        val source = SearchResultsDataSource(matchmefyService, query, scope)
+        val source = SearchResultsDataSource(matchmefyService, query, retryExecutor)
         this.source.postValue(source)
         return source
-    }
-
-    fun getQuery() = query
-
-    fun updateQuery(query: String){
-        this.query = query
-        source.value?.refresh()
     }
 }

@@ -4,6 +4,7 @@ import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 import com.lucianghimpu.matchmefy.data.networking.MatchmefyRetrofitServiceFactory
 import com.lucianghimpu.matchmefy.data.networking.retrofitInterfaces.MatchmefyApiService
+import retrofit2.Call
 
 class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitServiceFactory) : MatchmefyService {
 
@@ -14,11 +15,11 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return matchmefyApiService.getUserData(id)
     }
 
-    override suspend fun getSearchUsers(
+    override fun getSearchUsers(
         searchQuery: String,
         limit: Int,
         offset: Int
-    ): SearchUsersResult {
+    ): Call<SearchUsersResult> {
         return matchmefyApiService.getSearchUsers(searchQuery, limit, offset)
     }
 }
