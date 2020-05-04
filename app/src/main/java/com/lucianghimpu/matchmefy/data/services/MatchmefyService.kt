@@ -6,5 +6,7 @@ import retrofit2.Call
 
 interface MatchmefyService {
     suspend fun getUserData(id: String) : CompleteUserData
-    fun getSearchUsers(searchQuery: String, limit: Int, offset: Int) : Call<SearchUsersResult>
+    suspend fun getSearchUsers(searchQuery: String,
+                               limit: Int = 49,
+                               offset: Int = 0) : SearchUsersResult
 }

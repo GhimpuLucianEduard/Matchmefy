@@ -12,8 +12,9 @@ interface MatchmefyApiService {
     @GET("/users/{id}")
     suspend fun getUserData(@Path("id") id: String) : CompleteUserData
 
+    // N.B. Api supports pagination but will not use it for now
     @GET("/search")
-    fun getSearchUsers(@Query("q") searchQuery: String,
+    suspend fun getSearchUsers(@Query("q") searchQuery: String,
                        @Query("limit") limit: Int,
-                       @Query("offset") offset: Int) : Call<SearchUsersResult>
+                       @Query("offset") offset: Int) : SearchUsersResult
 }

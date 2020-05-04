@@ -15,11 +15,11 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return matchmefyApiService.getUserData(id)
     }
 
-    override fun getSearchUsers(
+    override suspend fun getSearchUsers(
         searchQuery: String,
         limit: Int,
         offset: Int
-    ): Call<SearchUsersResult> {
+    ): SearchUsersResult {
         return matchmefyApiService.getSearchUsers(searchQuery, limit, offset)
     }
 }

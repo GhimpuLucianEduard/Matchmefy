@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.databinding.LayoutSearchListItemBinding
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 
-class SearchListAdapter : PagedListAdapter<User, SearchListAdapter.SearchItemHolder>(
+class SearchListAdapter : ListAdapter<User, SearchListAdapter.SearchItemHolder>(
     diffCallback
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchItemHolder =
