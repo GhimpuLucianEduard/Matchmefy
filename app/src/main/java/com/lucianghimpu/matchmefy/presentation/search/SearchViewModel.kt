@@ -46,4 +46,8 @@ class SearchViewModel(
             }
         }
     }
+
+    fun onSearchResultClicked(user: User) {
+        navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(user))
+    }
 }

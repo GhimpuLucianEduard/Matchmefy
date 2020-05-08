@@ -2,26 +2,18 @@ package com.lucianghimpu.matchmefy.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.data.services.SpotifyService
-import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
-import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
 import com.lucianghimpu.matchmefy.utilities.EventObserver
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
-import com.lucianghimpu.matchmefy.utilities.Preferences.SPOTIFY_TOKEN
 import com.spotify.sdk.android.auth.AuthorizationClient
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.OkHttpClient
 import org.koin.android.ext.android.inject
 
 
@@ -47,15 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         // set bottom navigation
         bottomNavigationBar.setupWithNavController(navController)
-
-        val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-        navController = navHost!!.navController
-
-        val navInflater = navController.navInflater
-        val graph = navInflater.inflate(R.navigation.navigation_graph)
-
-        graph.startDestination = R.id.searchFragment
-
     }
 
     fun setBottomNavigationBarVisibility(visibility: Int = View.GONE) {

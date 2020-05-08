@@ -8,4 +8,6 @@
     <string name="continueText">continue</string>
     <string name="search_for_an_user_hint">Search for an user</string>
     <string name="no_users_found">No users found (｡•́︿•̀｡)</string>
+    <string name="match_with">Match with</string>
+    <string name="match">match</string>
 </resources>

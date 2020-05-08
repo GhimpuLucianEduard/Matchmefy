@@ -7,6 +7,8 @@
         <item name="colorPrimary">@color/pastelRose</item>
         <item name="colorPrimaryDark">@color/pastelRoseDarker</item>
         <item name="colorAccent">@color/pastelRose</item>
+
+        <item name="colorControlHighlight">#0DFFFFFF</item>
     </style>
 
     <!-- TEXT VIEWS -->

@@ -36,10 +36,27 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.lucianghimpu.matchmefy.presentation.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_userPreviewFragment"
+            app:destination="@id/userPreviewFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/searchFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/matchFragment"
         android:name="com.lucianghimpu.matchmefy.presentation.match.MatchFragment"
         android:label="MatchFragment" />
+    <fragment
+        android:id="@+id/userPreviewFragment"
+        android:name="com.lucianghimpu.matchmefy.presentation.search.UserPreviewFragment"
+        android:label="UserPreviewFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.lucianghimpu.matchmefy.data.dataModels.User" />
+    </fragment>
 
 </navigation>

@@ -4,6 +4,7 @@ import com.lucianghimpu.matchmefy.presentation.SharedViewModel
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
 import com.lucianghimpu.matchmefy.presentation.match.MatchViewModel
 import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
+import com.lucianghimpu.matchmefy.presentation.search.UserPreviewViewModel
 import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
 import com.lucianghimpu.matchmefy.presentation.welcome.WelcomeViewModel
@@ -18,4 +19,5 @@ val appModule = module {
     viewModel { WelcomeViewModel() }
     viewModel { SearchViewModel(get())}
     viewModel { MatchViewModel() }
+    viewModel { UserPreviewViewModel() }
 }

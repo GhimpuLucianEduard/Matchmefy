@@ -1,13 +1,13 @@
 package com.lucianghimpu.matchmefy.presentation.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentSearchBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import kotlinx.android.synthetic.main.fragment_search.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -27,11 +27,44 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = SearchListAdapter()
+        adapter = SearchListAdapter {
+            viewModel.onSearchResultClicked(it)
+        }
         searchResultsRecyclerView.adapter = adapter
         searchResultsRecyclerView.isNestedScrollingEnabled = true
         viewModel.users.observe(this@SearchFragment, Observer {
             adapter.submitList(it)
+
+            if (it == null || it.isEmpty()) {
+                if (!progressIndicator.isVisible) {
+                    emptyStateView.visibility = View.VISIBLE
+                }
+            } else {
+                emptyStateView.visibility = View.GONE
+            }
+        })
+
+        // TODO: not sure about this, it works but I don't like the code
+        // need to do a little bit of testing to find a more concise way of writing this
+        adapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
+            override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
+            override fun onItemRangeChanged(positionStart: Int, itemCount: Int) {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
+            override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) {
+                searchResultsRecyclerView.scrollToPosition(0)
+            }
         })
 
         viewModel.searchText.observe(this@SearchFragment, Observer {

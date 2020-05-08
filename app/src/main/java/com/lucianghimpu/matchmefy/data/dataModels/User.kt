@@ -1,12 +1,12 @@
 package com.lucianghimpu.matchmefy.data.dataModels
 
-import android.os.Build
-import androidx.annotation.RequiresApi
+import android.os.Parcelable
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
-import java.time.LocalTime
+import kotlinx.android.parcel.Parcelize
 
-data class User @RequiresApi(Build.VERSION_CODES.O) constructor(
-    val display_name : String = "TestUseraa ${LocalTime.now().second}",
+@Parcelize
+data class User (
+    val display_name : String = String.empty,
     val email : String = String.empty,
     val external_urls : ExternalUrls = ExternalUrls(),
     val followers : Followers = Followers(),
@@ -15,4 +15,4 @@ data class User @RequiresApi(Build.VERSION_CODES.O) constructor(
     val images : List<Image> = emptyList(),
     val type : String = String.empty,
     val uri : String = String.empty
-)
+) : Parcelable

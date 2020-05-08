@@ -73,7 +73,7 @@ class SharedViewModel(
                 val tracks = data.third
                 Log.i(LOG_TAG, "Fetched top tracks, with count: ${tracks.size} and top track: ${tracks[0].name}")
 
-                val addUserResult = withContext(Dispatchers.IO) {
+                withContext(Dispatchers.IO) {
                     matchmefyService.getUserData(userProfile.value!!.id)
                 }
 
