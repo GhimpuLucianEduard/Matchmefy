@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
 import com.lucianghimpu.matchmefy.utilities.EventObserver
+import com.lucianghimpu.matchmefy.utilities.NavigationCommand
 import com.spotify.sdk.android.auth.AuthorizationClient
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
@@ -31,8 +32,12 @@ class MainActivity : AppCompatActivity() {
         // The shared view model does not have a BaseFragment associated
         // So we need to observer navigation changes in the MainActivity
         sharedViewModel.navigationEvent.observe(this, EventObserver {
-            Navigation.findNavController(this, R.id.nav_host_fragment)
-                .navigate(it)
+            when (it) {
+                is NavigationCommand.To -> Navigation.findNavController(this, R.id.nav_host_fragment)
+                    .navigate(it.directions)
+                is NavigationCommand.Back -> Navigation.findNavController(this, R.id.nav_host_fragment)
+                    .navigateUp()
+            }
         })
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)

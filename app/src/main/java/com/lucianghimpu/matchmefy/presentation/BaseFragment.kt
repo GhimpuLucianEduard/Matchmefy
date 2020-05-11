@@ -14,6 +14,7 @@ import androidx.navigation.Navigation
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.utilities.Event
 import com.lucianghimpu.matchmefy.utilities.EventObserver
+import com.lucianghimpu.matchmefy.utilities.NavigationCommand
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
@@ -47,8 +48,13 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         super.onActivityCreated(savedInstanceState)
 
         viewModel.navigationEvent.observe(viewLifecycleOwner, EventObserver {
-            Navigation.findNavController(activity!!, R.id.nav_host_fragment)
-                .navigate(it)
+            when (it) {
+                is NavigationCommand.To -> Navigation.findNavController(activity!!, R.id.nav_host_fragment)
+                    .navigate(it.directions)
+                is NavigationCommand.Back -> Navigation.findNavController(activity!!, R.id.nav_host_fragment)
+                    .navigateUp()
+            }
+
         })
         mainActivity = activity as MainActivity
         mainActivity.setBottomNavigationBarVisibility(View.GONE)
