@@ -1,6 +1,5 @@
 package com.lucianghimpu.matchmefy.presentation
 
-import android.text.Layout
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,17 +8,13 @@ import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.services.MatchmefyService
 import com.lucianghimpu.matchmefy.data.services.SpotifyService
-import com.lucianghimpu.matchmefy.presentation.login.LoginFragment
 import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
-import com.lucianghimpu.matchmefy.utilities.Event
-import com.lucianghimpu.matchmefy.utilities.LogConstants
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationDirections.LOGIN_TO_WELCOME
 import com.lucianghimpu.matchmefy.utilities.Preferences.SPOTIFY_TOKEN
 import com.spotify.sdk.android.auth.AuthorizationResponse
 import kotlinx.coroutines.*
-import java.lang.Exception
 
 /**
  * Assigned to the [MainActivity]
@@ -35,6 +30,8 @@ class SharedViewModel(
 ) : BaseViewModel() {
 
     var userProfile = MutableLiveData<User>()
+    lateinit var userArtists: List<Artist>
+    lateinit var userTracks: List<Track>
 
     fun onSpotifyAuthResponse(response: AuthorizationResponse) {
 
@@ -67,11 +64,11 @@ class SharedViewModel(
                 userProfile.value = data.first
                 Log.i(LOG_TAG, "Fetched profile for: ${userProfile.value!!.display_name}")
 
-                val artists = data.second
-                Log.i(LOG_TAG, "Fetched top artists, with count: ${artists.size} and top artist: ${artists[0].name}")
+                userArtists = data.second
+                Log.i(LOG_TAG, "Fetched top artists, with count: ${userArtists.size} and top artist: ${userArtists[0].name}")
 
-                val tracks = data.third
-                Log.i(LOG_TAG, "Fetched top tracks, with count: ${tracks.size} and top track: ${tracks[0].name}")
+                userTracks = data.third
+                Log.i(LOG_TAG, "Fetched top tracks, with count: ${userTracks.size} and top track: ${userTracks[0].name}")
 
                 withContext(Dispatchers.IO) {
                     matchmefyService.getUserData(userProfile.value!!.id)

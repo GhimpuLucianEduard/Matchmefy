@@ -10,4 +10,5 @@
     <string name="no_users_found">No users found (｡•́︿•̀｡)</string>
     <string name="match_with">Match with</string>
     <string name="match">match</string>
+    <string name="loading_some_data">Loading some data</string>
 </resources>

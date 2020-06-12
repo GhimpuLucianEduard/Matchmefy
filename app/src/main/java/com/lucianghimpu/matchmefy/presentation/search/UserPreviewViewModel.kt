@@ -6,4 +6,8 @@ import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 
 class UserPreviewViewModel : BaseViewModel() {
     var userProfile =  MutableLiveData<User>()
+
+    fun onMatchClicked() {
+        navigate(UserPreviewFragmentDirections.actionUserPreviewFragmentToLoadingMatchFragment(userProfile.value!!))
+    }
 }

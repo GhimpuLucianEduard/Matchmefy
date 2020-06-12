@@ -111,6 +111,13 @@ dependencies {
     // rxkotlin for search service (corutine issue)
     implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
 
+    // view pager
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // dits indicator
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
