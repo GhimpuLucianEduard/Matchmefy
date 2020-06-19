@@ -2,7 +2,6 @@ package com.lucianghimpu.matchmefy.dependencyInjection
 
 import com.lucianghimpu.matchmefy.presentation.SharedViewModel
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
-import com.lucianghimpu.matchmefy.presentation.match.LoadingMatchViewModel
 import com.lucianghimpu.matchmefy.presentation.match.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.presentation.match.MatchViewModel
 import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
@@ -22,9 +21,8 @@ val appModule = module {
     viewModel { WelcomeViewModel() }
     viewModel { SearchViewModel(get())}
     viewModel { MatchViewModel() }
-    viewModel { UserPreviewViewModel() }
-    viewModel { LoadingMatchViewModel() }
+    viewModel { UserPreviewViewModel(get()) }
 
     // Used by the Match Result Fragments
-    single { MatchResultViewModel() }
+    single { MatchResultViewModel(get()) }
 }

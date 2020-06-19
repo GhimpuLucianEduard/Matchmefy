@@ -6,13 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.services.MatchmefyService
 import com.lucianghimpu.matchmefy.data.services.SpotifyService
-import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
+import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.services.SpotifyAuthService
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationDirections.LOGIN_TO_WELCOME
 import com.lucianghimpu.matchmefy.utilities.Preferences.SPOTIFY_TOKEN
+import com.lucianghimpu.matchmefy.utilities.Preferences.USER_PROFILE
 import com.spotify.sdk.android.auth.AuthorizationResponse
 import kotlinx.coroutines.*
 
@@ -26,21 +28,24 @@ class SharedViewModel(
     private val spotifyAuthService: SpotifyAuthService,
     private val spotifyService : SpotifyService,
     private val matchmefyService: MatchmefyService,
-    private val encryptedSharedPreferencesServiceImpl: EncryptedSharedPreferencesServiceImpl
+    private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
 ) : BaseViewModel() {
 
     var userProfile = MutableLiveData<User>()
-    lateinit var userArtists: List<Artist>
-    lateinit var userTracks: List<Track>
+
+    init {
+        // get user profile from preferences
+        userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE, User::class)
+    }
 
     fun onSpotifyAuthResponse(response: AuthorizationResponse) {
 
         val token = spotifyAuthService.onAuthResponse(response)
 
         Log.d(LOG_TAG, "Token: ${token}")
-        encryptedSharedPreferencesServiceImpl.addPreference(SPOTIFY_TOKEN, token)
+        encryptedSharedPreferencesService.addPreference(SPOTIFY_TOKEN, token)
 
-        getInitalData()
+        getInitialData()
     }
 
     private suspend fun getData() : Triple<User, List<Artist>, List<Track>> {
@@ -53,7 +58,7 @@ class SharedViewModel(
         }
     }
 
-    fun getInitalData() {
+    private fun getInitialData() {
         viewModelScope.launch {
             try {
 
@@ -62,16 +67,18 @@ class SharedViewModel(
                 }
 
                 userProfile.value = data.first
+
+                // save user in shared preferences
+                encryptedSharedPreferencesService.addPreference(USER_PROFILE, data.first)
+
                 Log.i(LOG_TAG, "Fetched profile for: ${userProfile.value!!.display_name}")
 
-                userArtists = data.second
-                Log.i(LOG_TAG, "Fetched top artists, with count: ${userArtists.size} and top artist: ${userArtists[0].name}")
+                Log.i(LOG_TAG, "Fetched top artists, with count: ${data.second.size} and top artist: ${data.second[0].name}")
 
-                userTracks = data.third
-                Log.i(LOG_TAG, "Fetched top tracks, with count: ${userTracks.size} and top track: ${userTracks[0].name}")
+                Log.i(LOG_TAG, "Fetched top tracks, with count: ${data.third.size} and top track: ${data.third[0].name}")
 
                 withContext(Dispatchers.IO) {
-                    matchmefyService.getUserData(userProfile.value!!.id)
+                    matchmefyService.postUserData(CompleteUserData(data.first, data.second, data.third))
                 }
 
                 Log.i(LOG_TAG, "Added user data to Matchmefy API")

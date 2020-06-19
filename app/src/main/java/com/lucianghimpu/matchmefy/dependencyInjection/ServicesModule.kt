@@ -1,20 +1,12 @@
 package com.lucianghimpu.matchmefy.dependencyInjection
 
-import com.lucianghimpu.matchmefy.services.ConnectivityService
-import com.lucianghimpu.matchmefy.services.ConnectivityServiceImpl
-import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesServiceImpl
-import com.lucianghimpu.matchmefy.services.SpotifyAuthService
+import com.lucianghimpu.matchmefy.services.*
 import org.koin.dsl.module
 
 val servicesModule = module {
 
     single { ConnectivityServiceImpl(get()) as ConnectivityService }
-
-    single {
-        EncryptedSharedPreferencesServiceImpl(
-            get()
-        )
-    }
-
+    single { EncryptedSharedPreferencesServiceImpl(get()) as EncryptedSharedPreferencesService }
+    single { ResourceProviderImpl(get()) as ResourceProvider }
     single { SpotifyAuthService() }
 }

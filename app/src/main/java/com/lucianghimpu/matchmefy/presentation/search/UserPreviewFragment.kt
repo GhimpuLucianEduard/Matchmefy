@@ -2,10 +2,13 @@ package com.lucianghimpu.matchmefy.presentation.search
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentUserPreviewBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.presentation.SharedViewModel
+import kotlinx.android.synthetic.main.fragment_user_preview.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class UserPreviewFragment : BaseFragment<UserPreviewViewModel, FragmentUserPreviewBinding>() {
@@ -14,6 +17,8 @@ class UserPreviewFragment : BaseFragment<UserPreviewViewModel, FragmentUserPrevi
     override fun getLayoutResId(): Int = R.layout.fragment_user_preview
     override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
 
+    private val sharedViewModel: SharedViewModel by viewModel()
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mainActivity.setBottomNavigationBarVisibility(View.VISIBLE)
@@ -21,6 +26,15 @@ class UserPreviewFragment : BaseFragment<UserPreviewViewModel, FragmentUserPrevi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.userProfile.value = args.user
+        viewModel.matchingUser.postValue(args.user)
+        viewModel.currentUser = sharedViewModel.userProfile.value!!
+
+        viewModel.isBusy.observe(this@UserPreviewFragment, Observer {
+            if (it) {
+                progressIndicator.show()
+            } else {
+                progressIndicator.hide()
+            }
+        })
     }
 }

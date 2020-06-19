@@ -1,5 +1,9 @@
 package com.lucianghimpu.matchmefy.data.dataModels
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Artist(
     val external_urls : ExternalUrls,
     val followers : Followers,
@@ -11,4 +15,4 @@ data class Artist(
     val popularity : Int,
     val type : String,
     val uri : String
-)
+) : Parcelable

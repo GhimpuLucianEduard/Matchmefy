@@ -15,6 +15,7 @@ object SpotifyCredentials {
 object Preferences {
     const val PREFERENCES_FILE = "mmf_preferences"
     const val SPOTIFY_TOKEN = "spotify_token"
+    const val USER_PROFILE = "user_profile"
 }
 
 object ApiConstants {

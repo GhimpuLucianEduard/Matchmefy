@@ -3,6 +3,7 @@ package com.lucianghimpu.matchmefy.presentation.match.matchResult
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
@@ -10,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_match_result.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultBinding>() {
-
+    private val args: MatchResultFragmentArgs by navArgs()
     override val viewModel: MatchResultViewModel by sharedViewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_match_result
     override fun setViewDataBindingViewModel() {
@@ -21,6 +22,8 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.matchResult.postValue(args.matchResult)
 
         pageViewAdapter = MatchResultPageViewerAdapter(this)
         viewPager.adapter = pageViewAdapter
@@ -39,7 +42,6 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
      * The default should be 4 (score -> artists -> tracks -> genres)
      * @return a integer, the number of pages to be displayed in the UI
      */
-    fun getCarouselPageCount(): Int {
-        return MatchResultViewModel.MatchResultState.values().size
-    }
+    fun getCarouselPageCount(): Int = MatchResultViewModel.MatchResultState.values().size
+
 }

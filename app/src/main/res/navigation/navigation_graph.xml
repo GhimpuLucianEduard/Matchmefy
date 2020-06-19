@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/matchResultFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -58,24 +58,20 @@
             android:name="user"
             app:argType="com.lucianghimpu.matchmefy.data.dataModels.User" />
         <action
-            android:id="@+id/action_userPreviewFragment_to_loadingMatchFragment"
-            app:destination="@id/loadingMatchFragment"
+            android:id="@+id/action_userPreviewFragment_to_matchResultFragment"
+            app:destination="@id/matchResultFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/loadingMatchFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.match.LoadingMatchFragment"
-        android:label="LoadingMatchFragment">
-        <argument
-            android:name="user"
-            app:argType="com.lucianghimpu.matchmefy.data.dataModels.User" />
-    </fragment>
-    <fragment
         android:id="@+id/matchResultFragment"
         android:name="com.lucianghimpu.matchmefy.presentation.match.matchResult.MatchResultFragment"
-        android:label="MatchResultFragment" />
+        android:label="MatchResultFragment" >
+        <argument
+            android:name="matchResult"
+            app:argType="com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult" />
+    </fragment>
 
 </navigation>

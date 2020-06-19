@@ -1,5 +1,9 @@
 package com.lucianghimpu.matchmefy.data.dataModels
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Album (
     val album_type : String,
     val artists : List<Artist>,
@@ -14,4 +18,4 @@ data class Album (
     val total_tracks : Int,
     val type : String,
     val uri : String
-)
+) : Parcelable

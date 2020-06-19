@@ -30,7 +30,7 @@ class SearchListAdapter(
     }
 
     inner class SearchItemHolder(
-        val searchItemBinding: LayoutSearchListItemBinding
+        private val searchItemBinding: LayoutSearchListItemBinding
     ) : RecyclerView.ViewHolder(searchItemBinding.root) {
         fun bind(user: User)  {
             searchItemBinding.user = user

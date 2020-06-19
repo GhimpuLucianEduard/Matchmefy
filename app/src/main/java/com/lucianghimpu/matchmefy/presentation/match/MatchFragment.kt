@@ -13,7 +13,6 @@ class MatchFragment : BaseFragment<MatchViewModel, FragmentMatchBinding>() {
     override fun getLayoutResId(): Int = R.layout.fragment_match
     override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mainActivity.setBottomNavigationBarVisibility(View.VISIBLE)

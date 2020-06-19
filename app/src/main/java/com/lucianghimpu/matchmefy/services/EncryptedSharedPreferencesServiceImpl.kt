@@ -3,11 +3,13 @@ package com.lucianghimpu.matchmefy.services
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.google.gson.GsonBuilder
 import com.lucianghimpu.matchmefy.utilities.Preferences.PREFERENCES_FILE
+import kotlin.reflect.KClass
 
-// TODO: add Interface to this
-class EncryptedSharedPreferencesServiceImpl(context: Context) {
+class EncryptedSharedPreferencesServiceImpl(
+    context: Context
+) : EncryptedSharedPreferencesService {
 
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
@@ -19,13 +21,25 @@ class EncryptedSharedPreferencesServiceImpl(context: Context) {
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
 
-    fun addPreference(key: String, value: String) {
+    override fun addPreference(key: String, value: String) {
         sharedPreferences.edit()
             .putString(key, value)
             .apply()
     }
 
-    fun getPreference(key: String, defaultValue: String = String.empty): String {
+    override fun getPreference(key: String, defaultValue: String): String {
         return sharedPreferences.getString(key, defaultValue)!!
+    }
+
+    override fun <T> addPreference(key: String, value: T) {
+        val json = GsonBuilder().create().toJson(value)
+        sharedPreferences.edit()
+            .putString(key, json)
+            .apply()
+    }
+
+    override fun <T: Any> getPreference(key: String, objectClass: KClass<T>): T? {
+        val value = sharedPreferences.getString(key, null)
+        return GsonBuilder().create().fromJson(value, objectClass.java)
     }
 }

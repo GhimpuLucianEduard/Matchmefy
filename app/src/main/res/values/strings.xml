@@ -11,4 +11,14 @@
     <string name="match_with">Match with</string>
     <string name="match">match</string>
     <string name="loading_some_data">Loading some data</string>
+
+    <!-- Match Result Score Fragment    -->
+    <string name="match_score_0_title">Pass</string>
+    <string name="match_score_20_title">Meh</string>
+    <string name="match_score_40_title">Not Bad!</string>
+    <string name="match_score_60_title">Good!</string>
+    <string name="match_score_80_title">Amazing!</string>
+
+    <string name="match_score_subtitle">You have a <font color='#E07C7C'>%1$.2f%%</font> match score</string>
+
 </resources>
