@@ -23,9 +23,9 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.matchResult.postValue(args.matchResult)
+        viewModel.initData(args.matchResult)
 
-        pageViewAdapter = MatchResultPageViewerAdapter(this)
+        pageViewAdapter = MatchResultPageViewerAdapter(this, viewModel.stateManager)
         viewPager.adapter = pageViewAdapter
         viewPager.isUserInputEnabled = false
         dotsIndicator.dotsClickable = false
@@ -36,12 +36,4 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
             viewPager.currentItem = it.ordinal
         })
     }
-
-    /**
-     * Returns the amount of pages that will be displayed based on the common data of both users.
-     * The default should be 4 (score -> artists -> tracks -> genres)
-     * @return a integer, the number of pages to be displayed in the UI
-     */
-    fun getCarouselPageCount(): Int = MatchResultViewModel.MatchResultState.values().size
-
 }

@@ -20,5 +20,6 @@
     <string name="match_score_80_title">Amazing!</string>
 
     <string name="match_score_subtitle">You have a <font color='#E07C7C'>%1$.2f%%</font> match score</string>
+    <string name="common_artists_title">You both listen to:</string>
 
 </resources>

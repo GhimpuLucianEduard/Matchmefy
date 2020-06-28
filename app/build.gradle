@@ -117,6 +117,10 @@ dependencies {
     // dits indicator
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
+    // carousel
+    implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
+    implementation 'com.ramotion.cardslider:card-slider:0.3.1'
+
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

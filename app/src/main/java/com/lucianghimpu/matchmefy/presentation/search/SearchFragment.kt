@@ -30,6 +30,7 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
         adapter = SearchListAdapter {
             viewModel.onSearchResultClicked(it)
         }
+
         searchResultsRecyclerView.adapter = adapter
         searchResultsRecyclerView.isNestedScrollingEnabled = true
         viewModel.users.observe(this@SearchFragment, Observer {

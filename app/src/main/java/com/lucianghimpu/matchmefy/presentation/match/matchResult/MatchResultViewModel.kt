@@ -12,6 +12,9 @@ class MatchResultViewModel(
     resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
+    lateinit var stateManager: StateManager
+        private set
+
     var matchResult = MutableLiveData<MatchResult>()
 
     private var _state = MutableLiveData<MatchResultState>()
@@ -42,34 +45,25 @@ class MatchResultViewModel(
         }
     }
 
-    init {
-        _state.value = MatchResultState.SCORE
+    val matchingArtists = Transformations.map(matchResult) {
+        it.matchingArtists
+    }
+
+    fun initData(newMatchResult: MatchResult) {
+        stateManager = StateManager(newMatchResult)
+        matchResult.value = newMatchResult
+        _state.value = stateManager.currentState
     }
 
     fun onContinueClicked() {
-        if (_state.value == MatchResultState.GENRES) {
-            return
-        }
-
-        val values = MatchResultState.values()
-        val nextOrdinal = (_state.value!!.ordinal + 1)
-        _state.postValue(values[nextOrdinal])
+        _state.value = stateManager.next()
     }
 
     fun onBackClicked() {
-        if (_state.value == MatchResultState.SCORE) {
-            return
-        }
-
-        val values = MatchResultState.values()
-        val prevOrdinal = (_state.value!!.ordinal - 1)
-        _state.postValue(values[prevOrdinal])
+        _state.value = stateManager.prev()
     }
 
-    enum class MatchResultState {
-        SCORE,
-        ARTISTS,
-        TRACKS,
-        GENRES
+    fun getNumberOfPages(): Int {
+        return stateManager.size()
     }
 }
