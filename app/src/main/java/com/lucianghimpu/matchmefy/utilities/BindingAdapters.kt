@@ -25,6 +25,16 @@ fun ImageView.bindImageFromUriWithGlide(images: List<Image>?) {
         .into(this)
 }
 
+@BindingAdapter("imageFromUriWithGlide")
+fun ImageView.bindImageFromUriWithGlide(imageUrl: String) {
+    Glide.with(context)
+        .load(imageUrl)
+        .centerCrop()
+        .fallback(R.drawable.placeholder)
+        .error(R.drawable.placeholder)
+        .into(this)
+}
+
 @set:BindingAdapter("visibleOrGone")
 var View.visibleOrGone
     get() = visibility == VISIBLE

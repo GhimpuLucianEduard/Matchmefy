@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultArtistsBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.utilities.DensityUtil.Companion.pixelToDp
+import com.lucianghimpu.matchmefy.utilities.Extensions.setShowSideItems
 import kotlinx.android.synthetic.main.fragment_match_result_artists.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -20,7 +22,7 @@ class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMa
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = ImageCarouselAdapter(emptyList())
+        adapter = ImageCarouselAdapter()
 
         viewModel.matchingArtists.observe(viewLifecycleOwner, Observer { list ->
             adapter.submitList(list.map {
@@ -29,5 +31,8 @@ class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMa
         })
 
         carousel.adapter = adapter
+        val transformerSideMargin = pixelToDp(activity!!, resources.getDimension(R.dimen.image_carousel_margin) / 2)
+        carousel.setShowSideItems(transformerSideMargin, transformerSideMargin)
     }
 }
+

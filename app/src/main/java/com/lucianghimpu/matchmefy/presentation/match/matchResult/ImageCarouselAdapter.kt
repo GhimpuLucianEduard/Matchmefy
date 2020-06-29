@@ -9,11 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.LayoutCarouselItemBinding
 
-class ImageCarouselAdapter(
-    private val items: List<CarouselItem>
-) : ListAdapter<CarouselItem, ImageCarouselAdapter.ImageCarouselViewHolder>(
-diffCallback
-) {
+class ImageCarouselAdapter :
+    ListAdapter<CarouselItem, ImageCarouselAdapter.ImageCarouselViewHolder>(
+        diffCallback
+    ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageCarouselViewHolder =
         ImageCarouselViewHolder(
             DataBindingUtil.inflate(
@@ -31,7 +30,7 @@ diffCallback
     inner class ImageCarouselViewHolder(
         private val layoutCarouselItemBinding: LayoutCarouselItemBinding
     ) : RecyclerView.ViewHolder(layoutCarouselItemBinding.root) {
-        fun bind(carouselItem: CarouselItem)  {
+        fun bind(carouselItem: CarouselItem) {
             layoutCarouselItemBinding.carouselItem = carouselItem
         }
     }
@@ -41,6 +40,7 @@ diffCallback
             override fun areItemsTheSame(oldItem: CarouselItem, newItem: CarouselItem): Boolean {
                 return oldItem.name == newItem.name
             }
+
             override fun areContentsTheSame(oldItem: CarouselItem, newItem: CarouselItem): Boolean {
                 return oldItem.name == newItem.name
             }
