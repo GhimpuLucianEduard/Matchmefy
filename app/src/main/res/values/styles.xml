@@ -16,6 +16,7 @@
         <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textSize">42sp</item>
         <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="SecondaryTitleTextBlack">
@@ -34,6 +35,13 @@
         <item name="android:fontFamily">@font/lato_bold</item>
         <item name="android:textColor">@color/pureWhite</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="GreySubtitleText">
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/textGrey</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textAlignment">center</item>
     </style>
 

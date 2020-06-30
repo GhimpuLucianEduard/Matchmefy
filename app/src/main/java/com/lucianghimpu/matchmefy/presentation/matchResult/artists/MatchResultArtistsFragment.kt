@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.presentation.match.matchResult
+package com.lucianghimpu.matchmefy.presentation.matchResult.artists
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,8 @@ import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultArtistsBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.presentation.matchResult.CarouselItem
+import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.utilities.DensityUtil.Companion.pixelToDp
 import com.lucianghimpu.matchmefy.utilities.Extensions.setShowSideItems
 import kotlinx.android.synthetic.main.fragment_match_result_artists.*
@@ -17,16 +19,19 @@ class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMa
     override fun getLayoutResId(): Int = R.layout.fragment_match_result_artists
     override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
 
-    private lateinit var adapter: ImageCarouselAdapter
+    private lateinit var adapter: ArtistsCarouselAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = ImageCarouselAdapter()
+        adapter = ArtistsCarouselAdapter()
 
-        viewModel.matchingArtists.observe(viewLifecycleOwner, Observer { list ->
-            adapter.submitList(list.map {
-                CarouselItem(it.name, it.images.first().url)
+        viewModel.matchResult.observe(viewLifecycleOwner, Observer { result ->
+            adapter.submitList(result.matchingArtists.map {
+                CarouselItem(
+                    title = it.name,
+                    imageUrl = it.images.first().url
+                )
             })
         })
 

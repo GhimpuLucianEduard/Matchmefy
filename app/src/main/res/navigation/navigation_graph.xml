@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/matchResultFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.match.matchResult.MatchResultFragment"
+        android:name="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultFragment"
         android:label="MatchResultFragment" >
         <argument
             android:name="matchResult"

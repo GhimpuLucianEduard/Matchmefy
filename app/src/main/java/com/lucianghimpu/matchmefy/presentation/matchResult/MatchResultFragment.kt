@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.presentation.match.matchResult
+package com.lucianghimpu.matchmefy.presentation.matchResult
 
 import android.os.Bundle
 import android.view.View

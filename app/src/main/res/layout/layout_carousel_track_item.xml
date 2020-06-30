@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="carouselItem"
+            type="com.lucianghimpu.matchmefy.presentation.matchResult.CarouselItem" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundBlack">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCard"
+            android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintHeight_percent=".6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image"
+                imageFromUriWithGlide="@{carouselItem.imageUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/trackTitle"
+            style="@style/SecondaryTitleTextBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{carouselItem.title}"
+            android:textSize="16sp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCard" />
+
+        <TextView
+            android:id="@+id/artistSubtitle"
+            style="@style/GreySubtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="@{carouselItem.subtitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trackTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

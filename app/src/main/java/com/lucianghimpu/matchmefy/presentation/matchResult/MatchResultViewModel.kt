@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.presentation.match.matchResult
+package com.lucianghimpu.matchmefy.presentation.matchResult
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -43,10 +43,6 @@ class MatchResultViewModel(
             in 60..79 -> resourceProvider.getDrawable(R.drawable.match60)
             else -> resourceProvider.getDrawable(R.drawable.match80)
         }
-    }
-
-    val matchingArtists = Transformations.map(matchResult) {
-        it.matchingArtists
     }
 
     fun initData(newMatchResult: MatchResult) {

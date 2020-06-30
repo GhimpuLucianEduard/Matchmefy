@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.lucianghimpu.matchmefy.presentation.match.matchResult.MatchResultViewModel" />
+            type="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,8 +1,9 @@
-package com.lucianghimpu.matchmefy.presentation.match.matchResult
+package com.lucianghimpu.matchmefy.presentation.matchResult.score
 
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultScoreBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MatchResultScoreFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultScoreBinding>() {

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.lucianghimpu.matchmefy.presentation.match.matchResult.MatchResultViewModel" />
+            type="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,11 +18,24 @@
             style="@style/TitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="And songs:"
+            android:text="@string/common_tracks_title"
+            android:textAlignment="center"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/carousel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingStart="@dimen/image_carousel_margin"
+            android:paddingEnd="@dimen/image_carousel_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".80"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

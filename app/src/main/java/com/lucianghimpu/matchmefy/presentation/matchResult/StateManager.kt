@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.presentation.match.matchResult
+package com.lucianghimpu.matchmefy.presentation.matchResult
 
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import java.util.*
