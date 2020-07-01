@@ -16,8 +16,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:padding="@dimen/nav_buttons_padding"
             android:background="@color/backgroundBlack"
             android:src="@drawable/back_arrow_left"
             android:onClick="@{() -> viewModel.navigateBack()}"

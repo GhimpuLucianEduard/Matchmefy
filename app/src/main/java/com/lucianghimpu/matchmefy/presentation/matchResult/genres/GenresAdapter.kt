@@ -27,6 +27,17 @@ class GenresAdapter :
         holder.bind(super.getItem(position)!!)
     }
 
+    /**
+     * This is done because there is an issue while using the FlexBoxLayoutManager
+     * (random scrolls and other glitches)
+     *
+     * This will fix that but can affect performance for larger lists
+     * Tbh we don't expect larger lists for genres
+     */
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     inner class GenresViewHolder(
         private val layoutGenresItemBinding: LayoutGenresItemBinding
     ) : RecyclerView.ViewHolder(layoutGenresItemBinding.root) {

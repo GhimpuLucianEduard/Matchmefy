@@ -19,7 +19,7 @@
     <string name="match_score_60_title">Good!</string>
     <string name="match_score_80_title">Amazing!</string>
 
-    <string name="match_score_subtitle">You have a <font color='#E07C7C'>%1$.2f%%</font>match score</string>
+    <string name="match_score_subtitle">You have a %1$.2f%% match score</string>
     <string name="common_artists_title">You both listen to:</string>
     <string name="common_tracks_title">You love these songs:</string>
     <string name="common_genres_title">You both love these genres:</string>

@@ -4,25 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View"/>
         <variable
             name="viewModel"
             type="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/backgroundBlack">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/topLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_weight=".1">
 
             <ImageButton
                 android:id="@+id/backButton"
@@ -33,6 +31,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{() -> viewModel.onBackClicked()}"
+                visibleOrGone="@{viewModel.isBackButtonVisible}"
                 android:src="@drawable/back_arrow_left"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,11 +55,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topLayout" />
+            android:layout_weight=".7"/>
 
         <LinearLayout
             android:id="@+id/bottomLayout"
@@ -68,10 +63,7 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent=".2"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_weight=".2">
 
             <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
                 android:id="@+id/dotsIndicator"
@@ -94,5 +86,5 @@
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

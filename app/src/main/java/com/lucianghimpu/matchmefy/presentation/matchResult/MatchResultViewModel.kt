@@ -31,10 +31,6 @@ class MatchResultViewModel(
         }
     }
 
-    val matchScoreSubtitle = Transformations.map(matchResult) {
-        resourceProvider.getString(R.string.match_score_subtitle, it.matchingScore.toFloat())
-    }
-
     val matchImage = Transformations.map(matchResult) {
         when (it.matchingScore.toInt()) {
             in 0..19 -> resourceProvider.getDrawable(R.drawable.match0)
@@ -43,6 +39,10 @@ class MatchResultViewModel(
             in 60..79 -> resourceProvider.getDrawable(R.drawable.match60)
             else -> resourceProvider.getDrawable(R.drawable.match80)
         }
+    }
+
+    val isBackButtonVisible: LiveData<Boolean> = Transformations.map(_state) {
+        it != MatchResultState.SCORE
     }
 
     fun initData(newMatchResult: MatchResult) {
@@ -57,9 +57,5 @@ class MatchResultViewModel(
 
     fun onBackClicked() {
         _state.value = stateManager.prev()
-    }
-
-    fun getNumberOfPages(): Int {
-        return stateManager.size()
     }
 }

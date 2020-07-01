@@ -3,10 +3,7 @@ package com.lucianghimpu.matchmefy.presentation.matchResult.genres
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.google.android.flexbox.AlignItems
-import com.google.android.flexbox.FlexDirection
-import com.google.android.flexbox.FlexWrap
-import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.*
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultGenresBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
@@ -26,9 +23,8 @@ class MatchResultGenresFragment : BaseFragment<MatchResultViewModel, FragmentMat
         super.onViewCreated(view, savedInstanceState)
 
         flexBoxLayoutManager =  FlexboxLayoutManager(activity).apply {
-            flexWrap = FlexWrap.WRAP
             flexDirection = FlexDirection.ROW
-            alignItems = AlignItems.FLEX_START
+            justifyContent = JustifyContent.CENTER
         }
 
         genresAdapter = GenresAdapter()
