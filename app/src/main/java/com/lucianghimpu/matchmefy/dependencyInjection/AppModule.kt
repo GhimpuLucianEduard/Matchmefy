@@ -15,7 +15,7 @@ val appModule = module {
     // TODO: move these in a Presentation Module
 
     // Used by MainActivity and other fragments
-    single { SharedViewModel(get(), get(), get(), get()) }
+    single { SharedViewModel(get(), get(), get()) }
 
     viewModel { LoginViewModel() }
     viewModel { WelcomeViewModel() }

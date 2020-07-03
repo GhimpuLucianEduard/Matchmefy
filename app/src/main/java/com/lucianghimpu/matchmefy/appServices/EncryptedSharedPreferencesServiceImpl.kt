@@ -1,10 +1,10 @@
-package com.lucianghimpu.matchmefy.services
+package com.lucianghimpu.matchmefy.appServices
 
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.google.gson.GsonBuilder
-import com.lucianghimpu.matchmefy.utilities.Preferences.PREFERENCES_FILE
+import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.PREFERENCES_FILE_KEY
 import kotlin.reflect.KClass
 
 class EncryptedSharedPreferencesServiceImpl(
@@ -14,7 +14,7 @@ class EncryptedSharedPreferencesServiceImpl(
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
     private val sharedPreferences = EncryptedSharedPreferences.create(
-        PREFERENCES_FILE,
+        PREFERENCES_FILE_KEY,
         masterKeyAlias,
         context,
         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,

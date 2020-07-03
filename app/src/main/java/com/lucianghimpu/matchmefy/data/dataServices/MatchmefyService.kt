@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.data.services
+package com.lucianghimpu.matchmefy.data.dataServices
 
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData

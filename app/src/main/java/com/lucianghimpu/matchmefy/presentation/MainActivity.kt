@@ -2,25 +2,26 @@ package com.lucianghimpu.matchmefy.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.services.SpotifyAuthService
+import com.lucianghimpu.matchmefy.appServices.AppAuthService
+import com.lucianghimpu.matchmefy.appServices.AuthService
 import com.lucianghimpu.matchmefy.utilities.EventObserver
+import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
-import com.spotify.sdk.android.auth.AuthorizationClient
+import com.lucianghimpu.matchmefy.utilities.SpotifyAuthConstants
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AuthService.TokenReceivedCallback {
 
-    private val spotifyAuthService: SpotifyAuthService by inject()
+    private val authService: AuthService by inject()
     private val sharedViewModel: SharedViewModel by inject()
 
     private lateinit var navController: NavController
@@ -54,9 +55,19 @@ class MainActivity : AppCompatActivity() {
 
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == spotifyAuthService.AUTH_TOKEN_REQUEST_CODE) {
-            val response = AuthorizationClient.getResponse(resultCode, data)
-            sharedViewModel.onSpotifyAuthResponse(response)
+        if (requestCode == SpotifyAuthConstants.ACTIVITY_REQUEST_CODE) {
+            authService.onAuthCodeResponse(data)
+            authService.sendTokenRequest(this)
         }
+    }
+
+    override fun onSuccess() {
+        Log.i(LOG_TAG, "Token fetched")
+        sharedViewModel.onAuthResponse()
+    }
+
+    override fun onError(ex: Exception) {
+        // TODO: handle error
+        Log.e(LOG_TAG, "Error fetching token, cause: $ex")
     }
 }

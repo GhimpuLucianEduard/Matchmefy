@@ -6,7 +6,7 @@ import androidx.lifecycle.Transformations
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
-import com.lucianghimpu.matchmefy.services.ResourceProvider
+import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 
 class MatchResultViewModel(
     resourceProvider: ResourceProvider

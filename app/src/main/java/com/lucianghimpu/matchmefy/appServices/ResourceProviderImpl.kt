@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.services
+package com.lucianghimpu.matchmefy.appServices
 
 import android.content.Context
 import android.graphics.drawable.Drawable

@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.services
+package com.lucianghimpu.matchmefy.appServices
 
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import kotlin.reflect.KClass

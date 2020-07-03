@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.data.services
+package com.lucianghimpu.matchmefy.data.dataServices
 
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track

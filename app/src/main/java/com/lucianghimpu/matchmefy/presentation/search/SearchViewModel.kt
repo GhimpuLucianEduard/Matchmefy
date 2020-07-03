@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.data.dataModels.User
-import com.lucianghimpu.matchmefy.data.services.MatchmefyService
+import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import kotlinx.coroutines.*

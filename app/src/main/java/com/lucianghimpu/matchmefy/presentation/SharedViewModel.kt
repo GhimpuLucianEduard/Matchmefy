@@ -3,19 +3,16 @@ package com.lucianghimpu.matchmefy.presentation
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
-import com.lucianghimpu.matchmefy.data.services.MatchmefyService
-import com.lucianghimpu.matchmefy.data.services.SpotifyService
-import com.lucianghimpu.matchmefy.services.EncryptedSharedPreferencesService
-import com.lucianghimpu.matchmefy.services.SpotifyAuthService
+import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
+import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationDirections.LOGIN_TO_WELCOME
-import com.lucianghimpu.matchmefy.utilities.Preferences.SPOTIFY_TOKEN
-import com.lucianghimpu.matchmefy.utilities.Preferences.USER_PROFILE
-import com.spotify.sdk.android.auth.AuthorizationResponse
+import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.USER_PROFILE_KEY
 import kotlinx.coroutines.*
 
 /**
@@ -25,7 +22,6 @@ import kotlinx.coroutines.*
  * being caught in the Activity but the handling should be done in a Fragment
  */
 class SharedViewModel(
-    private val spotifyAuthService: SpotifyAuthService,
     private val spotifyService : SpotifyService,
     private val matchmefyService: MatchmefyService,
     private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
@@ -35,16 +31,10 @@ class SharedViewModel(
 
     init {
         // get user profile from preferences
-        userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE, User::class)
+        userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE_KEY, User::class)
     }
 
-    fun onSpotifyAuthResponse(response: AuthorizationResponse) {
-
-        val token = spotifyAuthService.onAuthResponse(response)
-
-        Log.d(LOG_TAG, "Token: ${token}")
-        encryptedSharedPreferencesService.addPreference(SPOTIFY_TOKEN, token)
-
+    fun onAuthResponse() {
         getInitialData()
     }
 
@@ -69,7 +59,7 @@ class SharedViewModel(
                 userProfile.value = data.first
 
                 // save user in shared preferences
-                encryptedSharedPreferencesService.addPreference(USER_PROFILE, data.first)
+                encryptedSharedPreferencesService.addPreference(USER_PROFILE_KEY, data.first)
 
                 Log.i(LOG_TAG, "Fetched profile for: ${userProfile.value!!.display_name}")
 
@@ -89,6 +79,4 @@ class SharedViewModel(
             }
         }
     }
-
-
 }

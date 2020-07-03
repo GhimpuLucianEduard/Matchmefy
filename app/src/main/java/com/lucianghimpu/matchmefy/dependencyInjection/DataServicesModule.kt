@@ -1,9 +1,9 @@
 package com.lucianghimpu.matchmefy.dependencyInjection
 
-import com.lucianghimpu.matchmefy.data.services.MatchmefyService
-import com.lucianghimpu.matchmefy.data.services.MatchmefyServiceImpl
-import com.lucianghimpu.matchmefy.data.services.SpotifyService
-import com.lucianghimpu.matchmefy.data.services.SpotifyServiceImpl
+import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
+import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyServiceImpl
+import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
+import com.lucianghimpu.matchmefy.data.dataServices.SpotifyServiceImpl
 import org.koin.dsl.module
 
 val dataServicesModule = module {
