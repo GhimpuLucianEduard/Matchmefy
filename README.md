@@ -5,7 +5,7 @@ Android mobile app used to showcase the usage of the latest Android Jetpack libr
 The app retrieves data about the user from the Spotify API, stores it in a secure database.
 Then the user can search for friends or strangers and get a "match score" which calculates how compatible their music tastes are. In the end, the user gets a Spotify playlist with songs from his match.
 
-## APIs
+## APIs 
 
 ### 1. [The Spotify API used to retrieve data about the user](https://developer.spotify.com/documentation/web-api/)
 
