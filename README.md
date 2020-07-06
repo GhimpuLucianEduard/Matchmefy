@@ -12,7 +12,7 @@ The app used 2 APIs:
 
 <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/signin.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/welcome.png" width="250">
 
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/empty.png" width="250"> src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png" width="250"> 
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/empty.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png" width="250"> 
 
 <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match80.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match60.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match40.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match20.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match0.png" width="250"> 
 
