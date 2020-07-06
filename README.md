@@ -11,5 +11,11 @@ The app used 2 APIs:
 2. [Matchmefy API used to store the data](https://github.com/GhimpuLucianEduard/matchmefy-api)
 
 <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/signin.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/welcome.png" width="250">
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png" width="250"> 
+
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/empty.png" width="250"> 
+
 <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match80.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match60.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match40.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match20.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match0.png" width="250"> 
+
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/mathcingArtists.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/matchingTracks" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/matchingGenres" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/createPlaylist" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/createPlaylistConfirmation.png" width="250"> 
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/playlistCreated.png" width="250"> 
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/settings.png" width="250"> 
