@@ -8,6 +8,7 @@ interface AuthService {
     fun sendAuthCodeRequest(activity: Activity)
     fun onAuthCodeResponse(data: Intent?)
     fun sendTokenRequest(callback: TokenReceivedCallback)
+
     fun getToken(): String?
 
     interface TokenReceivedCallback {

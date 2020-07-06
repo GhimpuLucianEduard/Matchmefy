@@ -91,9 +91,7 @@ class AppAuthService(
     }
 
     override fun getToken(): String? {
-        val token = readState().accessToken
-        Log.i(LOG_TAG, "Token is null in app auth service: ${token.isNullOrEmpty()}")
-        return token
+        return readState().accessToken
     }
 
     private fun readState(): AuthState {

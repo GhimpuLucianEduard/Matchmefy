@@ -9,7 +9,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.appServices.AuthService
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
@@ -41,10 +40,7 @@ class MainActivity : AppCompatActivity(), AuthService.TokenReceivedCallback {
             }
         })
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-
-        // set bottom navigation
-        bottomNavigationBar.setupWithNavController(navController)
+        setupNavigation()
     }
 
     fun setBottomNavigationBarVisibility(visibility: Int = View.GONE) {
@@ -61,9 +57,14 @@ class MainActivity : AppCompatActivity(), AuthService.TokenReceivedCallback {
         }
     }
 
+    private fun setupNavigation() {
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        bottomNavigationBar.setupWithNavController(navController)
+    }
+
     override fun onSuccess() {
         Log.i(LOG_TAG, "Token fetched")
-        sharedViewModel.onAuthResponse()
+        sharedViewModel.onAuthCompleted()
     }
 
     override fun onError(ex: Exception) {

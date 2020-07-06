@@ -19,6 +19,10 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="TitleTextMatchResult" parent="TitleText">
+        <item name="android:textSize">28sp</item>
+    </style>
+
     <style name="SecondaryTitleTextBlack">
         <item name="android:fontFamily">@font/lato_black</item>
         <item name="android:textColor">@color/pureWhite</item>
@@ -63,6 +67,24 @@
     <!-- BOTTOM NAVIGATION BAR -->
     <style name="BottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <!-- Settings Page Styles -->
+    <style name="SettingsSeparatorStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/settingsSeparatorColor</item>
+        <item name="android:layout_marginStart">@dimen/settings_lateral_margin</item>
+        <item name="android:layout_marginEnd">@dimen/settings_lateral_margin</item>
+    </style>
+
+    <style name="SettingsNameTextView" parent="BoldParagraphText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/settings_lateral_margin</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:drawableEnd">@drawable/settings_right_arrow</item>
     </style>
 
 </resources>

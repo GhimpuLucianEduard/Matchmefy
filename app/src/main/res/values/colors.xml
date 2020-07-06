@@ -6,4 +6,5 @@
     <color name="pastelRoseDarker">#DB6666</color>
     <color name="primaryGray">#2E2E2E</color>
     <color name="textGrey">#C1C1C1</color>
+    <color name="settingsSeparatorColor">#707070</color>
 </resources>

@@ -32,6 +32,8 @@ class StateManager(
             states.add(MatchResultState.GENRES)
         }
 
+        states.add(MatchResultState.PLAYLIST)
+
         currentState = states[0]
     }
 

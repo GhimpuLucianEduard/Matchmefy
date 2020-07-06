@@ -3,6 +3,7 @@ package com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI
 import android.os.Parcelable
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
+import com.lucianghimpu.matchmefy.data.dataModels.User
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -13,5 +14,8 @@ data class MatchResult(
     val matchingTracks: List<Track> = emptyList(),
     val genresScore: Number = 0,
     val matchingGenres: List<String> = emptyList(),
-    val matchingScore: Number = 0
+    val matchingScore: Number = 0,
+    val playlistForSpotify: PlaylistForSpotify,
+    val user: User,
+    val matchingUser: User
 ) : Parcelable

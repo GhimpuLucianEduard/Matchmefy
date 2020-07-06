@@ -4,5 +4,6 @@ enum class MatchResultState {
     SCORE,
     ARTISTS,
     TRACKS,
-    GENRES
+    GENRES,
+    PLAYLIST
 }

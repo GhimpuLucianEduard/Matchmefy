@@ -2,4 +2,5 @@
 <resources>
     <dimen name="image_carousel_margin">50dp</dimen>
     <dimen name="nav_buttons_padding">16dp</dimen>
+    <dimen name="settings_lateral_margin">16dp</dimen>
 </resources>

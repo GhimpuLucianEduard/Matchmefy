@@ -19,7 +19,6 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     private val authService: AuthService by inject()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

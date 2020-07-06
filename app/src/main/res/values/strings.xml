@@ -23,5 +23,11 @@
     <string name="common_artists_title">You both listen to:</string>
     <string name="common_tracks_title">You love these songs:</string>
     <string name="common_genres_title">You both love these genres:</string>
+    <string name="create_playlist_title">Create a playlist</string>
+    <string name="create_playlist_description">Get a tailored Spotify playlist with amazing songs to discover what kind of music %1$s likes</string>
+    <string name="settings">Settings</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="delete_user_data">Delete user data</string>
+    <string name="sign_out">Sign out</string>
 
 </resources>

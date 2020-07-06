@@ -41,8 +41,10 @@ fun ImageView.bindImageFromUriWithGlide(imageUrl: String) {
         .into(this)
 }
 
+
+// TODO: refactor spannable adapters into a single one
 @BindingAdapter("matchScoreText")
-fun TextView.fromHtml(score: Number?) {
+fun TextView.matchScoreText(score: Number?) {
 
     if (score == null) {
         this.text = String.empty
@@ -59,6 +61,29 @@ fun TextView.fromHtml(score: Number?) {
         ForegroundColorSpan(context.getColor(R.color.pastelRose)),
         11, // start
         11 + lenOfColoredText, // end
+        Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+    )
+
+    this.text = spannable
+}
+
+@BindingAdapter("createPlaylistDescText")
+fun TextView.createPlaylistDescText(user: String?) {
+
+    if (user.isNullOrEmpty()) {
+        this.text = String.empty
+        return
+    }
+
+    val finalString = context.getString(R.string.create_playlist_description, user)
+    val spannable = SpannableStringBuilder(finalString)
+
+    val lenOfColoredText = user.length
+
+    spannable.setSpan(
+        ForegroundColorSpan(context.getColor(R.color.pastelRose)),
+        82, // start
+        82 + lenOfColoredText, // end
         Spannable.SPAN_EXCLUSIVE_INCLUSIVE
     )
 

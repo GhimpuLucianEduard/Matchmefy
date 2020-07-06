@@ -3,6 +3,7 @@ package com.lucianghimpu.matchmefy.presentation
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.appServices.AuthService
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
@@ -10,6 +11,7 @@ import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
+import com.lucianghimpu.matchmefy.presentation.search.SearchFragmentDirections
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationDirections.LOGIN_TO_WELCOME
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.USER_PROFILE_KEY
@@ -23,18 +25,26 @@ import kotlinx.coroutines.*
  */
 class SharedViewModel(
     private val spotifyService : SpotifyService,
+    private val authService: AuthService,
     private val matchmefyService: MatchmefyService,
     private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
 ) : BaseViewModel() {
 
     var userProfile = MutableLiveData<User>()
 
+
     init {
         // get user profile from preferences
         userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE_KEY, User::class)
+        if (userProfile.value!!.display_name.isEmpty()) {
+            navigate(SearchFragmentDirections.actionSearchFragmentToLoginFragment())
+        }
     }
 
-    fun onAuthResponse() {
+    /**
+     * Called when the auth process has been completed successfully
+     */
+    fun onAuthCompleted() {
         getInitialData()
     }
 

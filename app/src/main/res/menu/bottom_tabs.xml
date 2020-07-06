@@ -9,7 +9,7 @@
         android:icon="@drawable/tab_bar_matches"
         android:title="Matches" />
     <item
-        android:id="@+id/fragment_settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/tab_bar_settings"
         android:title="Settings" />
 </menu>

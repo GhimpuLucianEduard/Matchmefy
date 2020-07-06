@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.lucianghimpu.matchmefy.presentation.matchResult.artists.MatchResultArtistsFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.genres.MatchResultGenresFragment
+import com.lucianghimpu.matchmefy.presentation.matchResult.playlist.MatchResultPlaylistFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.score.MatchResultScoreFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.tracks.MatchResultTracksFragment
 
@@ -22,6 +23,7 @@ class MatchResultPageViewerAdapter(
             MatchResultState.ARTISTS -> MatchResultArtistsFragment()
             MatchResultState.TRACKS -> MatchResultTracksFragment()
             MatchResultState.GENRES -> MatchResultGenresFragment()
+            MatchResultState.PLAYLIST -> MatchResultPlaylistFragment()
         }
     }
 }

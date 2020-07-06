@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lucianghimpu.matchmefy.presentation.settings.SettingsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundBlack"
+        android:orientation="vertical"
+        tools:context=".presentation.settings.SettingsFragment">
+
+        <TextView
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/settings_lateral_margin"
+            android:layout_marginTop="@dimen/settings_lateral_margin"
+            android:text="@string/settings"
+            android:textSize="32sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@color/primaryGray">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileImage"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="@dimen/settings_lateral_margin"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                app:civ_border_width="0dp"
+                app:imageFromUriWithGlide="@{viewModel.user.images}" />
+
+            <TextView
+                style="@style/BoldParagraphText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:text="@{viewModel.user.display_name}"
+                android:textSize="22sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:background="@color/primaryGray"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/SettingsNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/settings_lateral_margin"
+                android:drawableEnd="@drawable/settings_right_arrow"
+                android:text="@string/privacy_policy" />
+
+            <View style="@style/SettingsSeparatorStyle" />
+
+            <TextView
+                style="@style/SettingsNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/settings_lateral_margin"
+                android:drawableEnd="@drawable/settings_right_arrow"
+                android:text="@string/delete_user_data"
+                android:textColor="@color/pastelRose"/>
+
+            <View style="@style/SettingsSeparatorStyle" />
+
+            <TextView
+                style="@style/SettingsNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/settings_lateral_margin"
+                android:drawableEnd="@drawable/settings_right_arrow"
+                android:text="@string/sign_out"
+                android:textColor="@color/pastelRose"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
