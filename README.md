@@ -7,7 +7,7 @@ Then the user can search for friends or strangers and get a "match score" which 
 
 ## APIs 
 
-### 1. [The Spotify API used to retrieve data about the user](https://developer.spotify.com/documentation/web-api/)
+### 1. [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
 
 Used to fetch the user profile and their top 50 artists and tracks
 
