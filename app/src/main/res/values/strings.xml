@@ -29,5 +29,8 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="delete_user_data">Delete user data</string>
     <string name="sign_out">Sign out</string>
+    <string name="terms_of_use">Terms of Use</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

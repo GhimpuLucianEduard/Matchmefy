@@ -1,6 +1,10 @@
 package com.lucianghimpu.matchmefy.utilities
 
-import com.lucianghimpu.matchmefy.presentation.login.LoginFragmentDirections
+object DIConstants {
+    const val SINGLE_BUTTON_DIALOG = "singleButtonDialog"
+    const val DOUBLE_BUTTON_DIALOG = "doubleButtonDialog"
+    const val LOADING_DIALOG = "loadingDialog"
+}
 
 object LogConstants {
     const val LOG_TAG = "MMF_APP"
@@ -26,10 +30,4 @@ object PreferencesConstants {
 object ApiConstants {
     const val SPOTIFY_API_BASE_URL = "https://api.spotify.com"
     const val MATCHMEFY_API_BASE_URL = "https://matchmefy-api.herokuapp.com"
-
-    const val DEFAULT_SEARCH_LIMIT = 5
-}
-
-object NavigationDirections {
-    val LOGIN_TO_WELCOME = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
 }

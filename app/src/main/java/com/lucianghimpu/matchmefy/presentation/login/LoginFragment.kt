@@ -15,7 +15,9 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override val viewModel: LoginViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_login
-    override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
+    override fun setViewDataBindingViewModel() {
+        binding.viewModel = viewModel
+    }
 
     private val authService: AuthService by inject()
 
@@ -24,7 +26,8 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
         loginButton.setOnClickListener {
             progressIndicator.visibility = View.VISIBLE
-            authService.sendAuthCodeRequest(activity!!)
+            //viewModel.showAlert()
+            // authService.sendAuthCodeRequest(activity!!)
         }
     }
 }

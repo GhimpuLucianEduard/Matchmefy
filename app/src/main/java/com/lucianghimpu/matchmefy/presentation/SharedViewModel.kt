@@ -13,7 +13,6 @@ import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
 import com.lucianghimpu.matchmefy.presentation.search.SearchFragmentDirections
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
-import com.lucianghimpu.matchmefy.utilities.NavigationDirections.LOGIN_TO_WELCOME
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.USER_PROFILE_KEY
 import kotlinx.coroutines.*
 
@@ -82,7 +81,7 @@ class SharedViewModel(
                 }
 
                 Log.i(LOG_TAG, "Added user data to Matchmefy API")
-                navigate(LOGIN_TO_WELCOME)
+//                navigate(LoginFragmentDirections.actionLoginFragmentToTestDialogFragment())
                 
             } catch (ex: Exception) {
                 Log.e(LOG_TAG, ex.toString())

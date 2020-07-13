@@ -81,10 +81,18 @@
     <style name="SettingsNameTextView" parent="BoldParagraphText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/settings_lateral_margin</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">@dimen/settings_item_padding</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAlignment">textStart</item>
         <item name="android:drawableEnd">@drawable/settings_right_arrow</item>
+    </style>
+
+    <!-- Dialogs -->
+    <style name="DialogLayout">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">300dp</item>
+        <item name="background">@color/primaryGray</item>
     </style>
 
 </resources>

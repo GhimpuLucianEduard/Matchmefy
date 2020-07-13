@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -25,6 +26,7 @@
             android:layout_marginTop="@dimen/settings_lateral_margin"
             android:text="@string/settings"
             android:textSize="32sp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,12 +62,19 @@
             android:background="@color/primaryGray"
             android:orientation="vertical">
 
+            <TextView
+                style="@style/SettingsNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/settings_right_arrow"
+                android:text="@string/terms_of_use" />
+
+            <View style="@style/SettingsSeparatorStyle" />
 
             <TextView
                 style="@style/SettingsNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/settings_lateral_margin"
                 android:drawableEnd="@drawable/settings_right_arrow"
                 android:text="@string/privacy_policy" />
 
@@ -75,7 +84,6 @@
                 style="@style/SettingsNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/settings_lateral_margin"
                 android:drawableEnd="@drawable/settings_right_arrow"
                 android:text="@string/delete_user_data"
                 android:textColor="@color/pastelRose"/>
@@ -86,7 +94,6 @@
                 style="@style/SettingsNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/settings_lateral_margin"
                 android:drawableEnd="@drawable/settings_right_arrow"
                 android:text="@string/sign_out"
                 android:textColor="@color/pastelRose"/>
