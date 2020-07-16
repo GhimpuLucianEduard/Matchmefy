@@ -3,16 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog"/>
+
+        <import type="com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog" />
+
         <variable
             name="viewModel"
             type="com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel&lt;DoubleButtonDialog&gt;" />
     </data>
 
-    <FrameLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+    <androidx.cardview.widget.CardView
+        style="@style/DialogCardViewLayout"
         tools:context=".presentation.dialogs.doubleButton.DoubleButtonDialogFragment">
 
-    </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primaryGray"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/DialogTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dialog_title_top_margin"
+                    android:text="@{viewModel.dialog.title}" />
+
+                <ImageView
+                    android:layout_width="@dimen/dialog_image_width"
+                    android:layout_height="@dimen/dialog_image_height"
+                    android:layout_marginTop="@dimen/dialog_image_top_margin"
+                    imageFromId="@{viewModel.dialog.imageId}"/>
+
+                <TextView
+                    style="@style/DialogParagraphText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dialog_description_margin"
+                    android:layout_marginTop="@dimen/dialog_description_margin"
+                    android:text="@{viewModel.dialog.description}" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_button_top_margin"
+                android:layout_marginBottom="@dimen/dialog_button_bottom_margin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/DialogButton"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{viewModel.dialog.positiveButtonText}"
+                    android:onClick="@{() -> viewModel.dialog.listener.onPositiveButtonClicked()}"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/DialogButton"
+                    android:layout_marginStart="8dp"
+                    android:text="@{viewModel.dialog.negativeButtonText}"
+                    android:onClick="@{() -> viewModel.dialog.listener.onNegativeButtonClicked()}"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

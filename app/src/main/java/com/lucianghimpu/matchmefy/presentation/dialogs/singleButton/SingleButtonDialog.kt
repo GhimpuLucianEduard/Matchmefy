@@ -9,7 +9,7 @@ import kotlinx.android.parcel.RawValue
 class SingleButtonDialog(
     override val title: String,
     override val description: String,
-    val imageId: Int,
+    val imageId: Int?,
     val buttonText: String,
-    val listener: @RawValue SingleButtonDialogListener
+    val listener: @RawValue SingleButtonDialogListener?
 ) : Dialog(), Parcelable

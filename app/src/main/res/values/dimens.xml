@@ -2,6 +2,21 @@
 <resources>
     <dimen name="image_carousel_margin">50dp</dimen>
     <dimen name="nav_buttons_padding">16dp</dimen>
+
+    <!-- Settings -->
+
     <dimen name="settings_lateral_margin">16dp</dimen>
     <dimen name="settings_item_padding">16dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="regular_dialog_size">300dp</dimen>
+    <dimen name="small_dialog_size">100dp</dimen>
+    <dimen name="dialog_title_top_margin">12dp</dimen>
+    <dimen name="dialog_image_width">110dp</dimen>
+    <dimen name="dialog_image_height">72dp</dimen>
+    <dimen name="dialog_image_top_margin">16dp</dimen>
+    <dimen name="dialog_description_margin">24dp</dimen>
+    <dimen name="dialog_button_bottom_margin">16dp</dimen>
+    <dimen name="dialog_button_top_margin">36dp</dimen>
+
 </resources>

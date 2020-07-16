@@ -53,7 +53,21 @@
     <style name="BaseRoundedButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">50dp</item>
-        <item name="cornerRadius">168dp</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:fontFamily">@font/lato_black</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="UnfilledRoundedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@color/pastelRose</item>
+        <item name="cornerRadius">25dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:textSize">12sp</item>
@@ -89,10 +103,27 @@
     </style>
 
     <!-- Dialogs -->
-    <style name="DialogLayout">
-        <item name="android:layout_width">300dp</item>
-        <item name="android:layout_height">300dp</item>
+
+    <!-- N.B. @dimen/regular_dialog_size will not work since the width and height are determined in BaseDialogFragment.kt-->
+    <style name="DialogCardViewLayout">
+        <item name="android:layout_width">@dimen/regular_dialog_size</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">10dp</item>
         <item name="background">@color/primaryGray</item>
+    </style>
+
+    <style name="DialogTitleText" parent="TitleText">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="DialogParagraphText" parent="BoldParagraphText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="DialogButton" parent="UnfilledRoundedButton">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">50dp</item>
     </style>
 
 </resources>

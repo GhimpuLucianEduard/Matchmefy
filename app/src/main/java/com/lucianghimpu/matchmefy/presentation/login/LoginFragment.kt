@@ -6,6 +6,9 @@ import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AuthService
 import com.lucianghimpu.matchmefy.databinding.FragmentLoginBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -26,8 +29,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
 
         loginButton.setOnClickListener {
             progressIndicator.visibility = View.VISIBLE
-            //viewModel.showAlert()
-            // authService.sendAuthCodeRequest(activity!!)
+            authService.sendAuthCodeRequest(activity!!)
         }
     }
 }

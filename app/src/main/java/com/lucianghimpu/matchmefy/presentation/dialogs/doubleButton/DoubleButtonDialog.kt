@@ -12,5 +12,5 @@ class DoubleButtonDialog(
     val imageId: Int,
     val positiveButtonText: String,
     val negativeButtonText: String,
-    val listener: @RawValue DoubleButtonDialogListener
+    val listener: @RawValue DoubleButtonDialogListener?
 ) : Dialog(), Parcelable

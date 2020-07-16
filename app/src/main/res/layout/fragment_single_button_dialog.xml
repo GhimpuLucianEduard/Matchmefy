@@ -1,34 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog"/>
+
+        <import type="com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog" />
+
         <variable
             name="viewModel"
             type="com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel&lt;SingleButtonDialog&gt;" />
     </data>
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:orientation="vertical"
+    <androidx.cardview.widget.CardView
+        style="@style/DialogCardViewLayout"
         tools:context=".presentation.dialogs.singleButton.SingleButtonDialogFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:text="@{viewModel.dialog.title}" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primaryGray"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="First button"
-            android:layout_gravity="bottom"
-            android:onClick="@{() -> viewModel.dialog.listener.onButtonClicked()}"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
+                <TextView
+                    style="@style/DialogTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dialog_title_top_margin"
+                    android:text="@{viewModel.dialog.title}" />
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/dialog_image_width"
+                    android:layout_height="@dimen/dialog_image_height"
+                    android:layout_marginTop="@dimen/dialog_image_top_margin"
+                    imageFromId="@{viewModel.dialog.imageId}" />
+
+                <TextView
+                    style="@style/DialogParagraphText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dialog_description_margin"
+                    android:layout_marginTop="@dimen/dialog_description_margin"
+                    android:text="@{viewModel.dialog.description}" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/DialogButton"
+                android:layout_marginTop="@dimen/dialog_button_top_margin"
+                android:layout_marginBottom="@dimen/dialog_button_bottom_margin"
+                android:text="@{viewModel.dialog.buttonText}"
+                android:onClick="@{() -> viewModel.dialog.listener.onButtonClicked()}"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

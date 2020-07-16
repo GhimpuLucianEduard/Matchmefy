@@ -11,6 +11,7 @@ import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
+import com.lucianghimpu.matchmefy.presentation.login.LoginFragmentDirections
 import com.lucianghimpu.matchmefy.presentation.search.SearchFragmentDirections
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.USER_PROFILE_KEY
@@ -81,7 +82,7 @@ class SharedViewModel(
                 }
 
                 Log.i(LOG_TAG, "Added user data to Matchmefy API")
-//                navigate(LoginFragmentDirections.actionLoginFragmentToTestDialogFragment())
+                navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
                 
             } catch (ex: Exception) {
                 Log.e(LOG_TAG, ex.toString())

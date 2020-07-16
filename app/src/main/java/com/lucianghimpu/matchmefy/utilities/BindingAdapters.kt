@@ -1,5 +1,6 @@
 package com.lucianghimpu.matchmefy.utilities
 
+import android.app.Activity
 import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
@@ -9,11 +10,14 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.dataModels.Image
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import kotlinx.android.synthetic.main.layout_carousel_track_item.view.*
 
 @BindingAdapter("imageFromUriWithGlide")
 fun ImageView.bindImageFromUriWithGlide(images: List<Image>?) {
@@ -39,6 +43,14 @@ fun ImageView.bindImageFromUriWithGlide(imageUrl: String) {
         .fallback(R.drawable.placeholder)
         .error(R.drawable.placeholder)
         .into(this)
+}
+
+@BindingAdapter("imageFromId")
+fun ImageView.bindImageId(imageId: Int) {
+    if (imageId == 0) {
+        return
+    }
+    this.background = ResourcesCompat.getDrawable(context.resources, imageId, null)
 }
 
 

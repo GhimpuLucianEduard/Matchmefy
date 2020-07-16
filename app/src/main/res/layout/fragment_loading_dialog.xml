@@ -9,21 +9,34 @@
             type="com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel&lt;LoadingDialog&gt;" />
     </data>
 
-    <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:orientation="vertical"
+    <androidx.cardview.widget.CardView
+        style="@style/DialogCardViewLayout"
+        android:layout_width="@dimen/small_dialog_size"
+        android:layout_height="@dimen/small_dialog_size"
         tools:context=".presentation.dialogs.loading.LoadingDialogFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Loading" />
+            android:layout_height="match_parent"
+            android:background="@color/primaryGray"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <ProgressBar
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+                <TextView
+                    style="@style/DialogTitleText"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dialog_title_top_margin"
+                    android:text="@{viewModel.dialog.title}" />
 
-    </LinearLayout>
+                <ProgressBar
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginVertical="16dp"
+                    android:foregroundTint="@color/pureWhite" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>
