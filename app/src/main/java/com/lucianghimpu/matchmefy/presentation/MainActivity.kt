@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AuthService
+import com.lucianghimpu.matchmefy.presentation.search.SearchFragmentDirections
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand

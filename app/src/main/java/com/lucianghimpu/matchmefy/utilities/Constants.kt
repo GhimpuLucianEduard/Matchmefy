@@ -1,5 +1,7 @@
 package com.lucianghimpu.matchmefy.utilities
 
+import com.lucianghimpu.matchmefy.BuildConfig
+
 object DIConstants {
     const val SINGLE_BUTTON_DIALOG = "singleButtonDialog"
     const val DOUBLE_BUTTON_DIALOG = "doubleButtonDialog"
@@ -11,7 +13,7 @@ object LogConstants {
 }
 
 object SpotifyAuthConstants {
-    const val CLIENT_ID = "e66d9e480684403c8df421a72a706c48"
+    const val CLIENT_ID = BuildConfig.spotify_client_id
     const val AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const val TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token"
     const val CALLBACK_URL = "com.lucianghimpu.matchmefy:/oauth2callback"

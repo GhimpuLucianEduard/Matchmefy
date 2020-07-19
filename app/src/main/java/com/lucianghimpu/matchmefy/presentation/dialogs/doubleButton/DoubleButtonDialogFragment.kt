@@ -8,6 +8,10 @@ import com.lucianghimpu.matchmefy.databinding.FragmentDoubleButtonDialogBinding
 import com.lucianghimpu.matchmefy.presentation.dialogs.BaseDialogFragment
 import com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel
 import com.lucianghimpu.matchmefy.utilities.DIConstants
+import com.lucianghimpu.matchmefy.utilities.Extensions.withColoredSpan
+import kotlinx.android.synthetic.main.fragment_double_button_dialog.*
+import kotlinx.android.synthetic.main.fragment_math_result_playlist.*
+import kotlinx.android.synthetic.main.fragment_math_result_playlist.descriptionText
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 

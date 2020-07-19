@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.presentation.MainActivity
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialogFragment
 
@@ -47,12 +48,6 @@ abstract class BaseDialogFragment<VM : DialogViewModel<T>, DB : ViewDataBinding,
         initBinding(inflater, container)
         setViewDataBindingViewModel()
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        mainActivity = activity as MainActivity
-        mainActivity.setBottomNavigationBarVisibility(View.GONE)
     }
 
     override fun onResume() {

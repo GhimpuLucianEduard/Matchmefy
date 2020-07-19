@@ -31,7 +31,7 @@ val appModule = module {
     viewModel { SearchViewModel(get())}
     viewModel { MatchViewModel() }
     viewModel { UserPreviewViewModel(get()) }
-    viewModel { SettingsViewModel(get()) }
+    viewModel { SettingsViewModel(get(), get()) }
 
     // Used by the Match Result Fragments
     single { MatchResultViewModel(get()) }

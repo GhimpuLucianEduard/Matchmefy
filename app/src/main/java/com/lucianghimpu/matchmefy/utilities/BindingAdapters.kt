@@ -53,8 +53,13 @@ fun ImageView.bindImageId(imageId: Int) {
     this.background = ResourcesCompat.getDrawable(context.resources, imageId, null)
 }
 
+@BindingAdapter("visibleOrGone")
+fun View.visibleOrGone(isVisible: Boolean) {
+    this.visibility = if (isVisible) VISIBLE else GONE
+}
 
-// TODO: refactor spannable adapters into a single one
+// TODO: refactor spannable adapters into a single one OR move them to specific view files
+// UPDATE 19.07 -> decided to move all spannable code in specific view, all of these should also be moved
 @BindingAdapter("matchScoreText")
 fun TextView.matchScoreText(score: Number?) {
 
@@ -102,7 +107,23 @@ fun TextView.createPlaylistDescText(user: String?) {
     this.text = spannable
 }
 
-@BindingAdapter("visibleOrGone")
-fun View.visibleOrGone(isVisible: Boolean) {
-    this.visibility = if (isVisible) VISIBLE else GONE
+@BindingAdapter(value = ["text", "span"], requireAll = false)
+fun TextView.withColoredSpan(text: String?, span: ColoredTextSpan?) {
+
+    if (text.isNullOrEmpty()) {
+        this.text = String.empty
+        return
+    }
+
+    if (span != null) {
+        val spannable = SpannableStringBuilder(text)
+        spannable.setSpan(
+            ForegroundColorSpan(context.getColor(R.color.pastelRose)),
+            span.startIndex,
+            span.endIndex,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+
+        this.text = spannable
+    }
 }

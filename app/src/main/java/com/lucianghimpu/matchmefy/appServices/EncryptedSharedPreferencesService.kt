@@ -4,8 +4,9 @@ import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import kotlin.reflect.KClass
 
 interface EncryptedSharedPreferencesService {
-    fun addPreference(key: String, value: String)
+    fun addPreference(key: String, value: String, useCommit: Boolean = false)
     fun getPreference(key: String, defaultValue: String = String.empty): String
+    fun deleteAll()
 
     /**
      * Adds an object in the shared preferences for a given key
@@ -14,7 +15,7 @@ interface EncryptedSharedPreferencesService {
      * @param key the key
      * @param value the value of the object
      */
-    fun <T> addPreference(key: String, value: T)
+    fun <T> addPreference(key: String, value: T, useCommit: Boolean = false)
 
     /**
      * Gets an object for a given key, stored in the shared preferences

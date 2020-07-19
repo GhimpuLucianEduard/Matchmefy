@@ -34,9 +34,9 @@ class SharedViewModel(
 
 
     init {
-        // get user profile from preferences
+        // get user profile from preferences OR redirect to login
         userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE_KEY, User::class)
-        if (userProfile.value!!.display_name.isEmpty()) {
+        if (userProfile.value == null) {
             navigate(SearchFragmentDirections.actionSearchFragmentToLoginFragment())
         }
     }

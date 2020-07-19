@@ -8,6 +8,8 @@ import com.lucianghimpu.matchmefy.databinding.FragmentSingleButtonDialogBinding
 import com.lucianghimpu.matchmefy.presentation.dialogs.BaseDialogFragment
 import com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel
 import com.lucianghimpu.matchmefy.utilities.DIConstants
+import com.lucianghimpu.matchmefy.utilities.Extensions.withColoredSpan
+import kotlinx.android.synthetic.main.fragment_single_button_dialog.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 

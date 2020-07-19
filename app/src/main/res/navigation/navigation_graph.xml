@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -27,6 +27,8 @@
         <action
             android:id="@+id/action_welcomeFragment_to_searchFragment"
             app:destination="@id/searchFragment"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -48,6 +50,8 @@
         <action
             android:id="@+id/action_searchFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_enter_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
@@ -83,7 +87,17 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.lucianghimpu.matchmefy.presentation.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/navigation_graph"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_enter_anim"/>
+    </fragment>
 
     <action
         android:id="@+id/action_to_singleButtonDialogFragment"

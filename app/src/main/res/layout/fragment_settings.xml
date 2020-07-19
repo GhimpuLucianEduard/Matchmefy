@@ -96,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/settings_right_arrow"
                 android:text="@string/sign_out"
-                android:textColor="@color/pastelRose"/>
+                android:textColor="@color/pastelRose"
+                android:onClick="@{() -> viewModel.onSignOutClicked()}"/>
 
         </LinearLayout>
 

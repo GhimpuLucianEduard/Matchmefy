@@ -9,6 +9,10 @@ apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 
+def secretsPropertiesFile = rootProject.file("secrets.properties");
+def secretsProperties = new Properties()
+secretsProperties.load(new FileInputStream(secretsPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
@@ -17,6 +21,7 @@ android {
         manifestPlaceholders = [
                 appAuthRedirectScheme: 'com.lucianghimpu.matchmefy'
         ]
+        buildConfigField("String", "spotify_client_id", secretsProperties['spotify_client_id'])
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

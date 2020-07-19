@@ -106,10 +106,10 @@ class AppAuthService(
             Log.e(AUTH_LOG_TAG, "Failed to deserialize stored auth state, returning new state")
             AuthState()
         }
-
     }
 
     private fun writeState(state: AuthState) {
-        encryptedSharedPreferencesService.addPreference(PreferencesConstants.APP_AUTH_STATE_KEY, state.jsonSerializeString())
+        encryptedSharedPreferencesService.addPreference(PreferencesConstants.APP_AUTH_STATE_KEY,
+            state.jsonSerializeString(), true)
     }
 }

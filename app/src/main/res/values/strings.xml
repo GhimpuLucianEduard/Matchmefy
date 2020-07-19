@@ -28,9 +28,17 @@
     <string name="settings">Settings</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="delete_user_data">Delete user data</string>
-    <string name="sign_out">Sign out</string>
+    <string name="sign_out">Sign Out</string>
     <string name="terms_of_use">Terms of Use</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Dialogs -->
+    <string name="cancel_dialog_button">Cancel</string>
+
+    <string name="sign_out_dialog_button">Sign Out</string>
+    <string name="sign_out_dialog_title">Sign Out</string>
+    <string name="sign_out_dialog_description">Are you sure you want to leave the app?\nThis will not sign you out from Spotify</string>
 
 </resources>
