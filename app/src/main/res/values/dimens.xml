@@ -19,4 +19,9 @@
     <dimen name="dialog_button_bottom_margin">16dp</dimen>
     <dimen name="dialog_button_top_margin">36dp</dimen>
 
+
+    <dimen name="button_width_large">260dp</dimen>
+    <dimen name="button_width_small">120dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+
 </resources>

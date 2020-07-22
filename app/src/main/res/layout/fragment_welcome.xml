@@ -50,7 +50,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/continueButton"
-            style="@style/BaseRoundedButton"
+            style="@style/BaseButton"
             android:layout_marginBottom="64dp"
             android:text="@string/continueText"
             android:onClick="@{() -> viewModel.onContinueClicked()}"

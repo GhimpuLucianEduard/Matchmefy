@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+        <import type="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultState" />
         <variable
             name="viewModel"
             type="com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel" />
@@ -13,8 +15,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/backgroundBlack">
+        android:background="@color/backgroundBlack"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/topLayout"
@@ -24,14 +26,14 @@
 
             <ImageButton
                 android:id="@+id/backButton"
+                visibleOrGone="@{viewModel.isBackButtonVisible}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:background="@color/backgroundBlack"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{() -> viewModel.onBackClicked()}"
-                visibleOrGone="@{viewModel.isBackButtonVisible}"
+                android:padding="16dp"
                 android:src="@drawable/back_arrow_left"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,11 +42,11 @@
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:background="@color/backgroundBlack"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{() -> viewModel.navigateBack()}"
+                android:padding="16dp"
                 android:src="@drawable/close_cross"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -55,15 +57,15 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".7"/>
+            android:layout_weight=".7" />
 
         <LinearLayout
             android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight=".2"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight=".2">
+            android:orientation="vertical">
 
             <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
                 android:id="@+id/dotsIndicator"
@@ -79,12 +81,39 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/continueButton"
-                style="@style/BaseRoundedButton"
+                style="@style/BaseButton"
                 android:layout_marginBottom="24dp"
                 android:onClick="@{() -> viewModel.onContinueClicked()}"
-                android:text="@string/continueText" />
+                android:text="@string/continueText"
+                visibleOrGone="@{viewModel.state != MatchResultState.PLAYLIST}" />
+
+            <LinearLayout
+                android:id="@+id/createPlaylistButtonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                visibleOrGone="@{viewModel.state == MatchResultState.PLAYLIST}">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/BaseButton"
+                    android:layout_width="@dimen/button_width_small"
+                    android:layout_marginEnd="24dp"
+                    android:text="@string/create"
+                    android:onClick="@{() -> viewModel.onCreatePlaylistClicked()}"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/UnfilledSmallButton"
+                    android:layout_width="@dimen/button_width_small"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/cancel"
+                    android:onClick="@{() -> viewModel.navigateBack()}"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
 </layout>

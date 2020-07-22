@@ -9,7 +9,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.presentation.MainActivity
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialogFragment
 
@@ -51,6 +50,7 @@ abstract class BaseDialogFragment<VM : DialogViewModel<T>, DB : ViewDataBinding,
     }
 
     override fun onResume() {
+        // TODO: move these to each specific implementation
         super.onResume()
 
         val isLoadingDialogFragment = this is LoadingDialogFragment

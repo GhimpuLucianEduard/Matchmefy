@@ -50,7 +50,7 @@
     </style>
 
     <!-- BUTTONS -->
-    <style name="BaseRoundedButton" parent="TextAppearance.MaterialComponents.Button">
+    <style name="BaseButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:layout_width">260dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="cornerRadius">25dp</item>
@@ -64,7 +64,7 @@
         <item name="android:clickable">true</item>
     </style>
 
-    <style name="UnfilledRoundedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="UnfilledButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="strokeColor">@color/pastelRose</item>
         <item name="cornerRadius">25dp</item>
@@ -122,9 +122,9 @@
         <item name="android:textAlignment">center</item>
     </style>
 
-    <style name="DialogButton" parent="UnfilledRoundedButton">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">50dp</item>
+    <style name="UnfilledSmallButton" parent="UnfilledButton">
+        <item name="android:layout_width">@dimen/button_width_small</item>
+        <item name="android:layout_height">@dimen/button_height</item>
     </style>
 
 </resources>

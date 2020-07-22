@@ -60,7 +60,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/continueButton"
-            style="@style/BaseRoundedButton"
+            style="@style/BaseButton"
             android:layout_marginBottom="72dp"
             android:text="@string/match"
             android:onClick="@{() -> viewModel.onMatchClicked()}"
