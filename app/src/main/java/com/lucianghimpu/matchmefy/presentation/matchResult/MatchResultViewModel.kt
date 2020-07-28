@@ -42,8 +42,8 @@ class MatchResultViewModel(
     val state: LiveData<MatchResultState>
         get() = _state
 
-    private var _openPlaylistEvent = MutableLiveData<Event<String>>()
-    val openPlaylistEvent: LiveData<Event<String>>
+    private var _openPlaylistEvent = MutableLiveData<Event<Playlist>>()
+    val openPlaylistEvent: LiveData<Event<Playlist>>
         get() = _openPlaylistEvent
 
     val stateIndex: LiveData<Int> = Transformations.map(state) {
@@ -158,13 +158,14 @@ class MatchResultViewModel(
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     Log.i(LOG_TAG, "User selected open playlist in Spotify")
-                    _openPlaylistEvent.value = Event(playlist.external_urls.spotify)
+                    _openPlaylistEvent.value = Event(playlist)
                     hideDialog()
                 }
 
                 override fun onNegativeButtonClicked() {
                     Log.i(LOG_TAG, "User declined open playlist in Spotify")
                     hideDialog()
+                    navigateBack()
                 }
             }
         ))
