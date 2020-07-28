@@ -1,9 +1,12 @@
-package com.lucianghimpu.matchmefy.data.networking.retrofitInterfaces
+package com.lucianghimpu.matchmefy.data.networking.matchmefy
 
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface MatchmefyApiService {
 

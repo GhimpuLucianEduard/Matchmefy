@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.data.networking.connectivityInterceptor
+package com.lucianghimpu.matchmefy.data.networking.shared.connectivityInterceptor
 
 import com.lucianghimpu.matchmefy.appServices.ConnectivityService
 import okhttp3.Interceptor

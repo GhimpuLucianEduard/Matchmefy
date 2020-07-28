@@ -1,7 +1,5 @@
 package com.lucianghimpu.matchmefy.utilities
 
-import android.app.Activity
-import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
@@ -12,12 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.BindingAdapter
-import androidx.fragment.app.FragmentManager
 import com.bumptech.glide.Glide
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.dataModels.Image
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
-import kotlinx.android.synthetic.main.layout_carousel_track_item.view.*
 
 @BindingAdapter("imageFromUriWithGlide")
 fun ImageView.bindImageFromUriWithGlide(images: List<Image>?) {
@@ -125,5 +121,7 @@ fun TextView.withColoredSpan(text: String?, span: ColoredTextSpan?) {
         )
 
         this.text = spannable
+    } else {
+        this.text = text
     }
 }

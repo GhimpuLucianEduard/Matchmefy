@@ -3,7 +3,7 @@ package com.lucianghimpu.matchmefy.presentation.login
 import android.os.Bundle
 import android.view.View
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.appServices.AuthService
+import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.databinding.FragmentLoginBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -19,13 +19,13 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         binding.viewModel = viewModel
     }
 
-    private val authService: AuthService by inject()
+    private val appAuthService: AppAuthService by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginButton.setOnClickListener {
             progressIndicator.visibility = View.VISIBLE
-            authService.sendAuthCodeRequest(activity!!)
+            appAuthService.sendAuthCodeRequest(activity!!)
         }
     }
 }

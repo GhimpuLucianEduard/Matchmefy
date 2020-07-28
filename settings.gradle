@@ -1,2 +1,2 @@
-include ':app', ':spotify-auth-release-1.2.1'
+include ':app'
 rootProject.name='Matchmefy'

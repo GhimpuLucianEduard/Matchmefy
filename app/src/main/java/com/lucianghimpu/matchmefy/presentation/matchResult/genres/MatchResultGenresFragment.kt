@@ -3,7 +3,9 @@ package com.lucianghimpu.matchmefy.presentation.matchResult.genres
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.google.android.flexbox.*
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultGenresBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
@@ -12,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_match_result_genres.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class MatchResultGenresFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultGenresBinding>() {
-    override val viewModel: MatchResultViewModel by sharedViewModel()
+    override val viewModel: MatchResultViewModel by sharedViewModel(from = { parentFragment!! })
     override fun getLayoutResId(): Int = R.layout.fragment_match_result_genres
     override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
 

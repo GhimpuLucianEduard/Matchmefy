@@ -3,7 +3,7 @@ package com.lucianghimpu.matchmefy.presentation
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.lucianghimpu.matchmefy.appServices.AuthService
+import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
@@ -25,7 +25,7 @@ import kotlinx.coroutines.*
  */
 class SharedViewModel(
     private val spotifyService : SpotifyService,
-    private val authService: AuthService,
+    private val appAuthService: AppAuthService,
     private val matchmefyService: MatchmefyService,
     private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
 ) : BaseViewModel() {
@@ -35,7 +35,7 @@ class SharedViewModel(
 
     init {
         // get user profile from preferences OR redirect to login
-        userProfile.value = encryptedSharedPreferencesService.getPreference(USER_PROFILE_KEY, User::class)
+        userProfile.value = encryptedSharedPreferencesService.getObject(USER_PROFILE_KEY, User::class)
         if (userProfile.value == null) {
             navigate(SearchFragmentDirections.actionSearchFragmentToLoginFragment())
         }
@@ -69,7 +69,7 @@ class SharedViewModel(
                 userProfile.value = data.first
 
                 // save user in shared preferences
-                encryptedSharedPreferencesService.addPreference(USER_PROFILE_KEY, data.first)
+                encryptedSharedPreferencesService.addObject(USER_PROFILE_KEY, data.first)
 
                 Log.i(LOG_TAG, "Fetched profile for: ${userProfile.value!!.display_name}")
 

@@ -3,8 +3,8 @@ package com.lucianghimpu.matchmefy.data.dataServices
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
-import com.lucianghimpu.matchmefy.data.networking.MatchmefyRetrofitServiceFactory
-import com.lucianghimpu.matchmefy.data.networking.retrofitInterfaces.MatchmefyApiService
+import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyApiService
+import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyRetrofitServiceFactory
 
 class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitServiceFactory) : MatchmefyService {
 

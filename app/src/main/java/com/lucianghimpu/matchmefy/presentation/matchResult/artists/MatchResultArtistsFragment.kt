@@ -15,7 +15,7 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 
 class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultArtistsBinding>() {
-    override val viewModel: MatchResultViewModel by sharedViewModel()
+    override val viewModel: MatchResultViewModel by sharedViewModel(from = { parentFragment!! })
     override fun getLayoutResId(): Int = R.layout.fragment_match_result_artists
     override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
 

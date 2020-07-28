@@ -41,6 +41,8 @@ class StateManager(
 
     fun getByIndex(index: Int): MatchResultState = states[index]
 
+    fun getIndexByState(state: MatchResultState): Int = states.indexOf(state)
+
     fun next(): MatchResultState {
         if (currentState == states.last) {
             return currentState

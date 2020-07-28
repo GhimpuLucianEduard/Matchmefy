@@ -7,6 +7,6 @@ import com.lucianghimpu.matchmefy.data.dataServices.SpotifyServiceImpl
 import org.koin.dsl.module
 
 val dataServicesModule = module {
-    single { SpotifyServiceImpl(get()) as SpotifyService }
+    single { SpotifyServiceImpl(get(), get()) as SpotifyService }
     single { MatchmefyServiceImpl(get()) as MatchmefyService}
 }

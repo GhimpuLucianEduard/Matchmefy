@@ -30,20 +30,23 @@
     <string name="delete_user_data">Delete user data</string>
     <string name="sign_out">Sign Out</string>
     <string name="terms_of_use">Terms of Use</string>
-
-
-
+    <string name="not_now">Not Now</string>
+    
     <!-- Dialogs -->
     <string name="cancel_dialog_button">Cancel</string>
     <string name="create_dialog_button">Create</string>
+    <string name="open_dialog_button">Open</string>
+    <string name="later_dialog_button">Later</string>
 
     <string name="create_playlist_dialog_title">Create Playlist?</string>
     <string name="create_playlist_dialog_description">This action will create a new Spotify playlist for your account. You can delete it in Spotify at any time</string>
-
+        
+    <string name="playlist_created_dialog_title">Playlist Created</string>
+    <string name="playlist_created_dialog_description">Your playlist has been created!\nYou can open it in Spotify</string>
+    
     <string name="sign_out_dialog_button">Sign Out</string>
     <string name="sign_out_dialog_title">Sign Out</string>
     <string name="sign_out_dialog_description">Are you sure you want to leave the app?\nThis will not sign you out from Spotify</string>
     <string name="create">create</string>
-    <string name="cancel">cancel</string>
 
 </resources>

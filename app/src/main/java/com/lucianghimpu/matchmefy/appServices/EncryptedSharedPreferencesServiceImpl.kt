@@ -23,19 +23,19 @@ class EncryptedSharedPreferencesServiceImpl(
     )
 
     @SuppressLint("ApplySharedPref")
-    override fun addPreference(key: String, value: String, useCommit: Boolean) {
+    override fun addString(key: String, value: String, useCommit: Boolean) {
         val editor = sharedPreferences.edit()
             .putString(key, value)
 
         if (useCommit) editor.commit() else editor.apply()
     }
 
-    override fun getPreference(key: String, defaultValue: String): String {
+    override fun getString(key: String, defaultValue: String): String {
         return sharedPreferences.getString(key, defaultValue)!!
     }
 
     @SuppressLint("ApplySharedPref")
-    override fun <T> addPreference(key: String, value: T, useCommit: Boolean) {
+    override fun <T> addObject(key: String, value: T, useCommit: Boolean) {
         val json = GsonBuilder().create().toJson(value)
         val editor = sharedPreferences.edit()
             .putString(key, json)
@@ -43,7 +43,7 @@ class EncryptedSharedPreferencesServiceImpl(
         if (useCommit) editor.commit() else editor.apply()
     }
 
-    override fun <T: Any> getPreference(key: String, objectClass: KClass<T>): T? {
+    override fun <T: Any> getObject(key: String, objectClass: KClass<T>): T? {
         val value = sharedPreferences.getString(key, null)
         return GsonBuilder().create().fromJson(value, objectClass.java)
     }

@@ -6,8 +6,8 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButton
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
-import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.presentation.match.MatchViewModel
+import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
 import com.lucianghimpu.matchmefy.presentation.search.UserPreviewViewModel
 import com.lucianghimpu.matchmefy.presentation.settings.SettingsViewModel
@@ -34,7 +34,7 @@ val appModule = module {
     viewModel { SettingsViewModel(get(), get()) }
 
     // Used by the Match Result Fragments
-    single { MatchResultViewModel(get()) }
+    viewModel { MatchResultViewModel(get(), get(), get()) }
 
     // Dialogs
     viewModel(named(SINGLE_BUTTON_DIALOG)) { DialogViewModel<SingleButtonDialog>() }

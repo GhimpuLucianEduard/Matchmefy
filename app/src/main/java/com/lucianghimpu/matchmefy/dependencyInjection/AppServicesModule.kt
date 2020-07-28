@@ -9,5 +9,5 @@ val servicesModule = module {
     single { EncryptedSharedPreferencesServiceImpl(get()) as EncryptedSharedPreferencesService }
     single { ResourceProviderImpl(get()) as ResourceProvider }
 
-    single { AppAuthService(get(), get()) as AuthService }
+    single { AppAuthService(get(), get()) }
 }

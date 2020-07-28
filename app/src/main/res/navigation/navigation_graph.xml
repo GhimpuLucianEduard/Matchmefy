@@ -99,41 +99,4 @@
             app:popExitAnim="@anim/nav_default_enter_anim"/>
     </fragment>
 
-    <action
-        android:id="@+id/action_to_singleButtonDialogFragment"
-        app:destination="@id/singleButtonDialogFragment" />
-
-    <action
-        android:id="@+id/action_to_loadingDialogFragment"
-        app:destination="@id/loadingDialogFragment" />
-
-    <action
-        android:id="@+id/action_to_doubleButtonDialogFragment"
-        app:destination="@id/doubleButtonDialogFragment" />
-
-    <dialog
-        android:id="@+id/singleButtonDialogFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialogFragment"
-        android:label="SingleButtonDialogFragment" >
-        <argument
-            android:name="dialog"
-            app:argType="com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog" />
-    </dialog>
-    <dialog
-        android:id="@+id/loadingDialogFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialogFragment"
-        android:label="LoadingDialogFragment" >
-        <argument
-            android:name="dialog"
-            app:argType="com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog" />
-    </dialog>
-    <dialog
-        android:id="@+id/doubleButtonDialogFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogFragment"
-        android:label="DoubleButtonDialogFragment" >
-        <argument
-            android:name="dialog"
-            app:argType="com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog" />
-    </dialog>
-
 </navigation>

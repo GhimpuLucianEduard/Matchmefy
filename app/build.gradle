@@ -22,7 +22,7 @@ android {
                 appAuthRedirectScheme: 'com.lucianghimpu.matchmefy'
         ]
         buildConfigField("String", "spotify_client_id", secretsProperties['spotify_client_id'])
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -96,9 +96,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit2version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2version"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-
-    // spotify sdk
-    implementation project(':spotify-auth-release-1.2.1')
 
     // secure shared preferences
     implementation "androidx.security:security-crypto:1.0.0-alpha02"

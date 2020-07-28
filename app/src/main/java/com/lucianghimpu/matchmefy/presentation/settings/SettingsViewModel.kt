@@ -8,9 +8,9 @@ import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
-import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogListener
+import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 
@@ -23,7 +23,10 @@ class SettingsViewModel(
         get() = _user
 
     init {
-        _user.value = encryptedSharedPreferencesService.getPreference(PreferencesConstants.USER_PROFILE_KEY, User::class)
+        _user.value = encryptedSharedPreferencesService.getObject(
+            PreferencesConstants.USER_PROFILE_KEY,
+            User::class
+        )
     }
 
     fun onSignOutClicked() {
@@ -39,14 +42,14 @@ class SettingsViewModel(
             ),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
+                    hideDialog()
                     encryptedSharedPreferencesService.deleteAll()
-                    navigateBack()
                     navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
                     Log.i(LOG_TAG, "User Sign Out")
                 }
 
                 override fun onNegativeButtonClicked() {
-                    navigateBack()
+                    hideDialog()
                     Log.i(LOG_TAG, "User cancelled Sign Out")
                 }
             }

@@ -9,8 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.appServices.AuthService
-import com.lucianghimpu.matchmefy.presentation.search.SearchFragmentDirections
+import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
@@ -19,9 +18,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 
-class MainActivity : AppCompatActivity(), AuthService.TokenReceivedCallback {
+class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
 
-    private val authService: AuthService by inject()
+    private val authService: AppAuthService by inject()
     private val sharedViewModel: SharedViewModel by inject()
 
     private lateinit var navController: NavController

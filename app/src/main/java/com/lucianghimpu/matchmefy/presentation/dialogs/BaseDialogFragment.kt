@@ -66,15 +66,6 @@ abstract class BaseDialogFragment<VM : DialogViewModel<T>, DB : ViewDataBinding,
         val sizeFactor = if (isLoadingDialogFragment) 0.27 else 0.83
         window.setLayout((width * sizeFactor).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        window.setGravity(Gravity.TOP)
-
-        if (!isLoadingDialogFragment) {
-            val params = window.attributes
-            // Based on the adobe xd values
-            // To calculate for every screen size -> new Y = old Y * new Height / old Height
-            // In adobe xd old Y is 124 but in real devices 1/4 of of the height looks better
-            params.y = 160 * size.y / 640
-            window.attributes = params
-        }
+        window.setGravity(Gravity.CENTER)
     }
 }
