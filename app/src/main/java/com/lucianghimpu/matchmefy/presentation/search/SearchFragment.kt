@@ -2,7 +2,6 @@ package com.lucianghimpu.matchmefy.presentation.search
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.lucianghimpu.matchmefy.R
@@ -26,25 +25,41 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
+        initObservers()
+    }
 
+    private fun initObservers() {
+        // perform search when search text is updated
+        viewModel.searchText.observe(this@SearchFragment, Observer {
+            viewModel.getSearchResults()
+        })
+
+        // Update adapter when search results are fetched
+        viewModel.users.observe(this@SearchFragment, Observer {
+            adapter.submitList(it)
+        })
+
+        // updated empty state visibility when request ends
+        viewModel.isBusy.observe(this@SearchFragment, Observer {
+            if (!it) {
+                if (viewModel.users.value.isNullOrEmpty()) {
+                    emptyStateView.visibility = View.VISIBLE
+                } else {
+                    emptyStateView.visibility = View.GONE
+                }
+            }
+        })
+    }
+
+    private fun initRecyclerView() {
         adapter = SearchListAdapter {
             viewModel.onSearchResultClicked(it)
         }
 
         searchResultsRecyclerView.adapter = adapter
         searchResultsRecyclerView.isNestedScrollingEnabled = true
-        viewModel.users.observe(this@SearchFragment, Observer {
-            adapter.submitList(it)
-
-            if (it == null || it.isEmpty()) {
-                if (!progressIndicator.isVisible) {
-                    emptyStateView.visibility = View.VISIBLE
-                }
-            } else {
-                emptyStateView.visibility = View.GONE
-            }
-        })
-
+        
         // TODO: not sure about this, it works but I don't like the code
         // need to do a little bit of testing to find a more concise way of writing this
         adapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
@@ -65,18 +80,6 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
             }
             override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) {
                 searchResultsRecyclerView.scrollToPosition(0)
-            }
-        })
-
-        viewModel.searchText.observe(this@SearchFragment, Observer {
-            viewModel.getSearchResults()
-        })
-
-        viewModel.isBusy.observe(this@SearchFragment, Observer {
-            if (it) {
-                progressIndicator.show()
-            } else {
-                progressIndicator.hide()
             }
         })
     }

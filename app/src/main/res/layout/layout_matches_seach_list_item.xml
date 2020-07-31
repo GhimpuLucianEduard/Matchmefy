@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="matchResult"
+            type="com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/SearchResultItemContainerLayout">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            style="@style/SearchResultUserImage"
+            app:imageFromUriWithGlide="@{matchResult.matchingUser.images}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/profileImage"
+            app:layout_constraintStart_toEndOf="@+id/profileImage"
+            app:layout_constraintTop_toTopOf="@+id/profileImage">
+
+            <TextView
+                android:id="@+id/displayNameTextView"
+                style="@style/SearchResultUserName"
+                android:text="@{matchResult.matchingUser.display_name}" />
+
+            <TextView
+                android:id="@+id/matchScoreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="14sp"
+                android:textColor="@color/pastelRose"
+                android:text="@{matchResult.matchingScore.toString()}" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.lucianghimpu.matchmefy.presentation.search.SearchViewModel" />
+            type="com.lucianghimpu.matchmefy.presentation.match.MatchesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,19 +14,19 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@color/backgroundBlack"
-        tools:context=".presentation.search.SearchFragment">
+        tools:context=".presentation.match.MatchesFragment">
 
         <com.lucianghimpu.matchmefy.presentation.customViews.CustomTextInputEditText
-            android:id="@+id/searchEditText"
+            android:id="@+id/matchSearchEditText"
             style="@style/SearchTextInputEditText"
-            android:hint="@string/search_for_a_user_hint"
-            android:text="@={viewModel.searchText}"
+            android:hint="@string/search_for_a_match"
+            android:text="@={viewModel.matchSearchText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searchResultsRecyclerView"
+            android:id="@+id/matchesSearchResultsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="80dp"
@@ -35,25 +34,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchEditText"
+            app:layout_constraintTop_toBottomOf="@+id/matchSearchEditText"
             tools:listitem="@layout/layout_search_list_item" />
 
-        <TextView
-            android:id="@+id/emptyStateView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableTop="@drawable/search_empty"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="@string/no_users_found"
-            android:textColor="@color/pureWhite"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/searchResultsRecyclerView"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

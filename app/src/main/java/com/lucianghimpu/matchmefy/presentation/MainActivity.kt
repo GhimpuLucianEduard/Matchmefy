@@ -16,12 +16,12 @@ import com.lucianghimpu.matchmefy.utilities.NavigationCommand
 import com.lucianghimpu.matchmefy.utilities.SpotifyAuthConstants
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
-
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
 
     private val authService: AppAuthService by inject()
-    private val sharedViewModel: SharedViewModel by inject()
+    private val mainActivityViewModel: MainActivityViewModel by viewModel()
 
     private lateinit var navController: NavController
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
 
         // The shared view model does not have a BaseFragment associated
         // So we need to observer navigation changes in the MainActivity
-        sharedViewModel.navigationEvent.observe(this, EventObserver {
+        mainActivityViewModel.navigationEvent.observe(this, EventObserver {
             when (it) {
                 is NavigationCommand.To -> Navigation.findNavController(this, R.id.nav_host_fragment)
                     .navigate(it.directions)
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
 
     override fun onSuccess() {
         Log.i(LOG_TAG, "Token fetched")
-        sharedViewModel.onAuthCompleted()
+        mainActivityViewModel.onAuthCompleted()
     }
 
     override fun onError(ex: Exception) {

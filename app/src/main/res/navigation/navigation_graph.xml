@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/matchFragment"
-        android:name="com.lucianghimpu.matchmefy.presentation.match.MatchFragment"
+        android:name="com.lucianghimpu.matchmefy.presentation.match.MatchesFragment"
         android:label="MatchFragment" />
     <fragment
         android:id="@+id/userPreviewFragment"

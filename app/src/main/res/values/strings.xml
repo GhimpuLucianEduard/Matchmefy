@@ -6,7 +6,7 @@
     <string name="welcome_paragraph">In order to user our App, you must Sign In \n with your Spotify account</string>
     <string name="welcomeTitle">Welcome</string>
     <string name="continueText">continue</string>
-    <string name="search_for_an_user_hint">Search for an user</string>
+    <string name="search_for_a_user_hint">Search for a user</string>
     <string name="no_users_found">No users found (｡•́︿•̀｡)</string>
     <string name="match_with">Match with</string>
     <string name="match">match</string>
@@ -48,5 +48,6 @@
     <string name="sign_out_dialog_title">Sign Out</string>
     <string name="sign_out_dialog_description">Are you sure you want to leave the app?\nThis will not sign you out from Spotify</string>
     <string name="create">create</string>
+    <string name="search_for_a_match">Search for a match</string>
 
 </resources>

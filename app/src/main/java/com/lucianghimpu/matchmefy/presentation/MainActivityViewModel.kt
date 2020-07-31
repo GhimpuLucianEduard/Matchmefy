@@ -1,9 +1,9 @@
 package com.lucianghimpu.matchmefy.presentation
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
@@ -19,24 +19,23 @@ import kotlinx.coroutines.*
 
 /**
  * Assigned to the [MainActivity]
- * Used to share specific data to all Fragment's ViewModels
- * Also used to handle android scenarios like OnActivityResult
+ * Ued to handle android scenarios like OnActivityResult
  * being caught in the Activity but the handling should be done in a Fragment
  */
-class SharedViewModel(
+class MainActivityViewModel(
     private val spotifyService : SpotifyService,
-    private val appAuthService: AppAuthService,
     private val matchmefyService: MatchmefyService,
     private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
 ) : BaseViewModel() {
 
-    var userProfile = MutableLiveData<User>()
-
+    private var _user = MutableLiveData<User>()
+    val user: LiveData<User>
+        get() = _user
 
     init {
         // get user profile from preferences OR redirect to login
-        userProfile.value = encryptedSharedPreferencesService.getObject(USER_PROFILE_KEY, User::class)
-        if (userProfile.value == null) {
+        _user.value = encryptedSharedPreferencesService.getObject(USER_PROFILE_KEY, User::class)
+        if (_user.value == null) {
             navigate(SearchFragmentDirections.actionSearchFragmentToLoginFragment())
         }
     }
@@ -66,12 +65,12 @@ class SharedViewModel(
                     getData()
                 }
 
-                userProfile.value = data.first
+                _user.value = data.first
 
                 // save user in shared preferences
                 encryptedSharedPreferencesService.addObject(USER_PROFILE_KEY, data.first)
 
-                Log.i(LOG_TAG, "Fetched profile for: ${userProfile.value!!.display_name}")
+                Log.i(LOG_TAG, "Fetched profile for: ${_user.value!!.display_name}")
 
                 Log.i(LOG_TAG, "Fetched top artists, with count: ${data.second.size} and top artist: ${data.second[0].name}")
 

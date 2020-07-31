@@ -41,9 +41,7 @@ class SearchListAdapter(
     companion object {
         private val diffCallback = object : DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
-                // TODO: this should use the id instead of the display_name, but right now the
-                // data in the db has no id field
-                return oldItem.display_name == newItem.display_name
+                return oldItem.id == newItem.id
             }
             override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
                 return oldItem == newItem

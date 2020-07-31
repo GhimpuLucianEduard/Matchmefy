@@ -32,7 +32,7 @@
             android:layout_height="160dp"
             android:layout_marginTop="36dp"
             app:civ_border_width="0dp"
-            app:imageFromUriWithGlide="@{viewModel.userProfile.images}"
+            app:imageFromUriWithGlide="@{viewModel.user.images}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleText" />
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@{viewModel.userProfile.display_name}"
+            android:text="@{viewModel.user.display_name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileImage" />

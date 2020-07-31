@@ -49,6 +49,28 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <!-- TextInputEditText -->
+    <style name="SearchTextInputEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:background">@drawable/rounded_corners_input_text_background</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:drawablePadding">14dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">@color/primaryGray</item>
+        <item name="android:textColorHint">@color/primaryGray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:focusable">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
     <!-- BUTTONS -->
     <style name="BaseButton" parent="TextAppearance.MaterialComponents.Button">
         <item name="android:layout_width">260dp</item>
@@ -125,6 +147,32 @@
     <style name="UnfilledSmallButton" parent="UnfilledButton">
         <item name="android:layout_width">@dimen/button_width_small</item>
         <item name="android:layout_height">@dimen/button_height</item>
+    </style>
+
+    <!-- Misc -->
+    <style name="SearchResultItemContainerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="SearchResultUserImage">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="civ_border_width">0dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+    </style>
+
+    <style name="SearchResultUserName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/pureWhite</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

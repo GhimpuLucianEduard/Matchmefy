@@ -9,31 +9,19 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true">
+        style="@style/SearchResultItemContainerLayout">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImage"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:civ_border_width="0dp"
+            style="@style/SearchResultUserImage"
             app:imageFromUriWithGlide="@{user.images}"
-            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/displayNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_regular"
-            android:textColor="@color/pureWhite"
-            android:textSize="18sp"
+            style="@style/SearchResultUserName"
             android:text="@{user.display_name}"
             android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="parent"

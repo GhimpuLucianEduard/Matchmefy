@@ -18,6 +18,7 @@ class SettingsViewModel(
     private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService,
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
+
     private var _user = MutableLiveData<User>()
     val user: LiveData<User>
         get() = _user

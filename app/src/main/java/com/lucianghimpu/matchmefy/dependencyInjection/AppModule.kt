@@ -1,12 +1,12 @@
 package com.lucianghimpu.matchmefy.dependencyInjection
 
-import com.lucianghimpu.matchmefy.presentation.SharedViewModel
+import com.lucianghimpu.matchmefy.presentation.MainActivityViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
-import com.lucianghimpu.matchmefy.presentation.match.MatchViewModel
+import com.lucianghimpu.matchmefy.presentation.match.MatchesViewModel
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
 import com.lucianghimpu.matchmefy.presentation.search.UserPreviewViewModel
@@ -24,13 +24,13 @@ val appModule = module {
     // TODO: move these in a Presentation Module
 
     // Used by MainActivity and other fragments
-    single { SharedViewModel(get(), get(), get(), get()) }
+    viewModel { MainActivityViewModel(get(), get(), get()) }
 
     viewModel { LoginViewModel() }
-    viewModel { WelcomeViewModel() }
+    viewModel { WelcomeViewModel(get()) }
     viewModel { SearchViewModel(get())}
-    viewModel { MatchViewModel() }
-    viewModel { UserPreviewViewModel(get()) }
+    viewModel { MatchesViewModel() }
+    viewModel { UserPreviewViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get()) }
 
     // Used by the Match Result Fragments

@@ -32,11 +32,11 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
         // init vm data
         viewModel.initData(args.matchResult)
 
-        configureViewPager()
-        bindObservers()
+        initViewPager()
+        initObservers()
     }
 
-    private fun configureViewPager() {
+    private fun initViewPager() {
         pageViewAdapter = MatchResultPageViewerAdapter(this, viewModel.stateManager)
         viewPager.adapter = pageViewAdapter
         viewPager.isUserInputEnabled = false
@@ -45,7 +45,7 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
         dotsIndicator.setViewPager2(viewPager)
     }
 
-    private fun bindObservers() {
+    private fun initObservers() {
 
         viewModel.stateIndex.observe(this@MatchResultFragment, Observer {
             viewPager.currentItem = it
