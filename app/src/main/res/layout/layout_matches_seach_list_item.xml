@@ -41,7 +41,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:textSize="14sp"
                 android:textColor="@color/pastelRose"
-                android:text="@{matchResult.matchingScore.toString()}" />
+                app:matchingScoreText="@{matchResult.matchingScore}" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,6 +54,12 @@ fun View.visibleOrGone(isVisible: Boolean) {
     this.visibility = if (isVisible) VISIBLE else GONE
 }
 
+@BindingAdapter("matchingScoreText")
+fun TextView.matchingScoreText(score: Number) {
+    val scoreAsPercentage = "%.2f".format(score.toFloat()) + "%"
+    this.text = scoreAsPercentage
+}
+
 // TODO: refactor spannable adapters into a single one OR move them to specific view files
 // UPDATE 19.07 -> decided to move all spannable code in specific view, all of these should also be moved
 @BindingAdapter("matchScoreText")

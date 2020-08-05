@@ -6,8 +6,8 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButton
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
-import com.lucianghimpu.matchmefy.presentation.match.MatchesViewModel
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
+import com.lucianghimpu.matchmefy.presentation.matches.MatchesViewModel
 import com.lucianghimpu.matchmefy.presentation.search.SearchViewModel
 import com.lucianghimpu.matchmefy.presentation.search.UserPreviewViewModel
 import com.lucianghimpu.matchmefy.presentation.settings.SettingsViewModel
@@ -29,7 +29,7 @@ val appModule = module {
     viewModel { LoginViewModel() }
     viewModel { WelcomeViewModel(get()) }
     viewModel { SearchViewModel(get())}
-    viewModel { MatchesViewModel() }
+    viewModel { MatchesViewModel(get(), get()) }
     viewModel { UserPreviewViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get()) }
 

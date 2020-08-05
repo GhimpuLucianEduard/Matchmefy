@@ -112,7 +112,6 @@ class MatchResultViewModel(
                     Log.i(LOG_TAG, "User canceled create playlist")
                     hideDialog()
                 }
-
             }
         ))
     }
@@ -165,9 +164,13 @@ class MatchResultViewModel(
                 override fun onNegativeButtonClicked() {
                     Log.i(LOG_TAG, "User declined open playlist in Spotify")
                     hideDialog()
-                    navigateBack()
+                    navigateToMatches()
                 }
             }
         ))
+    }
+
+    fun navigateToMatches() {
+        navigate(MatchResultFragmentDirections.actionMatchResultFragmentToMatchFragment())
     }
 }

@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.lucianghimpu.matchmefy.utilities.ColoredTextSpan"/>
         <variable
             name="viewModel"
-            type="com.lucianghimpu.matchmefy.presentation.match.MatchesViewModel" />
+            type="com.lucianghimpu.matchmefy.presentation.matches.MatchesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,13 +15,13 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@color/backgroundBlack"
-        tools:context=".presentation.match.MatchesFragment">
+        tools:context=".presentation.matches.MatchesFragment">
 
         <com.lucianghimpu.matchmefy.presentation.customViews.CustomTextInputEditText
             android:id="@+id/matchSearchEditText"
             style="@style/SearchTextInputEditText"
             android:hint="@string/search_for_a_match"
-            android:text="@={viewModel.matchSearchText}"
+            android:text="@={viewModel.searchText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +37,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/matchSearchEditText"
             tools:listitem="@layout/layout_search_list_item" />
+
+        <com.lucianghimpu.matchmefy.presentation.customViews.ColoredTextView
+            android:id="@+id/emptyStateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/search_empty"
+            android:drawablePadding="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/no_matches_found"
+            android:textAlignment="center"
+            android:textColor="@color/pureWhite"
+            android:visibility="invisible"
+            app:startIndex="48"
+            app:endIndex="54"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/matchesSearchResultsRecyclerView"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

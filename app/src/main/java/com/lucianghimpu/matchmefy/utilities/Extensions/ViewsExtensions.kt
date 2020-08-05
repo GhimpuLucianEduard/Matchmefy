@@ -1,14 +1,9 @@
 package com.lucianghimpu.matchmefy.utilities.Extensions
 
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
-import android.widget.TextView
 import androidx.core.view.ViewCompat
-import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.utilities.createPlaylistDescText
 
 fun ViewPager2.setShowSideItems(pageMarin: Int, offset: Int) {
 
@@ -32,14 +27,25 @@ fun ViewPager2.setShowSideItems(pageMarin: Int, offset: Int) {
 
 }
 
-fun TextView.withColoredSpan(startIndex: Int, endIndex: Int) {
-    val spannable = SpannableStringBuilder(text)
-    spannable.setSpan(
-        ForegroundColorSpan(context.getColor(R.color.pastelRose)),
-        startIndex,
-        endIndex,
-        Spannable.SPAN_EXCLUSIVE_INCLUSIVE
-    )
-
-    this.text = spannable
+fun <T, VH : RecyclerView.ViewHolder> ListAdapter<T, VH>.addScrollToTopListener(recyclerView: RecyclerView) {
+    this.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+        override fun onChanged() {
+            recyclerView.scrollToPosition(0)
+        }
+        override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+            recyclerView.scrollToPosition(0)
+        }
+        override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) {
+            recyclerView.scrollToPosition(0)
+        }
+        override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+            recyclerView.scrollToPosition(0)
+        }
+        override fun onItemRangeChanged(positionStart: Int, itemCount: Int) {
+            recyclerView.scrollToPosition(0)
+        }
+        override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) {
+            recyclerView.scrollToPosition(0)
+        }
+    })
 }

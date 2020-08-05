@@ -4,10 +4,12 @@ import android.os.Parcelable
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
+import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MatchResult(
+    val _id: String = String.empty,
     val artistsScore: Number = 0,
     val matchingArtists: List<Artist> = emptyList(),
     val tracksScore: Number = 0,

@@ -8,6 +8,7 @@
     <string name="continueText">continue</string>
     <string name="search_for_a_user_hint">Search for a user</string>
     <string name="no_users_found">No users found (｡•́︿•̀｡)</string>
+    <string name="no_matches_found">No matches found (｡•́︿•̀｡)\nStart looking in the Search tab</string>
     <string name="match_with">Match with</string>
     <string name="match">match</string>
     <string name="loading_some_data">Loading some data</string>

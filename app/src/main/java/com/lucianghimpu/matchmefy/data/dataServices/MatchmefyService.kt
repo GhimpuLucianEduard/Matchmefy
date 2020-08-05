@@ -1,7 +1,7 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
-import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 
 interface MatchmefyService {
@@ -14,4 +14,8 @@ interface MatchmefyService {
                                offset: Int = 0) : SearchUsersResult
 
     suspend fun matchUsers(firstUser: String, secondUser: String) : MatchResult
+
+    suspend fun loadInitialMatches(userId: String) : List<MatchResult>
+    fun initialMatchesLoaded() : Boolean
+    fun getMatches(userId: String, filter: String) : List<MatchResult>
 }

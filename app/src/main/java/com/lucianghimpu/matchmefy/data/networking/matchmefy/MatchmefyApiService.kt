@@ -22,4 +22,7 @@ interface MatchmefyApiService {
     @POST("/match")
     suspend fun matchUsers(@Query("firstUser") firstUser: String,
                            @Query("secondUser") secondUser: String) : MatchResult
+
+    @GET("/match")
+    suspend fun getMatches(@Query("userId") userId: String) : List<MatchResult>
 }

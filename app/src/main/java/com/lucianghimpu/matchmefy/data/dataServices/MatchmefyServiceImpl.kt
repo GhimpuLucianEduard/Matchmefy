@@ -11,6 +11,9 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
     private var matchmefyApiService : MatchmefyApiService = matchmefyRetrofitServiceFactory.create(
         MatchmefyApiService::class.java)
 
+    private var userMatches: ArrayList<MatchResult> = arrayListOf()
+    private var initialMatchesLoaded: Boolean = false
+
     override suspend fun postUserData(completeUserData: CompleteUserData) {
         return matchmefyApiService.postUserData(completeUserData)
     }
@@ -23,7 +26,44 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return matchmefyApiService.getSearchUsers(searchQuery, limit, offset)
     }
 
-    override suspend fun matchUsers(firstUser: String, secondUser: String): MatchResult {
-        return matchmefyApiService.matchUsers(firstUser, secondUser)
+    override suspend fun matchUsers(firstUser: String, secondUser: String) : MatchResult {
+        val newMatch = matchmefyApiService.matchUsers(firstUser, secondUser)
+        val oldMatchIndex = userMatches.indexOfFirst { m -> m._id == newMatch._id }
+        if (oldMatchIndex == -1) {
+            userMatches.add(newMatch)
+        } else {
+            userMatches[oldMatchIndex] = newMatch
+        }
+        return newMatch
+    }
+
+    override suspend fun loadInitialMatches(userId: String): List<MatchResult> {
+        userMatches = ArrayList(matchmefyApiService.getMatches(userId))
+        initialMatchesLoaded = true
+        return userMatches.sortedByDescending {
+            it.matchingScore.toFloat()
+        }
+    }
+
+    override fun initialMatchesLoaded(): Boolean = initialMatchesLoaded
+
+    override fun getMatches(userId: String, filter: String) : List<MatchResult> {
+
+        if (userMatches.isNullOrEmpty()) {
+            throw Exception("getMatches called before loadInitialMatches")
+        }
+
+        if (filter.isNotEmpty()) {
+            return userMatches
+                .filter {
+                    match -> match.matchingUser.display_name.contains(filter) }
+                .sortedByDescending {
+                    it.matchingScore.toFloat()
+                }
+        }
+
+        return userMatches.sortedByDescending {
+            it.matchingScore.toFloat()
+        }
     }
 }
