@@ -22,6 +22,7 @@ class SearchViewModel(
     var searchText = MutableLiveData<String>()
 
     private val searchTextTransformation = Transformations.map(searchText) {
+        getSearchResults()
     }
 
     private var _users = MutableLiveData<List<User>>()
