@@ -1,11 +1,14 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
+import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 
 interface MatchmefyService {
     suspend fun postUserData(completeUserData: CompleteUserData)
+
+    suspend fun getRandomUser(): User
 
     // N.B. the API supports pagination but for the initial release
     // pagination is not used in the app so we just fetch 50 entries on each search

@@ -1,5 +1,6 @@
 package com.lucianghimpu.matchmefy.data.networking.matchmefy
 
+import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
@@ -12,6 +13,9 @@ interface MatchmefyApiService {
 
     @POST("/users")
     suspend fun postUserData(@Body completeUserData: CompleteUserData)
+
+    @GET("/users/random")
+    suspend fun getRandomUser() : User
 
     // N.B. Api supports pagination but will not use it for now
     @GET("/search")

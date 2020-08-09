@@ -38,6 +38,10 @@
     <string name="create_dialog_button">Create</string>
     <string name="open_dialog_button">Open</string>
     <string name="later_dialog_button">Later</string>
+    <string name="match_dialog_button">Match</string>
+
+    <string name="random_match_dialog_title">Match a random user?</string>
+    <string name="random_match_dialog_description">Match with a random user\nMatches can only be seen by you</string>
 
     <string name="create_playlist_dialog_title">Create Playlist?</string>
     <string name="create_playlist_dialog_description">This action will create a new Spotify playlist for your account. You can delete it in Spotify at any time</string>

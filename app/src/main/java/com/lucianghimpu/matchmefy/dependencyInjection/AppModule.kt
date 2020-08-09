@@ -28,7 +28,7 @@ val appModule = module {
 
     viewModel { LoginViewModel() }
     viewModel { WelcomeViewModel(get()) }
-    viewModel { SearchViewModel(get())}
+    viewModel { SearchViewModel(get(), get())}
     viewModel { MatchesViewModel(get(), get()) }
     viewModel { UserPreviewViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get()) }

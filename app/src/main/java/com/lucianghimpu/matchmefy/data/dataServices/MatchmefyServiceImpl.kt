@@ -1,5 +1,6 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
+import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
@@ -16,6 +17,10 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
 
     override suspend fun postUserData(completeUserData: CompleteUserData) {
         return matchmefyApiService.postUserData(completeUserData)
+    }
+
+    override suspend fun getRandomUser(): User {
+        return matchmefyApiService.getRandomUser()
     }
 
     override suspend fun getSearchUsers(
