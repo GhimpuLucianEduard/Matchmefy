@@ -16,6 +16,8 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.coroutines.*
 
 class SearchViewModel(
@@ -54,7 +56,8 @@ class SearchViewModel(
                 }
                 catch (ex: Exception) {
                     if (ex !is CancellationException) {
-                        Log.e(LOG_TAG, "Error fetching search results: ${ex}")
+                        Crashes.trackError(ex)
+                        Log.e(LOG_TAG, "Error fetching search results: $ex")
                     }
                     _users.value = null
                 }
@@ -70,6 +73,7 @@ class SearchViewModel(
     }
 
     fun onFabClicked() {
+        Analytics.trackEvent("FAB Clicked")
         showDialog(DoubleButtonDialog(
             title = resourceProvider.getString(R.string.random_match_dialog_title),
             imageId = R.drawable.dialog_random,

@@ -67,6 +67,7 @@ dependencies {
     def spotifySdk_version = "1.2.2"
     def lottieVersion = "3.4.0"
     def paging_version = "2.1.2"
+    def appCenterSdkVersion = '3.3.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -131,6 +132,11 @@ dependencies {
 
     // oauth2 library
     implementation 'net.openid:appauth:0.7.1'
+
+    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

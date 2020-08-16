@@ -22,6 +22,7 @@ import com.lucianghimpu.matchmefy.utilities.DialogTagsConstants.LOADING_DIALOG_T
 import com.lucianghimpu.matchmefy.utilities.DialogTagsConstants.SINGLE_BUTTON_DIALOG_TAG
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
+import com.microsoft.appcenter.analytics.Analytics
 
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
@@ -50,6 +51,8 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
     ): View {
         initBinding(inflater, container)
         setViewDataBindingViewModel()
+
+        Analytics.trackEvent("Screen changed to ${this::class.simpleName}")
         return binding.root
     }
 
