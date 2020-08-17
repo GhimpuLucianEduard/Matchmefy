@@ -1,9 +1,9 @@
 package com.lucianghimpu.matchmefy.presentation.settings
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.User
@@ -11,7 +11,6 @@ import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogListener
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 
 class SettingsViewModel(
@@ -46,12 +45,12 @@ class SettingsViewModel(
                     hideDialog()
                     encryptedSharedPreferencesService.deleteAll()
                     navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
-                    Log.i(LOG_TAG, "User Sign Out")
+                    AppAnalytics.trackEvent("User signed out the app")
                 }
 
                 override fun onNegativeButtonClicked() {
                     hideDialog()
-                    Log.i(LOG_TAG, "User cancelled Sign Out")
+                    AppAnalytics.trackEvent("User cancelled sign out")
                 }
             }
         )

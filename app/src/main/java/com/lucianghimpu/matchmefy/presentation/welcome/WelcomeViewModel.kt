@@ -2,6 +2,7 @@ package com.lucianghimpu.matchmefy.presentation.welcome
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
@@ -24,5 +25,6 @@ class WelcomeViewModel(
 
     fun onContinueClicked() {
         navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
+        AppAnalytics.trackEvent("Continue button clicked in ${this.javaClass.simpleName}")
     }
 }

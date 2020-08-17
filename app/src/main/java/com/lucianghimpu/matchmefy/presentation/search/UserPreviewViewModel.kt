@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
@@ -42,12 +43,12 @@ class UserPreviewViewModel(
                 val data = withContext(Dispatchers.IO) {
                     matchmefyService.matchUsers(user.value!!.id, matchingUser.value!!.id)
                 }
-                Log.i(LOG_TAG, "Matched users with final score: ${data.matchingScore}")
+                Log.i(LOG_TAG, "Matched users")
+                Log.d(LOG_TAG, "Final score: ${data.matchingScore}")
                 navigate(UserPreviewFragmentDirections.actionUserPreviewFragmentToMatchResultFragment(data))
             }
             catch (ex: Exception) {
-                Log.e(LOG_TAG, "Error matching users: $ex")
-
+                AppAnalytics.trackError(ex, "Error matching users: $ex")
             }
             finally {
                 isBusy.value = false

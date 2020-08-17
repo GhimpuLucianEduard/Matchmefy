@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.Playlist
@@ -83,17 +84,18 @@ class MatchResultViewModel(
 
     fun onContinueClicked() {
         val nextState = stateManager.next()
-        Log.i(LOG_TAG, "Switching to next state in MatchResult: $nextState")
+        AppAnalytics.trackEvent("Switching to next state in MatchResult: $nextState")
         _state.value = nextState
     }
 
     fun onBackClicked() {
         val prevState = stateManager.prev()
-        Log.i(LOG_TAG, "Switching to prev state in MatchResult: $prevState")
+        AppAnalytics.trackEvent("Switching to next state in MatchResult: $prevState")
         _state.value = prevState
     }
 
     fun onCreatePlaylistClicked() {
+        AppAnalytics.trackEvent("Create playlist clicked in ${this.javaClass.simpleName}")
         showDialog(DoubleButtonDialog(
             title = resourceProvider.getString(R.string.create_playlist_dialog_title),
             description = resourceProvider.getString(R.string.create_playlist_dialog_description),
@@ -103,7 +105,7 @@ class MatchResultViewModel(
             negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
-                    Log.i(LOG_TAG, "User selected create playlist")
+                    AppAnalytics.trackEvent("User selected create playlist")
                     hideDialog()
                     createPlaylist()
                 }
@@ -129,19 +131,19 @@ class MatchResultViewModel(
                     spotifyService.createPlaylist(createPlaylistRequest)
                 }
 
-                Log.i(LOG_TAG, "Spotify Playlist created!")
+                Log.i(LOG_TAG, "Spotify Playlist created")
 
                 withContext(Dispatchers.IO) {
                     spotifyService.editPlaylist(playlist.id, EditPlaylistRequest(matchResult.value!!.playlistForSpotify.uris))
                 }
 
-                Log.i(LOG_TAG, "Spotify Playlist added tracks!")
+                Log.i(LOG_TAG, "Spotify Playlist added tracks")
                 hideDialog()
                 onPlaylistCreated()
 
             } catch (exception: Exception) {
                 hideDialog()
-                Log.e(LOG_TAG, "Error creating Spotify Playlist: $exception")
+                AppAnalytics.trackError(exception, "Error creating Spotify Playlist: $exception")
             }
             // N.B. don't hide the loading dialog in a finally clause
         }

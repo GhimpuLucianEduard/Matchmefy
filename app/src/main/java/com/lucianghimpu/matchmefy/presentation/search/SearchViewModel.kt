@@ -3,21 +3,16 @@ package com.lucianghimpu.matchmefy.presentation.search
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
-import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
-import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogListener
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
-import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.microsoft.appcenter.analytics.Analytics
-import com.microsoft.appcenter.crashes.Crashes
 import kotlinx.coroutines.*
 
 class SearchViewModel(
@@ -29,10 +24,6 @@ class SearchViewModel(
     private var lastSearchQuery = String.empty
 
     var searchText = MutableLiveData<String>()
-
-    private val searchTextTransformation = Transformations.map(searchText) {
-        getSearchResults()
-    }
 
     private var _users = MutableLiveData<List<User>>()
     val users: LiveData<List<User>>
@@ -56,8 +47,7 @@ class SearchViewModel(
                 }
                 catch (ex: Exception) {
                     if (ex !is CancellationException) {
-                        Crashes.trackError(ex)
-                        Log.e(LOG_TAG, "Error fetching search results: $ex")
+                        AppAnalytics.trackError(ex, "Error fetching search results: $ex")
                     }
                     _users.value = null
                 }
@@ -69,31 +59,33 @@ class SearchViewModel(
     }
 
     fun onSearchResultClicked(user: User) {
+        AppAnalytics.trackEvent("Search result clicked in ${this.javaClass.simpleName}")
         navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(user))
     }
 
     fun onFabClicked() {
         Analytics.trackEvent("FAB Clicked")
-        showDialog(DoubleButtonDialog(
-            title = resourceProvider.getString(R.string.random_match_dialog_title),
-            imageId = R.drawable.dialog_random,
-            description = resourceProvider.getString(R.string.random_match_dialog_description),
-            descriptionSpan = ColoredTextSpan(13, 20),
-            positiveButtonText = resourceProvider.getString(R.string.match_dialog_button),
-            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
-            listener = object : DoubleButtonDialogListener {
-                override fun onPositiveButtonClicked() {
-                    Log.i(LOG_TAG, "Match with random user clicked")
-                    hideDialog()
-                    fetchRandomUser()
-                }
-
-                override fun onNegativeButtonClicked() {
-                    Log.i(LOG_TAG, "Cancel with random user")
-                    hideDialog()
-                }
-            }
-        ))
+        throw Exception("Test ex")
+//        showDialog(DoubleButtonDialog(
+//            title = resourceProvider.getString(R.string.random_match_dialog_title),
+//            imageId = R.drawable.dialog_random,
+//            description = resourceProvider.getString(R.string.random_match_dialog_description),
+//            descriptionSpan = ColoredTextSpan(13, 20),
+//            positiveButtonText = resourceProvider.getString(R.string.match_dialog_button),
+//            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
+//            listener = object : DoubleButtonDialogListener {
+//                override fun onPositiveButtonClicked() {
+//                    AppAnalytics.trackEvent("Match with random user clicked in ${this.javaClass.simpleName}")
+//                    hideDialog()
+//                    fetchRandomUser()
+//                }
+//
+//                override fun onNegativeButtonClicked() {
+//                    Log.i(LOG_TAG, "Cancel with random user")
+//                    hideDialog()
+//                }
+//            }
+//        ))
     }
 
     private fun fetchRandomUser() {
@@ -104,11 +96,11 @@ class SearchViewModel(
                 val randomUser = withContext(Dispatchers.IO) {
                     matchmefyService.getRandomUser()
                 }
-                Log.i(LOG_TAG, "Fetched random user, ${randomUser.display_name}")
+                Log.i(LOG_TAG, "Fetched random user")
                 navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(randomUser))
             }
             catch (ex: Exception) {
-                Log.e(LOG_TAG, "Error fetching random user: $ex")
+                AppAnalytics.trackError(ex, "Error fetching random user: $ex")
             }
             finally {
                 isBusy.value = false
