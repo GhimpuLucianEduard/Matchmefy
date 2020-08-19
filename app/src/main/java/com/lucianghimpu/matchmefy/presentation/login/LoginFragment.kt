@@ -3,6 +3,7 @@ package com.lucianghimpu.matchmefy.presentation.login
 import android.os.Bundle
 import android.view.View
 import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.AppAuthService
 import com.lucianghimpu.matchmefy.databinding.FragmentLoginBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
@@ -25,6 +26,7 @@ class LoginFragment : BaseFragment<LoginViewModel, FragmentLoginBinding>() {
         super.onViewCreated(view, savedInstanceState)
         loginButton.setOnClickListener {
             progressIndicator.visibility = View.VISIBLE
+            AppAnalytics.trackLog("Sending auth code request")
             appAuthService.sendAuthCodeRequest(activity!!)
         }
     }

@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentMatchesBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
-import com.lucianghimpu.matchmefy.utilities.Extensions.addScrollToTopListener
+import com.lucianghimpu.matchmefy.utilities.extensions.addScrollToTopListener
 import kotlinx.android.synthetic.main.fragment_matches.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

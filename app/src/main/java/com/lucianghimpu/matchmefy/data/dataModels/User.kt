@@ -1,7 +1,7 @@
 package com.lucianghimpu.matchmefy.data.dataModels
 
 import android.os.Parcelable
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

@@ -61,6 +61,7 @@ class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResu
             }
 
             val playlist = it.peekContent()
+            
             if (isSpotifyInstalled) {
                 Log.i(LOG_TAG, "Spotify App found, open playlist in Spotify")
                 val intent = Intent(Intent.ACTION_VIEW)

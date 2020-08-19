@@ -1,6 +1,6 @@
 package com.lucianghimpu.matchmefy.presentation.matchResult
 
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 
 data class CarouselItem(
     val title: String,

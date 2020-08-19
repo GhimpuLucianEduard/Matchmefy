@@ -8,6 +8,12 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.google.gms.google-services'
+
+apply plugin: 'com.google.firebase.crashlytics'
+
 
 def secretsPropertiesFile = rootProject.file("secrets.properties");
 def secretsProperties = new Properties()
@@ -64,10 +70,8 @@ dependencies {
     def gsonVersion = "2.8.6"
     def retrofit2version = "2.7.1"
     def koin_version = "2.0.1"
-    def spotifySdk_version = "1.2.2"
     def lottieVersion = "3.4.0"
     def paging_version = "2.1.2"
-    def appCenterSdkVersion = '3.3.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -133,10 +137,13 @@ dependencies {
     // oauth2 library
     implementation 'net.openid:appauth:0.7.1'
 
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

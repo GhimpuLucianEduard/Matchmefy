@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "777416510640",
+    "firebase_url": "https://matchmefy-6d046.firebaseio.com",
+    "project_id": "matchmefy-6d046",
+    "storage_bucket": "matchmefy-6d046.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777416510640:android:360baaf3eafd86c84eff75",
+        "android_client_info": {
+          "package_name": "com.lucianghimpu.matchmefy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777416510640-8g009mp2pids76it4rf847tu4ikcnren.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lucianghimpu.matchmefy",
+            "certificate_hash": "f273d888c37a8efe2c302b6b18d429091b466c18"
+          }
+        },
+        {
+          "client_id": "777416510640-1ucfpl1pavjvesajcghjd3mj2m9vlqum.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKxR2HC5IKRuAeiC7GJYWAfZpDOyv8F9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777416510640-1ucfpl1pavjvesajcghjd3mj2m9vlqum.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

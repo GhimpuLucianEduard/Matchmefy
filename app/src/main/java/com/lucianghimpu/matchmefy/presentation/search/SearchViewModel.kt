@@ -1,19 +1,22 @@
 package com.lucianghimpu.matchmefy.presentation.search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
+import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogListener
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
-import com.microsoft.appcenter.analytics.Analytics
+import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.coroutines.*
+import retrofit2.HttpException
+import timber.log.Timber
 
 class SearchViewModel(
     private val matchmefyService: MatchmefyService,
@@ -42,12 +45,18 @@ class SearchViewModel(
                     val data = withContext(Dispatchers.IO) {
                         matchmefyService.getSearchUsers(searchText.value!!)
                     }
-                    Log.i(LOG_TAG, "Fetched search results, count: ${data.users.size}")
+                    Timber.d("Fetched search results, count: ${data.users.size}")
                     _users.value = data.users
                 }
                 catch (ex: Exception) {
-                    if (ex !is CancellationException) {
-                        AppAnalytics.trackError(ex, "Error fetching search results: $ex")
+                    when (ex) {
+                        is CancellationException -> Timber.w("Cancelling search job")
+                        is HttpException -> {
+                            if (ex.code() == 400) {
+                                Timber.w("Exception: $ex probably cused by cancellation")
+                            }
+                        }
+                        else -> AppAnalytics.trackError(ex)
                     }
                     _users.value = null
                 }
@@ -64,28 +73,26 @@ class SearchViewModel(
     }
 
     fun onFabClicked() {
-        Analytics.trackEvent("FAB Clicked")
-        throw Exception("Test ex")
-//        showDialog(DoubleButtonDialog(
-//            title = resourceProvider.getString(R.string.random_match_dialog_title),
-//            imageId = R.drawable.dialog_random,
-//            description = resourceProvider.getString(R.string.random_match_dialog_description),
-//            descriptionSpan = ColoredTextSpan(13, 20),
-//            positiveButtonText = resourceProvider.getString(R.string.match_dialog_button),
-//            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
-//            listener = object : DoubleButtonDialogListener {
-//                override fun onPositiveButtonClicked() {
-//                    AppAnalytics.trackEvent("Match with random user clicked in ${this.javaClass.simpleName}")
-//                    hideDialog()
-//                    fetchRandomUser()
-//                }
-//
-//                override fun onNegativeButtonClicked() {
-//                    Log.i(LOG_TAG, "Cancel with random user")
-//                    hideDialog()
-//                }
-//            }
-//        ))
+        showDialog(DoubleButtonDialog(
+            title = resourceProvider.getString(R.string.random_match_dialog_title),
+            imageId = R.drawable.dialog_random,
+            description = resourceProvider.getString(R.string.random_match_dialog_description),
+            descriptionSpan = ColoredTextSpan(13, 20),
+            positiveButtonText = resourceProvider.getString(R.string.match_dialog_button),
+            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
+            listener = object : DoubleButtonDialogListener {
+                override fun onPositiveButtonClicked() {
+                    AppAnalytics.trackEvent("match_random_user")
+                    hideDialog()
+                    fetchRandomUser()
+                }
+
+                override fun onNegativeButtonClicked() {
+                    AppAnalytics.trackEvent("cancel_match_random_user")
+                    hideDialog()
+                }
+            }
+        ))
     }
 
     private fun fetchRandomUser() {
@@ -96,7 +103,7 @@ class SearchViewModel(
                 val randomUser = withContext(Dispatchers.IO) {
                     matchmefyService.getRandomUser()
                 }
-                Log.i(LOG_TAG, "Fetched random user")
+                Timber.d("Fetched random user: ${randomUser.display_name}")
                 navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(randomUser))
             }
             catch (ex: Exception) {

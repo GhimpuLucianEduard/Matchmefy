@@ -10,12 +10,13 @@ import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class MatchesViewModel(
     private val matchmefyService: MatchmefyService,
@@ -35,21 +36,20 @@ class MatchesViewModel(
 
     init {
         if (!matchmefyService.initialMatchesLoaded()) {
-            Log.i(LOG_TAG, "Loading initial matches")
+            Timber.d("Loading initial matches")
             loadInitialMatches()
         } else {
-            Log.i(LOG_TAG, "Inital matches loaded, fetching local matches")
+            Timber.d("Initial matches loaded, fetching local matches")
             _matches.value = matchmefyService.getMatches(user.id, String.empty)
         }
     }
 
     fun filterMatches() {
-        Log.i(LOG_TAG, "Filtering matches")
+        Timber.d("Filtering matches, filter: ${searchText.value!!}")
         _matches.value = matchmefyService.getMatches(user.id, searchText.value!!)
     }
 
     fun openMatchResult(matchResult: MatchResult) {
-        Log.i(LOG_TAG, "Opening match result from matches tab")
         navigate(MatchesFragmentDirections.actionMatchFragmentToMatchResultFragment(matchResult))
     }
 
