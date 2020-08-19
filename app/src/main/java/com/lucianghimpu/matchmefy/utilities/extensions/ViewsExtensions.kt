@@ -1,4 +1,4 @@
-package com.lucianghimpu.matchmefy.utilities.Extensions
+package com.lucianghimpu.matchmefy.utilities.extensions
 
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.ListAdapter

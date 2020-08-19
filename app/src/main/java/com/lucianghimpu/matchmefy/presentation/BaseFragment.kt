@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.lucianghimpu.matchmefy.R
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogFragment
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
@@ -22,8 +23,6 @@ import com.lucianghimpu.matchmefy.utilities.DialogTagsConstants.LOADING_DIALOG_T
 import com.lucianghimpu.matchmefy.utilities.DialogTagsConstants.SINGLE_BUTTON_DIALOG_TAG
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
-import com.microsoft.appcenter.analytics.Analytics
-
 
 abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
 
@@ -52,11 +51,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         initBinding(inflater, container)
         setViewDataBindingViewModel()
 
-        Analytics.trackEvent("Screen changed to ${this::class.simpleName}")
+        AppAnalytics.trackEvent("fragment_on_create", null, Bundle().also {
+            it.putString("fragment", this::class.simpleName)
+        })
         return binding.root
     }
 
     private fun showDialogFragment(dialogFragment: DialogFragment, tag: String) {
+        AppAnalytics.trackLog("Showing dialog of type: $tag in ${this::class.simpleName}")
         displayedDialog = dialogFragment
         displayedDialog!!.show(this.fragmentManager!!, tag)
     }

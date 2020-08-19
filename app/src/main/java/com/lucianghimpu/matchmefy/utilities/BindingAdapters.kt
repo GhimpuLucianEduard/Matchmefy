@@ -13,7 +13,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.data.dataModels.Image
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 
 @BindingAdapter("imageFromUriWithGlide")
 fun ImageView.bindImageFromUriWithGlide(images: List<Image>?) {

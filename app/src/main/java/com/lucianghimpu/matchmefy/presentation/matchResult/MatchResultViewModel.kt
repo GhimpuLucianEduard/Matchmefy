@@ -119,6 +119,8 @@ class MatchResultViewModel(
     }
 
     private fun createPlaylist() {
+
+
         showDialog(LoadingDialog())
         viewModelScope.launch {
             val createPlaylistRequest = CreatePlaylistRequest(

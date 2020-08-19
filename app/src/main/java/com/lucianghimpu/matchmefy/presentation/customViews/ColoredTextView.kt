@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.widget.doAfterTextChanged
 import com.lucianghimpu.matchmefy.R
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 
 class ColoredTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

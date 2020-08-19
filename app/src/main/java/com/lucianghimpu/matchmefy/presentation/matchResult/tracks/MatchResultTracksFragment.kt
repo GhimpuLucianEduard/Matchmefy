@@ -9,7 +9,7 @@ import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.CarouselItem
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.utilities.DensityUtil
-import com.lucianghimpu.matchmefy.utilities.Extensions.setShowSideItems
+import com.lucianghimpu.matchmefy.utilities.extensions.setShowSideItems
 import kotlinx.android.synthetic.main.fragment_match_result_artists.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 

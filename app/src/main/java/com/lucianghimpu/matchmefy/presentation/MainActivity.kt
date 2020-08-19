@@ -27,11 +27,15 @@ class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
 
     private lateinit var navController: NavController
 
+    private val navigationListener = NavController.OnDestinationChangedListener { _, destination, _ ->
+        AppAnalytics.trackLog("Navigation change, destination: ${destination.label}")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        AppAnalytics.initAppCenter(application)
+        AppAnalytics.initAppAnalytics(application)
 
         // The shared view model does not have a BaseFragment associated
         // So we need to observer navigation changes in the MainActivity
@@ -59,6 +63,16 @@ class MainActivity : AppCompatActivity(), AppAuthService.TokenReceivedCallback {
             authService.onAuthCodeResponse(data)
             authService.sendTokenRequest(this)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navController.addOnDestinationChangedListener(navigationListener)
+    }
+
+    override fun onPause() {
+        navController.removeOnDestinationChangedListener(navigationListener)
+        super.onPause()
     }
 
     private fun setupNavigation() {

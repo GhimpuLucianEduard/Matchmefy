@@ -1,6 +1,6 @@
 package com.lucianghimpu.matchmefy.appServices
 
-import com.lucianghimpu.matchmefy.utilities.Extensions.empty
+import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlin.reflect.KClass
 
 interface EncryptedSharedPreferencesService {
