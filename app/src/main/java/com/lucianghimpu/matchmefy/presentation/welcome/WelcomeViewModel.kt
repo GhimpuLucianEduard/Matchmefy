@@ -27,6 +27,6 @@ class WelcomeViewModel(
 
     fun onContinueClicked() {
         navigate(WelcomeFragmentDirections.actionWelcomeFragmentToSearchFragment())
-        AppAnalytics.trackEvent("Continue button clicked in ${this.javaClass.simpleName}")
+        AppAnalytics.trackEvent("welcome_continue_clicked")
     }
 }

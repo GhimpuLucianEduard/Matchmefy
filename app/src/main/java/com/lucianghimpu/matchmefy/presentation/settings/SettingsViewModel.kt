@@ -110,7 +110,7 @@ class SettingsViewModel(
                 Timber.d("User data deleted")
             } catch (ex: Exception) {
                 hideDialog()
-                AppAnalytics.trackError(ex, "Failed to delete user data: $ex")
+                handleError(ex)
             }
         }
         // N.B. don't hide the loading dialog in a finally clause

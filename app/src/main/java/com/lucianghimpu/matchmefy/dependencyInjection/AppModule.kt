@@ -30,13 +30,13 @@ val appModule = module {
 
     viewModel { LoginViewModel(get(), get(), get(), get(), get()) }
     viewModel { WelcomeViewModel(get(), get()) }
-    viewModel { SearchViewModel(get(), get())}
+    viewModel { SearchViewModel(get(), get()) }
     viewModel { MatchesViewModel(get(), get(), get()) }
     viewModel { UserPreviewViewModel(get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get()) }
 
     // Used by the Match Result Fragments
-    viewModel { MatchResultViewModel(get(), get(), get()) }
+    viewModel { MatchResultViewModel(get(), get()) }
 
     // Dialogs
     viewModel(named(SINGLE_BUTTON_DIALOG)) { DialogViewModel<SingleButtonDialog>(get()) }

@@ -36,14 +36,14 @@ abstract class BaseViewModel(
     }
 
     fun showDialog(dialog: Dialog) {
-        showDialogEvent.postValue(Event(dialog))
+        showDialogEvent.value = Event(dialog)
     }
 
     /**
      * Hides last visible dialog
      */
     fun hideDialog() {
-        _hideDialogEvent.postValue(Event(Any()))
+        _hideDialogEvent.value = Event(Any())
     }
 
     fun handleError(ex: Exception) {

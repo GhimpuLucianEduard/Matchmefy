@@ -43,7 +43,7 @@ class SearchViewModel(
             lastJob?.cancel("Cancelled last job caused by text change")
             lastJob = viewModelScope.launch {
                 try {
-                    isBusy.postValue(true)
+                    isBusy.value = true
                     // Debounce
                     delay(200)
                     val data = withContext(Dispatchers.IO) {
@@ -60,12 +60,12 @@ class SearchViewModel(
                                 Timber.w("Exception: $ex probably cused by cancellation")
                             }
                         }
-                        else -> AppAnalytics.trackError(ex)
+                        else -> handleError(ex)
                     }
                     _users.value = null
                 }
                 finally {
-                    isBusy.postValue(false)
+                    isBusy.value = false
                 }
             }
         }
@@ -108,14 +108,16 @@ class SearchViewModel(
                     matchmefyService.getRandomUser()
                 }
                 Timber.d("Fetched random user: ${randomUser.display_name}")
+                AppAnalytics.trackLog("Fetched random user")
+                hideDialog()
                 navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(randomUser))
             }
             catch (ex: Exception) {
-                AppAnalytics.trackError(ex, "Error fetching random user: $ex")
+                hideDialog()
+                handleError(ex)
             }
             finally {
                 isBusy.value = false
-                hideDialog()
             }
         }
     }

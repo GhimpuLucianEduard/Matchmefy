@@ -1,17 +1,16 @@
 package com.lucianghimpu.matchmefy.presentation.matches
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.coroutines.Dispatchers
@@ -56,22 +55,17 @@ class MatchesViewModel(
     }
 
     private fun loadInitialMatches() {
-
-        val loadMatchesDialog = LoadingDialog(
-            "Loading"
-        )
-
         viewModelScope.launch {
             try {
-                showDialog(loadMatchesDialog)
+                showDialog(LoadingDialog())
                 isBusy.value = true
                 val matches = withContext(Dispatchers.IO) {
                     matchmefyService.loadInitialMatches(user.id)
                 }
                 _matches.value = matches
-                Log.i(LOG_TAG, "Fetched ${matches.size} matches")
+                AppAnalytics.trackLog("Fetched matches")
             } catch (ex: Exception) {
-                Log.e(LOG_TAG, ex.toString())
+                handleError(ex)
             } finally {
                 isBusy.value = false
                 hideDialog()

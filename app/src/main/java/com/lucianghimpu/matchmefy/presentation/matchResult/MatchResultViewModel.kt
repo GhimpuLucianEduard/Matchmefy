@@ -2,7 +2,6 @@ package com.lucianghimpu.matchmefy.presentation.matchResult
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -10,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.MatchmefyApp
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
-import com.lucianghimpu.matchmefy.appServices.Auth.AppAuthService
 import com.lucianghimpu.matchmefy.data.dataModels.Playlist
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI.CreatePlaylistRequest
@@ -22,7 +20,6 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButton
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Event
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,8 +27,7 @@ import kotlinx.coroutines.withContext
 
 class MatchResultViewModel(
     application: Application,
-    private val spotifyService: SpotifyService,
-    private val appAuthService: AppAuthService
+    private val spotifyService: SpotifyService
 ) : BaseViewModel(application) {
 
     private val context: Context = this.getApplication<MatchmefyApp>().applicationContext
@@ -88,18 +84,18 @@ class MatchResultViewModel(
 
     fun onContinueClicked() {
         val nextState = stateManager.next()
-        AppAnalytics.trackEvent("Switching to next state in MatchResult: $nextState")
+        AppAnalytics.trackLog("Switching to next state in MatchResult: $nextState")
         _state.value = nextState
     }
 
     fun onBackClicked() {
         val prevState = stateManager.prev()
-        AppAnalytics.trackEvent("Switching to next state in MatchResult: $prevState")
+        AppAnalytics.trackLog("Switching to prev state in MatchResult: $prevState")
         _state.value = prevState
     }
 
     fun onCreatePlaylistClicked() {
-        AppAnalytics.trackEvent("Create playlist clicked in ${this.javaClass.simpleName}")
+        AppAnalytics.trackEvent("create_playlist_clicked")
         showDialog(DoubleButtonDialog(
             title = context.getString(R.string.create_playlist_dialog_title),
             description = context.getString(R.string.create_playlist_dialog_description),
@@ -109,13 +105,13 @@ class MatchResultViewModel(
             negativeButtonText = context.getString(R.string.cancel_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
-                    AppAnalytics.trackEvent("User selected create playlist")
+                    AppAnalytics.trackEvent("create_playlist_confirmation_clicked")
                     hideDialog()
                     createPlaylist()
                 }
 
                 override fun onNegativeButtonClicked() {
-                    Log.i(LOG_TAG, "User canceled create playlist")
+                    AppAnalytics.trackEvent("cancel_create_playlist")
                     hideDialog()
                 }
             }
@@ -135,19 +131,20 @@ class MatchResultViewModel(
                     spotifyService.createPlaylist(createPlaylistRequest)
                 }
 
-                Log.i(LOG_TAG, "Spotify Playlist created")
+                AppAnalytics.trackLog("Spotify playlist created")
 
                 withContext(Dispatchers.IO) {
                     spotifyService.editPlaylist(playlist.id, EditPlaylistRequest(matchResult.value!!.playlistForSpotify.uris))
                 }
 
-                Log.i(LOG_TAG, "Spotify Playlist added tracks")
+                AppAnalytics.trackLog("Added tracks to Spotify playlist")
+
                 hideDialog()
                 onPlaylistCreated()
 
-            } catch (exception: Exception) {
+            } catch (ex: Exception) {
                 hideDialog()
-                AppAnalytics.trackError(exception, "Error creating Spotify Playlist: $exception")
+                handleError(ex)
             }
             // N.B. don't hide the loading dialog in a finally clause
         }
@@ -162,13 +159,13 @@ class MatchResultViewModel(
             negativeButtonText = context.getString(R.string.later_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
-                    Log.i(LOG_TAG, "User selected open playlist in Spotify")
+                    AppAnalytics.trackEvent("open_playlist_clicked")
                     _openPlaylistEvent.value = Event(playlist)
                     hideDialog()
                 }
 
                 override fun onNegativeButtonClicked() {
-                    Log.i(LOG_TAG, "User declined open playlist in Spotify")
+                    AppAnalytics.trackEvent("cancel_open_playlist")
                     hideDialog()
                     navigateToMatches()
                 }
