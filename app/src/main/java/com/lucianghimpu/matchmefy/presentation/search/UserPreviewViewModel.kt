@@ -1,11 +1,12 @@
 package com.lucianghimpu.matchmefy.presentation.search
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
-import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
@@ -16,9 +17,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class UserPreviewViewModel(
+    application: Application,
     private val matchmefyService: MatchmefyService,
-    private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
-) : BaseViewModel() {
+    private val preferencesService: PreferencesService
+) : BaseViewModel(application) {
 
     private var _user = MutableLiveData<User>()
     val user: LiveData<User>
@@ -29,7 +31,7 @@ class UserPreviewViewModel(
         get() = _matchingUser
 
     fun initData(matchingUser: User) {
-        _user.value = encryptedSharedPreferencesService.getObject(
+        _user.value = preferencesService.getObject(
             PreferencesConstants.USER_PROFILE_KEY,
             User::class
         )

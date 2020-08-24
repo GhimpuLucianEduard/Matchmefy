@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 
 class SpotifyRetrofitServiceFactory(
     private val spotifyAuthInterceptor: SpotifyAuthInterceptor,
@@ -25,8 +26,12 @@ class SpotifyRetrofitServiceFactory(
 
     private fun okHttpClient () : OkHttpClient {
 
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        val loggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                Timber.d(message)
+            }
+        })
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         return OkHttpClient.Builder()
             .addInterceptor(spotifyAuthInterceptor)

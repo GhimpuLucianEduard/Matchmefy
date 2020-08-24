@@ -6,6 +6,7 @@ object DIConstants {
     const val SINGLE_BUTTON_DIALOG = "singleButtonDialog"
     const val DOUBLE_BUTTON_DIALOG = "doubleButtonDialog"
     const val LOADING_DIALOG = "loadingDialog"
+    const val NO_CONNECTION_DIALOG = "noConnectionDialog"
 }
 
 object LogConstants {
@@ -42,4 +43,5 @@ object DialogTagsConstants {
     const val SINGLE_BUTTON_DIALOG_TAG = "singleButtonDialog"
     const val DOUBLE_BUTTON_DIALOG_TAG = "doubleButtonDialog"
     const val LOADING_DIALOG_TAG = "loadingDialog"
+    const val NO_CONNECTION_DIALOG_TAG = "noConnectionDialog"
 }

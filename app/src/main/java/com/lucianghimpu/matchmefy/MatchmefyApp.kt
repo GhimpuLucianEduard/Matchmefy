@@ -1,6 +1,7 @@
 package com.lucianghimpu.matchmefy
 
 import android.app.Application
+import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.dependencyInjection.appModule
 import com.lucianghimpu.matchmefy.dependencyInjection.dataServicesModule
 import com.lucianghimpu.matchmefy.dependencyInjection.networkingModule
@@ -25,7 +26,6 @@ class MatchmefyApp : Application() {
                 )
             )
         }
+        AppAnalytics.initAppAnalytics(this)
     }
-
-
 }

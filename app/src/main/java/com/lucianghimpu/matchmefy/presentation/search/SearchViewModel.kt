@@ -1,11 +1,13 @@
 package com.lucianghimpu.matchmefy.presentation.search
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.MatchmefyApp
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
-import com.lucianghimpu.matchmefy.appServices.ResourceProvider
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
@@ -19,9 +21,11 @@ import retrofit2.HttpException
 import timber.log.Timber
 
 class SearchViewModel(
-    private val matchmefyService: MatchmefyService,
-    private val resourceProvider: ResourceProvider
-) : BaseViewModel() {
+    application: Application,
+    private val matchmefyService: MatchmefyService
+) : BaseViewModel(application) {
+
+    private val context: Context = this.getApplication<MatchmefyApp>().applicationContext
 
     private var lastJob: Job? = null
     private var lastSearchQuery = String.empty
@@ -74,12 +78,12 @@ class SearchViewModel(
 
     fun onFabClicked() {
         showDialog(DoubleButtonDialog(
-            title = resourceProvider.getString(R.string.random_match_dialog_title),
+            title = context.getString(R.string.random_match_dialog_title),
             imageId = R.drawable.dialog_random,
-            description = resourceProvider.getString(R.string.random_match_dialog_description),
+            description = context.getString(R.string.random_match_dialog_description),
             descriptionSpan = ColoredTextSpan(13, 20),
-            positiveButtonText = resourceProvider.getString(R.string.match_dialog_button),
-            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
+            positiveButtonText = context.getString(R.string.match_dialog_button),
+            negativeButtonText = context.getString(R.string.cancel_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("match_random_user")

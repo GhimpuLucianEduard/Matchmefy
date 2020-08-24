@@ -54,7 +54,7 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
 
     override fun getMatches(userId: String, filter: String) : List<MatchResult> {
 
-        if (userMatches.isNullOrEmpty()) {
+        if (!initialMatchesLoaded) {
             throw Exception("getMatches called before loadInitialMatches")
         }
 
@@ -70,5 +70,9 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return userMatches.sortedByDescending {
             it.matchingScore.toFloat()
         }
+    }
+
+    override suspend fun deleteUserData(userId: String): Any {
+        return matchmefyApiService.deleteUserData(userId)
     }
 }

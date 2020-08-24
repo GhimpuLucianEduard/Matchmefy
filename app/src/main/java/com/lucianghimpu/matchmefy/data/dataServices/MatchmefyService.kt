@@ -21,4 +21,6 @@ interface MatchmefyService {
     suspend fun loadInitialMatches(userId: String) : List<MatchResult>
     fun initialMatchesLoaded() : Boolean
     fun getMatches(userId: String, filter: String) : List<MatchResult>
+
+    suspend fun deleteUserData(userId: String): Any
 }

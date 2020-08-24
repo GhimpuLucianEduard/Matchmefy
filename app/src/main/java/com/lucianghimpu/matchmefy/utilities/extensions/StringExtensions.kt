@@ -5,4 +5,3 @@ package com.lucianghimpu.matchmefy.utilities.extensions
  */
 val String.Companion.empty: String
     get() = ""
-
