@@ -137,13 +137,18 @@ dependencies {
     // oauth2 library
     implementation 'net.openid:appauth:0.7.1'
 
-
+    // reflection
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
+    // firebase
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
 
+    // timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // merlin
+    implementation 'com.novoda:merlin:1.2.0'
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

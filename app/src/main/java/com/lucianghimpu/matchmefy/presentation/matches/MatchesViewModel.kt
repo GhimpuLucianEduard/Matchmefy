@@ -1,10 +1,11 @@
 package com.lucianghimpu.matchmefy.presentation.matches
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
@@ -19,11 +20,12 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class MatchesViewModel(
+    application: Application,
     private val matchmefyService: MatchmefyService,
-    encryptedSharedPreferencesService: EncryptedSharedPreferencesService
-): BaseViewModel() {
+    preferencesService: PreferencesService
+): BaseViewModel(application) {
 
-    private var user: User = encryptedSharedPreferencesService.getObject(
+    private var user: User = preferencesService.getObject(
         PreferencesConstants.USER_PROFILE_KEY,
         User::class
     )!!

@@ -8,9 +8,9 @@ import com.google.gson.GsonBuilder
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.PREFERENCES_FILE_KEY
 import kotlin.reflect.KClass
 
-class EncryptedSharedPreferencesServiceImpl(
+class EncryptedPreferencesService(
     context: Context
-) : EncryptedSharedPreferencesService {
+) : PreferencesService {
 
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 

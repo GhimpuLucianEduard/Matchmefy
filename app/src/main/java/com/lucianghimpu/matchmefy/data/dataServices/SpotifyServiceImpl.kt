@@ -1,6 +1,6 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
-import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
@@ -13,7 +13,7 @@ import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 
 class SpotifyServiceImpl(
     spotifyRetrofitServiceFactory: SpotifyRetrofitServiceFactory,
-    private val encryptedSharedPreferencesService: EncryptedSharedPreferencesService
+    private val preferencesService: PreferencesService
 ) : SpotifyService {
     private var spotifyApiService : SpotifyApiService = spotifyRetrofitServiceFactory.create(
         SpotifyApiService::class.java)
@@ -31,7 +31,7 @@ class SpotifyServiceImpl(
     }
 
     override suspend fun createPlaylist(playlistRequest: CreatePlaylistRequest): Playlist {
-        val userProfile = encryptedSharedPreferencesService.getObject(
+        val userProfile = preferencesService.getObject(
             PreferencesConstants.USER_PROFILE_KEY, User::class)
 
         if (userProfile != null) {

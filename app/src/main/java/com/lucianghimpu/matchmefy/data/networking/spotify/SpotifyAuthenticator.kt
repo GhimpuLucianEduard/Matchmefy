@@ -1,7 +1,7 @@
 package com.lucianghimpu.matchmefy.data.networking.spotify
 
 import android.util.Log
-import com.lucianghimpu.matchmefy.appServices.EncryptedSharedPreferencesService
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.SPOTIFY_REFRESH_TOKEN_KEY
@@ -13,7 +13,7 @@ import okhttp3.Route
 import org.json.JSONObject
 
 class SpotifyAuthenticator(
-    private val sharedPreferencesService: EncryptedSharedPreferencesService,
+    private val sharedPreferencesService: PreferencesService,
     spotifyAuthRetrofitServiceFactory: SpotifyAuthRetrofitServiceFactory
 ) : Authenticator {
 

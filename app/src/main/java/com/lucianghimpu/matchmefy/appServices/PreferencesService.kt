@@ -3,7 +3,7 @@ package com.lucianghimpu.matchmefy.appServices
 import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlin.reflect.KClass
 
-interface EncryptedSharedPreferencesService {
+interface PreferencesService {
     fun addString(key: String, value: String, useCommit: Boolean = false)
     fun getString(key: String, defaultValue: String = String.empty): String
     fun deleteAll()

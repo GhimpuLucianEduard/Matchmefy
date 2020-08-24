@@ -1,14 +1,16 @@
 package com.lucianghimpu.matchmefy.presentation.matchResult
 
+import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
+import com.lucianghimpu.matchmefy.MatchmefyApp
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
-import com.lucianghimpu.matchmefy.appServices.AppAuthService
-import com.lucianghimpu.matchmefy.appServices.ResourceProvider
+import com.lucianghimpu.matchmefy.appServices.Auth.AppAuthService
 import com.lucianghimpu.matchmefy.data.dataModels.Playlist
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI.CreatePlaylistRequest
@@ -27,10 +29,12 @@ import kotlinx.coroutines.withContext
 
 
 class MatchResultViewModel(
-    private val resourceProvider: ResourceProvider,
+    application: Application,
     private val spotifyService: SpotifyService,
     private val appAuthService: AppAuthService
-) : BaseViewModel() {
+) : BaseViewModel(application) {
+
+    private val context: Context = this.getApplication<MatchmefyApp>().applicationContext
 
     lateinit var playlist: Playlist
 
@@ -53,21 +57,21 @@ class MatchResultViewModel(
 
     val matchScoreTitle = Transformations.map(matchResult) {
         when (it.matchingScore.toInt()) {
-            in 0..19 -> resourceProvider.getString(R.string.match_score_0_title)
-            in 20..39 -> resourceProvider.getString(R.string.match_score_20_title)
-            in 40..59 -> resourceProvider.getString(R.string.match_score_40_title)
-            in 60..79 -> resourceProvider.getString(R.string.match_score_60_title)
-            else -> resourceProvider.getString(R.string.match_score_80_title)
+            in 0..19 -> context.getString(R.string.match_score_0_title)
+            in 20..39 -> context.getString(R.string.match_score_20_title)
+            in 40..59 -> context.getString(R.string.match_score_40_title)
+            in 60..79 -> context.getString(R.string.match_score_60_title)
+            else -> context.getString(R.string.match_score_80_title)
         }
     }
 
     val matchImage = Transformations.map(matchResult) {
         when (it.matchingScore.toInt()) {
-            in 0..19 -> resourceProvider.getDrawable(R.drawable.match0)
-            in 20..39 -> resourceProvider.getDrawable(R.drawable.match20)
-            in 40..59 -> resourceProvider.getDrawable(R.drawable.match40)
-            in 60..79 -> resourceProvider.getDrawable(R.drawable.match60)
-            else -> resourceProvider.getDrawable(R.drawable.match80)
+            in 0..19 -> context.getDrawable(R.drawable.match0)
+            in 20..39 -> context.getDrawable(R.drawable.match20)
+            in 40..59 -> context.getDrawable(R.drawable.match40)
+            in 60..79 -> context.getDrawable(R.drawable.match60)
+            else -> context.getDrawable(R.drawable.match80)
         }
     }
 
@@ -97,12 +101,12 @@ class MatchResultViewModel(
     fun onCreatePlaylistClicked() {
         AppAnalytics.trackEvent("Create playlist clicked in ${this.javaClass.simpleName}")
         showDialog(DoubleButtonDialog(
-            title = resourceProvider.getString(R.string.create_playlist_dialog_title),
-            description = resourceProvider.getString(R.string.create_playlist_dialog_description),
+            title = context.getString(R.string.create_playlist_dialog_title),
+            description = context.getString(R.string.create_playlist_dialog_description),
             descriptionSpan = ColoredTextSpan(26, 47),
             imageId = R.drawable.dialog_warning,
-            positiveButtonText = resourceProvider.getString(R.string.create_dialog_button),
-            negativeButtonText = resourceProvider.getString(R.string.cancel_dialog_button),
+            positiveButtonText = context.getString(R.string.create_dialog_button),
+            negativeButtonText = context.getString(R.string.cancel_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("User selected create playlist")
@@ -119,8 +123,6 @@ class MatchResultViewModel(
     }
 
     private fun createPlaylist() {
-
-
         showDialog(LoadingDialog())
         viewModelScope.launch {
             val createPlaylistRequest = CreatePlaylistRequest(
@@ -153,11 +155,11 @@ class MatchResultViewModel(
 
     private fun onPlaylistCreated() {
         showDialog(DoubleButtonDialog(
-            title = resourceProvider.getString(R.string.playlist_created_dialog_title),
-            description = resourceProvider.getString(R.string.playlist_created_dialog_description),
+            title = context.getString(R.string.playlist_created_dialog_title),
+            description = context.getString(R.string.playlist_created_dialog_description),
             imageId = R.drawable.dialog_confirmation,
-            positiveButtonText = resourceProvider.getString(R.string.open_dialog_button),
-            negativeButtonText = resourceProvider.getString(R.string.later_dialog_button),
+            positiveButtonText = context.getString(R.string.open_dialog_button),
+            negativeButtonText = context.getString(R.string.later_dialog_button),
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     Log.i(LOG_TAG, "User selected open playlist in Spotify")

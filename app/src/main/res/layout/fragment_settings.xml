@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/settings_right_arrow"
                 android:text="@string/delete_user_data"
-                android:textColor="@color/pastelRose"/>
+                android:textColor="@color/pastelRose"
+                android:onClick="@{() -> viewModel.onDeleteDataClicked()}"/>
 
             <View style="@style/SettingsSeparatorStyle" />
 
