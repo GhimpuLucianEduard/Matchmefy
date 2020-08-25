@@ -11,7 +11,9 @@ Then the user can search for friends or strangers and get a "match score" which 
 
 Used to fetch the user profile and their top 50 artists and tracks
 
-### 2. [Matchmefy API used to store the data](https://github.com/GhimpuLucianEduard/matchmefy-api)
+### 2. [Matchmefy API used to store the data](https://github.com/GhimpuLucianEduard/matchmefy-api) 
+
+_Note: Matchmefy Api repository has been made private for security reasons_
 
 Custom REST API developt in **Node.js**, used to store user data in a **Mongo DB** and handles the "logic" to get the match summary for 2 users.
 
