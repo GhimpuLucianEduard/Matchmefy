@@ -36,6 +36,10 @@ class SearchViewModel(
     val users: LiveData<List<User>>
         get() = _users
 
+    init {
+        isBusy.value = false
+    }
+
     fun getSearchResults() {
         // avoid searching for the same query
         if (searchText.value != lastSearchQuery) {

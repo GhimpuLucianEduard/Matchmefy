@@ -14,7 +14,9 @@ class MatchesFragment : BaseFragment<MatchesViewModel, FragmentMatchesBinding>()
 
     override val viewModel: MatchesViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_matches
-    override fun setViewDataBindingViewModel() { binding.viewModel = viewModel }
+    override fun setViewDataBindingViewModel() {
+        binding.viewModel = viewModel
+    }
 
     private lateinit var adapter: MatchesListAdapter
 
@@ -49,12 +51,10 @@ class MatchesFragment : BaseFragment<MatchesViewModel, FragmentMatchesBinding>()
         // update adapter and empty state
         viewModel.matches.observe(this@MatchesFragment, Observer {
             adapter.submitList(it)
-            if ((viewModel.isBusy.value == null).or(viewModel.isBusy.value == false)) {
-                if (it.isNullOrEmpty()) {
-                    emptyStateView.visibility = View.VISIBLE
-                } else {
-                    emptyStateView.visibility = View.GONE
-                }
+            if (it.isNullOrEmpty()) {
+                emptyStateView.visibility = View.VISIBLE
+            } else {
+                emptyStateView.visibility = View.GONE
             }
         })
     }

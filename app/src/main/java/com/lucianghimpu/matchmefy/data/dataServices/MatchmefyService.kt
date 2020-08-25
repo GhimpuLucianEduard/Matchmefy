@@ -23,4 +23,5 @@ interface MatchmefyService {
     fun getMatches(userId: String, filter: String) : List<MatchResult>
 
     suspend fun deleteUserData(userId: String): Any
+    fun deleteAll()
 }

@@ -75,4 +75,9 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
     override suspend fun deleteUserData(userId: String): Any {
         return matchmefyApiService.deleteUserData(userId)
     }
+
+    override fun deleteAll() {
+        initialMatchesLoaded = false
+        userMatches.clear()
+    }
 }

@@ -117,6 +117,7 @@ class SettingsViewModel(
     }
 
     private fun signOut() {
+        matchmefyService.deleteAll()
         preferencesService.deleteAll()
         navigate(SettingsFragmentDirections.actionSettingsFragmentToLoginFragment())
     }
