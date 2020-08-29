@@ -10,7 +10,6 @@ import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
-import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.coroutines.Dispatchers
@@ -57,7 +56,6 @@ class MatchesViewModel(
     private fun loadInitialMatches() {
         viewModelScope.launch {
             try {
-                showDialog(LoadingDialog())
                 isBusy.value = true
                 val matches = withContext(Dispatchers.IO) {
                     matchmefyService.loadInitialMatches(user.id)
@@ -68,7 +66,6 @@ class MatchesViewModel(
                 handleError(ex)
             } finally {
                 isBusy.value = false
-                hideDialog()
             }
         }
     }

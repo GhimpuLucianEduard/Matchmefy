@@ -12,6 +12,16 @@
     <string name="match_with">Match with</string>
     <string name="match">match</string>
     <string name="loading_some_data">Loading some data</string>
+    
+    <!-- Welcome Fragments -->
+    <string name="on_boarding_title_1">Search &amp; Match</string>
+    <string name="on_boarding_description_1">Search and match users to see\nyour match score and more\nMatches can only be seen by you</string>
+
+    <string name="on_boarding_title_2">Match randomly</string>
+    <string name="on_boarding_description_2">Match with random users and\nfind your possible songmate</string>
+
+    <string name="on_boarding_title_3">Create playlists</string>
+    <string name="on_boarding_description_3">Create Spotify playlists from your\nmatches and discover new music</string>
 
     <!-- Match Result Score Fragment    -->
     <string name="match_score_0_title">Pass</string>
@@ -66,6 +76,11 @@
 
     <string name="create">create</string>
     <string name="search_for_a_match">Search for a match</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="get_started">Get Started</string>
 
 
 </resources>

@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ColoredTextSpan(
-    val startIndex : Int,
-    val endIndex : Int
+    val startIndex : Int = -1,
+    val endIndex : Int = -1
 ) : Parcelable

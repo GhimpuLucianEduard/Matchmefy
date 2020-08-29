@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="onBoardingState"
+            type="com.lucianghimpu.matchmefy.presentation.welcome.OnBoardingState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/backgroundBlack"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@{onBoardingState.title}"
+            android:textSize="36sp" />
+
+        <ImageView
+            imageFromId="@{onBoardingState.imageId}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp" />
+
+        <com.lucianghimpu.matchmefy.presentation.customViews.ColoredTextView
+            style="@style/BoldParagraphText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="@{onBoardingState.description}"
+            android:textSize="14sp"
+            app:endIndex="@{onBoardingState.coloredTextSpan.endIndex}"
+            app:startIndex="@{onBoardingState.coloredTextSpan.startIndex}" />
+
+    </LinearLayout>
+
+</layout>

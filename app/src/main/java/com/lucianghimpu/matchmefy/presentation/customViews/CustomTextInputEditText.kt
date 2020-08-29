@@ -39,7 +39,7 @@ class CustomTextInputEditText @JvmOverloads constructor(
             }
         })
 
-        setOnTouchListener { v, event ->
+        setOnTouchListener { _, event ->
             if (compoundDrawablesRelative[2] != null) {
                 val clearButtonEnd = this.width - clearTextDrawable.intrinsicWidth
 

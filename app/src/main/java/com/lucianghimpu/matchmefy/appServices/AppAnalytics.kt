@@ -33,7 +33,7 @@ class AppAnalytics {
             firebaseAnalytics.logEvent(event, bundle)
         }
 
-        fun trackError(throwable: Throwable, logMessage: String? = null, attachLog: Boolean = false) {
+        fun trackError(throwable: Throwable, logMessage: String? = null) {
             Timber.e(logMessage ?: "Error: $throwable")
             firebaseCrashlytics.recordException(throwable)
         }
