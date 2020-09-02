@@ -10,7 +10,10 @@ import com.lucianghimpu.matchmefy.utilities.extensions.addScrollToTopListener
 import kotlinx.android.synthetic.main.fragment_matches.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MatchesFragment : BaseFragment<MatchesViewModel, FragmentMatchesBinding>() {
+class MatchesFragment : BaseFragment<MatchesViewModel, FragmentMatchesBinding>(
+    enterTransitionResId = android.R.transition.fade,
+    exitTransitionResId = android.R.transition.fade
+) {
 
     override val viewModel: MatchesViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_matches

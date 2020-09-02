@@ -15,7 +15,9 @@ import kotlinx.android.synthetic.main.fragment_match_result.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultBinding>() {
+class MatchResultFragment : BaseFragment<MatchResultViewModel, FragmentMatchResultBinding>(
+    enterTransitionResId = android.R.transition.slide_bottom
+) {
     private val args: MatchResultFragmentArgs by navArgs()
     override val viewModel: MatchResultViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_match_result

@@ -10,7 +10,10 @@ import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_user_preview.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class UserPreviewFragment : BaseFragment<UserPreviewViewModel, FragmentUserPreviewBinding>() {
+class UserPreviewFragment : BaseFragment<UserPreviewViewModel, FragmentUserPreviewBinding>(
+    enterTransitionResId = android.R.transition.slide_right,
+    exitTransitionResId = android.R.transition.fade
+) {
     private val args: UserPreviewFragmentArgs by navArgs()
     override val viewModel: UserPreviewViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_user_preview

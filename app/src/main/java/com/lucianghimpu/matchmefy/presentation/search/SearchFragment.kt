@@ -10,7 +10,10 @@ import com.lucianghimpu.matchmefy.utilities.extensions.addScrollToTopListener
 import kotlinx.android.synthetic.main.fragment_search.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
+class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
+    enterTransitionResId = android.R.transition.fade,
+    exitTransitionResId = android.R.transition.fade
+) {
 
     override val viewModel: SearchViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_search

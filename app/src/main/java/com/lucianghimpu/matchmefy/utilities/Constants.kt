@@ -45,3 +45,7 @@ object DialogTagsConstants {
     const val LOADING_DIALOG_TAG = "loadingDialog"
     const val NO_CONNECTION_DIALOG_TAG = "noConnectionDialog"
 }
+
+object TransitionsConstants {
+    const val SEARCH_TO_PREVIEW = "searchToPreview"
+}

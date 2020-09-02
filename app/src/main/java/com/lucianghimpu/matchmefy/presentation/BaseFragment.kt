@@ -10,6 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.transition.TransitionInflater
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
@@ -24,7 +25,10 @@ import com.lucianghimpu.matchmefy.utilities.DialogTagsConstants.SINGLE_BUTTON_DI
 import com.lucianghimpu.matchmefy.utilities.EventObserver
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
 
-abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(
+    private val enterTransitionResId: Int? = null,
+    private val exitTransitionResId: Int? = null
+) : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutResId(): Int
@@ -40,6 +44,17 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : Fragment
         binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.executePendingBindings()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val inflater = TransitionInflater.from(requireContext())
+        enterTransitionResId?.let {
+            enterTransition = inflater.inflateTransition(it)
+        }
+        exitTransitionResId?.let {
+            exitTransition = inflater.inflateTransition(it)
+        }
     }
 
     abstract fun setViewDataBindingViewModel()

@@ -11,4 +11,5 @@ class OnBoardingFragment(
     override val viewModel: WelcomeViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_on_boarding
     override fun setViewDataBindingViewModel() { binding.onBoardingState = state }
+
 }

@@ -13,8 +13,6 @@
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:enterAnim="@android:anim/slide_out_right"
-            app:exitAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="true" />
     </fragment>
@@ -28,11 +26,7 @@
             android:id="@+id/action_welcomeFragment_to_searchFragment"
             app:destination="@id/searchFragment"
             app:popUpTo="@id/navigation_graph"
-            app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -42,20 +36,12 @@
         <action
             android:id="@+id/action_searchFragment_to_userPreviewFragment"
             app:destination="@id/userPreviewFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/searchFragment" />
         <action
             android:id="@+id/action_searchFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/navigation_graph"
-            app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_enter_anim"
-            app:popEnterAnim="@anim/nav_default_enter_anim"
-            app:popExitAnim="@anim/nav_default_enter_anim" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/matchFragment"
@@ -63,11 +49,7 @@
         android:label="MatchFragment" >
         <action
             android:id="@+id/action_matchFragment_to_matchResultFragment"
-            app:destination="@id/matchResultFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:destination="@id/matchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/userPreviewFragment"
@@ -78,11 +60,7 @@
             app:argType="com.lucianghimpu.matchmefy.data.dataModels.User" />
         <action
             android:id="@+id/action_userPreviewFragment_to_matchResultFragment"
-            app:destination="@id/matchResultFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/matchResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/matchResultFragment"
@@ -95,11 +73,7 @@
             android:id="@+id/action_matchResultFragment_to_matchFragment"
             app:destination="@id/matchFragment"
             app:popUpTo="@id/navigation_graph"
-            app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_enter_anim"
-            app:popEnterAnim="@anim/nav_default_enter_anim"
-            app:popExitAnim="@anim/nav_default_enter_anim" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -109,11 +83,7 @@
             android:id="@+id/action_settingsFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/navigation_graph"
-            app:popUpToInclusive="true"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_enter_anim"
-            app:popEnterAnim="@anim/nav_default_enter_anim"
-            app:popExitAnim="@anim/nav_default_enter_anim"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

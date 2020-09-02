@@ -9,7 +9,10 @@ import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import kotlinx.android.synthetic.main.fragment_welcome.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class WelcomeFragment : BaseFragment<WelcomeViewModel, FragmentWelcomeBinding>() {
+class WelcomeFragment() : BaseFragment<WelcomeViewModel, FragmentWelcomeBinding>(
+    enterTransitionResId = android.R.transition.slide_right,
+    exitTransitionResId = android.R.transition.fade
+) {
 
     override val viewModel: WelcomeViewModel by viewModel()
     override fun getLayoutResId(): Int = R.layout.fragment_welcome

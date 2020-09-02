@@ -35,6 +35,7 @@ class MatchesViewModel(
         get() = _matches
 
     init {
+        isBusy.value = false
         if (!matchmefyService.initialMatchesLoaded()) {
             Timber.d("Loading initial matches")
             loadInitialMatches()
@@ -45,8 +46,10 @@ class MatchesViewModel(
     }
 
     fun filterMatches() {
-        Timber.d("Filtering matches, filter: ${searchText.value!!}")
-        _matches.value = matchmefyService.getMatches(user.id, searchText.value!!)
+        if (!isBusy.value!!) {
+            Timber.d("Filtering matches, filter: ${searchText.value!!}")
+            _matches.value = matchmefyService.getMatches(user.id, searchText.value!!)
+        }
     }
 
     fun openMatchResult(matchResult: MatchResult) {

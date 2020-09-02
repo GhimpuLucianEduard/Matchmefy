@@ -76,7 +76,7 @@ class SearchViewModel(
     }
 
     fun onSearchResultClicked(user: User) {
-        AppAnalytics.trackEvent("Search result clicked in ${this.javaClass.simpleName}")
+        AppAnalytics.trackEvent("search_result_clicked")
         navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(user))
     }
 
