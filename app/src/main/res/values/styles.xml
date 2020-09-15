@@ -22,6 +22,10 @@
         <item name="android:textAlignment">center</item>
     </style>
 
+    <style name="SettingsTitleText" parent="TitleText">
+        <item name="android:textSize">32sp</item>
+    </style>
+
     <style name="TitleTextMatchResult" parent="TitleText">
         <item name="android:textSize">28sp</item>
     </style>
@@ -43,6 +47,14 @@
         <item name="android:textColor">@color/pureWhite</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="SettingsText" parent="BoldParagraphText">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ClickableSettingsText" parent="SettingsText">
+        <item name="android:textColor">@color/pastelRose</item>
     </style>
 
     <style name="GreySubtitleText">

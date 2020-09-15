@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.lucianghimpu.matchmefy.presentation.settings.SettingsViewModel" />
@@ -85,9 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/settings_right_arrow"
-                android:text="@string/delete_user_data"
-                android:textColor="@color/pastelRose"
-                android:onClick="@{() -> viewModel.onDeleteDataClicked()}"/>
+                android:text="@string/about"
+                android:onClick="@{() -> viewModel.onAboutClicked()}"/>
 
             <View style="@style/SettingsSeparatorStyle" />
 
@@ -99,6 +97,17 @@
                 android:text="@string/sign_out"
                 android:textColor="@color/pastelRose"
                 android:onClick="@{() -> viewModel.onSignOutClicked()}"/>
+
+            <View style="@style/SettingsSeparatorStyle" />
+
+            <TextView
+                style="@style/SettingsNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/settings_right_arrow"
+                android:text="@string/delete_user_data"
+                android:textColor="@color/pastelRose"
+                android:onClick="@{() -> viewModel.onDeleteDataClicked()}"/>
 
         </LinearLayout>
 

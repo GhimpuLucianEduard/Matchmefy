@@ -84,6 +84,9 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
 
     <action
@@ -91,5 +94,9 @@
         app:destination="@id/loginFragment"
         app:popUpTo="@id/navigation_graph"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.lucianghimpu.matchmefy.presentation.settings.AboutFragment"
+        android:label="AboutFragment" />
 
 </navigation>

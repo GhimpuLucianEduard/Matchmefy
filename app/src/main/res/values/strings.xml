@@ -12,7 +12,7 @@
     <string name="match_with">Match with</string>
     <string name="match">match</string>
     <string name="loading_some_data">Loading some data</string>
-    
+
     <!-- Welcome Fragments -->
     <string name="on_boarding_title_1">Search &amp; Match</string>
     <string name="on_boarding_description_1">Search and match users to see\nyour match score and more\nMatches can only be seen by you</string>
@@ -38,7 +38,7 @@
     <string name="create_playlist_description">Get a tailored Spotify playlist with amazing songs to discover what kind of music %1$s likes</string>
     <string name="settings">Settings</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="delete_user_data">Delete user data</string>
+    <string name="delete_user_data">Delete User Data</string>
     <string name="sign_out">Sign Out</string>
     <string name="terms_of_use">Terms of Use</string>
     <string name="not_now">Not Now</string>
@@ -84,6 +84,8 @@
     <string name="next">Next</string>
     <string name="skip">Skip</string>
     <string name="get_started">Get Started</string>
+    <string name="about">About</string>
+    <string name="non_commercial_app_created_by">Non-commercial app created by:</string>
 
 
 </resources>
