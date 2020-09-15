@@ -7,8 +7,11 @@
         <item name="colorPrimary">@color/pastelRose</item>
         <item name="colorPrimaryDark">@color/pastelRoseDarker</item>
         <item name="colorAccent">@color/pastelRose</item>
-
         <item name="colorControlHighlight">#0DFFFFFF</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
     </style>
 
     <!-- TEXT VIEWS -->

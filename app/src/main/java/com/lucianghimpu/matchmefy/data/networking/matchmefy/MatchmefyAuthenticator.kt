@@ -20,9 +20,8 @@ class MatchmefyAuthenticator(
         MatchmefyRefreshTokenApiService::class.java)
 
     override fun authenticate(route: Route?, response: Response): Request? {
-        var ce = sharedPreferencesService.getString(PreferencesConstants.MATCHMEFY_REFRESH_TOKEN_KEY)
         val refreshTokenResponse = matchmefyRefreshTokenApiService.refreshToken(
-            MatchmefyRefreshToken(sharedPreferencesService.getString("ss"))
+            MatchmefyRefreshToken(sharedPreferencesService.getString(PreferencesConstants.MATCHMEFY_REFRESH_TOKEN_KEY))
         ).execute()
 
         if (refreshTokenResponse.isSuccessful) {

@@ -24,7 +24,10 @@ fun ViewPager2.setShowSideItems(pageMarin: Int, offset: Int) {
             page.translationY = offset
         }
     }
+}
 
+fun ViewPager2.disableScrollAnimation() {
+    (getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 }
 
 fun <T, VH : RecyclerView.ViewHolder> ListAdapter<T, VH>.addScrollToTopListener(recyclerView: RecyclerView) {

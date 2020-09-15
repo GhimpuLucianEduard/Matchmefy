@@ -9,6 +9,7 @@ import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.CarouselItem
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.utilities.DensityUtil.Companion.pixelToDp
+import com.lucianghimpu.matchmefy.utilities.extensions.disableScrollAnimation
 import com.lucianghimpu.matchmefy.utilities.extensions.setShowSideItems
 import kotlinx.android.synthetic.main.fragment_match_result_artists.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -36,6 +37,7 @@ class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMa
         })
 
         carousel.adapter = adapter
+        carousel.disableScrollAnimation()
         val transformerSideMargin = pixelToDp(activity!!, resources.getDimension(R.dimen.image_carousel_margin) / 2)
         carousel.setShowSideItems(transformerSideMargin, transformerSideMargin)
     }

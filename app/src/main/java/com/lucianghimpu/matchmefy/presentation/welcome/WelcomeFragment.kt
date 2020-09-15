@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.databinding.FragmentWelcomeBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
+import com.lucianghimpu.matchmefy.utilities.extensions.disableScrollAnimation
 import kotlinx.android.synthetic.main.fragment_welcome.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -29,6 +30,7 @@ class WelcomeFragment() : BaseFragment<WelcomeViewModel, FragmentWelcomeBinding>
     private fun initViewPager() {
         pageViewAdapter = WelcomePageViewerAdapter(this, viewModel)
         viewPager.adapter = pageViewAdapter
+        viewPager.disableScrollAnimation()
         wormDotsIndicator.dotsClickable = false
         wormDotsIndicator.isClickable
         wormDotsIndicator.setViewPager2(viewPager)
