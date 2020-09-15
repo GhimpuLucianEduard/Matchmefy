@@ -9,10 +9,6 @@ object DIConstants {
     const val NO_CONNECTION_DIALOG = "noConnectionDialog"
 }
 
-object LogConstants {
-    const val LOG_TAG = "MMF_APP"
-}
-
 object SpotifyAuthConstants {
     const val CLIENT_ID = BuildConfig.spotify_client_id
     const val API_BASE_URL = "https://accounts.spotify.com"
@@ -31,6 +27,8 @@ object PreferencesConstants {
     const val PREFERENCES_FILE_KEY = "mmf_preferences"
     const val SPOTIFY_ACCESS_TOKEN_KEY = "spotify_access_token"
     const val SPOTIFY_REFRESH_TOKEN_KEY = "spotify_refresh_token"
+    const val MATCHMEFY_ACCESS_TOKEN_KEY = "matchmefy_access_token"
+    const val MATCHMEFY_REFRESH_TOKEN_KEY = "matchmefy_refresh_token"
     const val USER_PROFILE_KEY = "user_profile"
 }
 
@@ -44,8 +42,4 @@ object DialogTagsConstants {
     const val DOUBLE_BUTTON_DIALOG_TAG = "doubleButtonDialog"
     const val LOADING_DIALOG_TAG = "loadingDialog"
     const val NO_CONNECTION_DIALOG_TAG = "noConnectionDialog"
-}
-
-object TransitionsConstants {
-    const val SEARCH_TO_PREVIEW = "searchToPreview"
 }

@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.MatchmefyApp
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.data.dataModels.Playlist
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.spotifyAPI.CreatePlaylistRequest
@@ -27,8 +28,9 @@ import kotlinx.coroutines.withContext
 
 class MatchResultViewModel(
     application: Application,
+    preferencesService: PreferencesService,
     private val spotifyService: SpotifyService
-) : BaseViewModel(application) {
+) : BaseViewModel(application, preferencesService) {
 
     private val context: Context = this.getApplication<MatchmefyApp>().applicationContext
 

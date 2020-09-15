@@ -6,11 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.PreferencesService
-import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
-import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 import com.lucianghimpu.matchmefy.utilities.extensions.empty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,15 +17,9 @@ import timber.log.Timber
 
 class MatchesViewModel(
     application: Application,
-    private val matchmefyService: MatchmefyService,
-    preferencesService: PreferencesService
-): BaseViewModel(application) {
-
-    private var user: User = preferencesService.getObject(
-        PreferencesConstants.USER_PROFILE_KEY,
-        User::class
-    )!!
-
+    preferencesService: PreferencesService,
+    private val matchmefyService: MatchmefyService
+): BaseViewModel(application, preferencesService) {
     var searchText = MutableLiveData<String>()
 
     private var _matches = MutableLiveData<List<MatchResult>>()
@@ -41,14 +33,14 @@ class MatchesViewModel(
             loadInitialMatches()
         } else {
             Timber.d("Initial matches loaded, fetching local matches")
-            _matches.value = matchmefyService.getMatches(user.id, String.empty)
+            _matches.value = matchmefyService.getMatches(String.empty)
         }
     }
 
     fun filterMatches() {
         if (!isBusy.value!!) {
             Timber.d("Filtering matches, filter: ${searchText.value!!}")
-            _matches.value = matchmefyService.getMatches(user.id, searchText.value!!)
+            _matches.value = matchmefyService.getMatches(searchText.value!!)
         }
     }
 
@@ -61,7 +53,7 @@ class MatchesViewModel(
             try {
                 isBusy.value = true
                 val matches = withContext(Dispatchers.IO) {
-                    matchmefyService.loadInitialMatches(user.id)
+                    matchmefyService.loadInitialMatches()
                 }
                 _matches.value = matches
                 AppAnalytics.trackLog("Fetched matches")

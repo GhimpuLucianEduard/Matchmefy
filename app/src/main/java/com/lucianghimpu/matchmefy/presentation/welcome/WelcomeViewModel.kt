@@ -16,7 +16,7 @@ import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
 class WelcomeViewModel(
     application: Application,
     preferencesService: PreferencesService
-) : BaseViewModel(application) {
+) : BaseViewModel(application, preferencesService) {
 
     companion object {
         const val ON_BOARDING_STATES_COUNT: Int = 4

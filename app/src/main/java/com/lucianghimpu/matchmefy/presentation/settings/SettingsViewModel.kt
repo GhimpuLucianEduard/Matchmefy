@@ -24,9 +24,9 @@ import timber.log.Timber
 
 class SettingsViewModel(
     application: Application,
-    private val preferencesService: PreferencesService,
+    preferencesService: PreferencesService,
     private val matchmefyService: MatchmefyService
-) : BaseViewModel(application) {
+) : BaseViewModel(application, preferencesService) {
 
     private val context: Context = this.getApplication<MatchmefyApp>().applicationContext
 

@@ -6,7 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.lucianghimpu.matchmefy.appServices.PreferencesService
-import com.lucianghimpu.matchmefy.utilities.LogConstants.LOG_TAG
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.SPOTIFY_ACCESS_TOKEN_KEY
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants.SPOTIFY_REFRESH_TOKEN_KEY
 import com.lucianghimpu.matchmefy.utilities.SpotifyAuthConstants
@@ -16,10 +15,6 @@ class AppAuthService(
     private val context: Context,
     private val preferencesService: PreferencesService
 ) {
-
-    companion object {
-        private const val AUTH_LOG_TAG: String =  "${LOG_TAG}_APP_AUTH"
-    }
 
     private var authListener: AuthListener? = null
     private var authorizationResponse: AuthorizationResponse? = null

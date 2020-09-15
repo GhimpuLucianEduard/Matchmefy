@@ -1,13 +1,16 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
 import com.lucianghimpu.matchmefy.data.dataModels.User
-import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CreateUserRequest
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CreateUserResponse
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyApiService
 import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyRetrofitServiceFactory
 
-class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitServiceFactory) : MatchmefyService {
+class MatchmefyServiceImpl(
+    matchmefyRetrofitServiceFactory: MatchmefyRetrofitServiceFactory
+) : MatchmefyService {
 
     private var matchmefyApiService : MatchmefyApiService = matchmefyRetrofitServiceFactory.create(
         MatchmefyApiService::class.java)
@@ -15,8 +18,8 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
     private var userMatches: ArrayList<MatchResult> = arrayListOf()
     private var initialMatchesLoaded: Boolean = false
 
-    override suspend fun postUserData(completeUserData: CompleteUserData) {
-        return matchmefyApiService.postUserData(completeUserData)
+    override suspend fun postUserData(createUserRequest: CreateUserRequest): CreateUserResponse {
+        return matchmefyApiService.postUserData(createUserRequest)
     }
 
     override suspend fun getRandomUser(): User {
@@ -31,8 +34,8 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return matchmefyApiService.getSearchUsers(searchQuery, limit, offset)
     }
 
-    override suspend fun matchUsers(firstUser: String, secondUser: String) : MatchResult {
-        val newMatch = matchmefyApiService.matchUsers(firstUser, secondUser)
+    override suspend fun matchUsers(user: String) : MatchResult {
+        val newMatch = matchmefyApiService.matchUsers(user)
         val oldMatchIndex = userMatches.indexOfFirst { m -> m._id == newMatch._id }
         if (oldMatchIndex == -1) {
             userMatches.add(newMatch)
@@ -42,8 +45,8 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
         return newMatch
     }
 
-    override suspend fun loadInitialMatches(userId: String): List<MatchResult> {
-        userMatches = ArrayList(matchmefyApiService.getMatches(userId))
+    override suspend fun loadInitialMatches(): List<MatchResult> {
+        userMatches = ArrayList(matchmefyApiService.getMatches())
         initialMatchesLoaded = true
         return userMatches.sortedByDescending {
             it.matchingScore.toFloat()
@@ -52,7 +55,7 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
 
     override fun initialMatchesLoaded(): Boolean = initialMatchesLoaded
 
-    override fun getMatches(userId: String, filter: String) : List<MatchResult> {
+    override fun getMatches(filter: String) : List<MatchResult> {
 
         if (!initialMatchesLoaded) {
             throw Exception("getMatches called before loadInitialMatches")
@@ -73,7 +76,7 @@ class MatchmefyServiceImpl(matchmefyRetrofitServiceFactory: MatchmefyRetrofitSer
     }
 
     override suspend fun deleteUserData(userId: String): Any {
-        return matchmefyApiService.deleteUserData(userId)
+        return matchmefyApiService.deleteUserData()
     }
 
     override fun deleteAll() {

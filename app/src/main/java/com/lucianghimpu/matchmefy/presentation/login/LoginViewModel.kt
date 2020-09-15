@@ -10,6 +10,7 @@ import com.lucianghimpu.matchmefy.data.dataModels.Artist
 import com.lucianghimpu.matchmefy.data.dataModels.Track
 import com.lucianghimpu.matchmefy.data.dataModels.User
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CreateUserRequest
 import com.lucianghimpu.matchmefy.data.dataServices.MatchmefyService
 import com.lucianghimpu.matchmefy.data.dataServices.SpotifyService
 import com.lucianghimpu.matchmefy.presentation.BaseViewModel
@@ -19,11 +20,11 @@ import timber.log.Timber
 
 class LoginViewModel(
     application: Application,
+    preferencesService: PreferencesService,
     appAuthService: AppAuthService,
-    private val preferencesService: PreferencesService,
     private val spotifyService : SpotifyService,
     private val matchmefyService: MatchmefyService
-) : BaseViewModel(application), AuthListener {
+) : BaseViewModel(application, preferencesService), AuthListener {
 
     init {
         appAuthService.setAuthListener(this)
@@ -67,9 +68,21 @@ class LoginViewModel(
 
                 AppAnalytics.trackLog("Fetched user data")
 
-                withContext(Dispatchers.IO) {
-                    matchmefyService.postUserData(CompleteUserData(data.first, data.second, data.third))
+                val spotifyToken = preferencesService.getString(PreferencesConstants.SPOTIFY_ACCESS_TOKEN_KEY)
+
+                val response = withContext(Dispatchers.IO) {
+                    matchmefyService.postUserData(CreateUserRequest(CompleteUserData(data.first, data.second, data.third), spotifyToken))
                 }
+
+                preferencesService.addString(
+                    PreferencesConstants.MATCHMEFY_ACCESS_TOKEN_KEY,
+                    response.accessToken,
+                    true)
+
+                preferencesService.addString(
+                    PreferencesConstants.MATCHMEFY_REFRESH_TOKEN_KEY,
+                    response.refreshToken,
+                    true)
 
                 AppAnalytics.trackLog("Added user data to Matchmefy API")
                 navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())

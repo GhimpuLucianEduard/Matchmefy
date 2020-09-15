@@ -20,7 +20,7 @@ class MainActivityViewModel(
     application: Application,
     preferencesService: PreferencesService,
     connectivityService: ConnectivityService
-) : BaseViewModel(application) {
+) : BaseViewModel(application, preferencesService) {
     private var _connectivityChangedEvent = MutableLiveData<Event<Boolean>>()
     val connectivityChangedEvent: LiveData<Event<Boolean>>
         get() = _connectivityChangedEvent

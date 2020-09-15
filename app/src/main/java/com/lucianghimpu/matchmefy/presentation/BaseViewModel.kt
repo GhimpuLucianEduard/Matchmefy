@@ -5,17 +5,21 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import com.lucianghimpu.matchmefy.MatchmefyApp
+import com.lucianghimpu.matchmefy.NavigationGraphDirections
 import com.lucianghimpu.matchmefy.R
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
+import com.lucianghimpu.matchmefy.appServices.PreferencesService
 import com.lucianghimpu.matchmefy.presentation.dialogs.Dialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialogListener
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Event
 import com.lucianghimpu.matchmefy.utilities.NavigationCommand
+import retrofit2.HttpException
 
 abstract class BaseViewModel(
-    application: Application
+    application: Application,
+    protected val preferencesService: PreferencesService
 ) : AndroidViewModel(application) {
 
     // TODO: make them private and use LiveData
@@ -49,17 +53,34 @@ abstract class BaseViewModel(
     fun handleError(ex: Exception) {
         AppAnalytics.trackError(ex)
         val context = this.getApplication<MatchmefyApp>().applicationContext
-        showDialog(SingleButtonDialog(
-            title =  context.getString(R.string.error_dialog_title),
-            description = context.getString(R.string.error_dialog_description),
-            descriptionSpan = ColoredTextSpan(27, 36),
-            imageId = R.drawable.dialog_warning,
-            buttonText = context.getString(R.string.error_dialog_button),
-            listener = object : SingleButtonDialogListener {
-                override fun onButtonClicked() {
-                    hideDialog()
+        if (ex is HttpException && ex.code() == 401) {
+            showDialog(SingleButtonDialog(
+                title =  context.getString(R.string.unauthorized_dialog_title),
+                description = context.getString(R.string.unauthorized_dialog_description),
+                descriptionSpan = ColoredTextSpan(62, 67),
+                imageId = R.drawable.dialog_warning,
+                buttonText = context.getString(R.string.error_dialog_button),
+                listener = object : SingleButtonDialogListener {
+                    override fun onButtonClicked() {
+                        hideDialog()
+                        preferencesService.deleteAll()
+                        navigate(NavigationGraphDirections.actionGlobalLoginFragment())
+                    }
                 }
-            }
-        ))
+            ))
+        } else {
+            showDialog(SingleButtonDialog(
+                title =  context.getString(R.string.error_dialog_title),
+                description = context.getString(R.string.error_dialog_description),
+                descriptionSpan = ColoredTextSpan(27, 36),
+                imageId = R.drawable.dialog_warning,
+                buttonText = context.getString(R.string.error_dialog_button),
+                listener = object : SingleButtonDialogListener {
+                    override fun onButtonClicked() {
+                        hideDialog()
+                    }
+                }
+            ))
+        }
     }
 }

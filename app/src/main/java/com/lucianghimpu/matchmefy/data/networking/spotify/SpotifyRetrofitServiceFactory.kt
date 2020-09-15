@@ -31,6 +31,7 @@ class SpotifyRetrofitServiceFactory(
                 Timber.d(message)
             }
         })
+
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         return OkHttpClient.Builder()

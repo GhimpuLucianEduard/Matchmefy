@@ -30,17 +30,17 @@ val appModule = module {
 
     viewModel { LoginViewModel(get(), get(), get(), get(), get()) }
     viewModel { WelcomeViewModel(get(), get()) }
-    viewModel { SearchViewModel(get(), get()) }
+    viewModel { SearchViewModel(get(), get(), get()) }
     viewModel { MatchesViewModel(get(), get(), get()) }
     viewModel { UserPreviewViewModel(get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get()) }
 
     // Used by the Match Result Fragments
-    viewModel { MatchResultViewModel(get(), get()) }
+    viewModel { MatchResultViewModel(get(), get(), get()) }
 
     // Dialogs
-    viewModel(named(SINGLE_BUTTON_DIALOG)) { DialogViewModel<SingleButtonDialog>(get()) }
-    viewModel(named(LOADING_DIALOG)) { DialogViewModel<LoadingDialog>(get()) }
-    viewModel(named(DOUBLE_BUTTON_DIALOG)) { DialogViewModel<DoubleButtonDialog>(get()) }
-    viewModel(named(NO_CONNECTION_DIALOG)) { DialogViewModel<NoConnectionDialog>(get()) }
+    viewModel(named(SINGLE_BUTTON_DIALOG)) { DialogViewModel<SingleButtonDialog>(get(), get()) }
+    viewModel(named(LOADING_DIALOG)) { DialogViewModel<LoadingDialog>(get(), get()) }
+    viewModel(named(DOUBLE_BUTTON_DIALOG)) { DialogViewModel<DoubleButtonDialog>(get(), get()) }
+    viewModel(named(NO_CONNECTION_DIALOG)) { DialogViewModel<NoConnectionDialog>(get(), get()) }
 }

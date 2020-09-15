@@ -1,12 +1,13 @@
 package com.lucianghimpu.matchmefy.data.dataServices
 
 import com.lucianghimpu.matchmefy.data.dataModels.User
-import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CompleteUserData
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CreateUserRequest
+import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.CreateUserResponse
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 
 interface MatchmefyService {
-    suspend fun postUserData(completeUserData: CompleteUserData)
+    suspend fun postUserData(createUserRequest: CreateUserRequest): CreateUserResponse
 
     suspend fun getRandomUser(): User
 
@@ -16,11 +17,11 @@ interface MatchmefyService {
                                limit: Int = 49,
                                offset: Int = 0) : SearchUsersResult
 
-    suspend fun matchUsers(firstUser: String, secondUser: String) : MatchResult
+    suspend fun matchUsers(user: String): MatchResult
 
-    suspend fun loadInitialMatches(userId: String) : List<MatchResult>
+    suspend fun loadInitialMatches(): List<MatchResult>
     fun initialMatchesLoaded() : Boolean
-    fun getMatches(userId: String, filter: String) : List<MatchResult>
+    fun getMatches(filter: String): List<MatchResult>
 
     suspend fun deleteUserData(userId: String): Any
     fun deleteAll()
