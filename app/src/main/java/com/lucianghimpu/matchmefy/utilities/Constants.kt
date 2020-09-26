@@ -7,6 +7,7 @@ object DIConstants {
     const val DOUBLE_BUTTON_DIALOG = "doubleButtonDialog"
     const val LOADING_DIALOG = "loadingDialog"
     const val NO_CONNECTION_DIALOG = "noConnectionDialog"
+    const val TERMS_AND_PRIVACY_DIALOG = "termsAndPrivacyDialog"
 }
 
 object SpotifyAuthConstants {
@@ -42,4 +43,5 @@ object DialogTagsConstants {
     const val DOUBLE_BUTTON_DIALOG_TAG = "doubleButtonDialog"
     const val LOADING_DIALOG_TAG = "loadingDialog"
     const val NO_CONNECTION_DIALOG_TAG = "noConnectionDialog"
+    const val TERMS_AND_PRIVACY_DIALOG_TAG = "termsAndPrivacyDialog"
 }

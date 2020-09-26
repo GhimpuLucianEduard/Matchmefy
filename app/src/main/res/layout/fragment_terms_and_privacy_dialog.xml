@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.lucianghimpu.matchmefy.presentation.dialogs.termsAndPrivacy.TermsAndPrivacyDialog" />
+
+        <variable
+            name="viewModel"
+            type="com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel&lt;TermsAndPrivacyDialog&gt;" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/DialogCardViewLayout"
+        tools:context=".presentation.dialogs.termsAndPrivacy.TermsAndPrivacyDialogFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primaryGray"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- TODO: Update blank fragment layout -->
+            <TextView
+                android:id="@+id/titleText"
+                style="@style/DialogTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/terms_and_privacy_dialog_title" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/data_privacy" />
+
+            <TextView
+                android:id="@+id/descriptionText"
+                style="@style/DialogParagraphText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/terms_and_privacy_dialog_description" />
+
+            <TextView
+                style="@style/DialogParagraphText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/terms_and_conditions"
+                android:textColor="@color/pastelRose" />
+
+            <TextView
+                style="@style/DialogParagraphText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/pastelRose" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="@dimen/dialog_button_bottom_margin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/UnfilledButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dialog_button_middle_margin"
+                    android:text="@string/cancel_dialog_button"
+                    android:onClick="@{() -> viewModel.dialog.listener.onNegativeButtonClicked()}"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/UnfilledButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dialog_button_middle_margin"
+                    android:text="@string/terms_and_privacy_dialog_positive_button"
+                    android:onClick="@{() -> viewModel.dialog.listener.onPositiveButtonClicked()}"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -31,8 +31,7 @@
             android:layout_margin="8dp"
             android:fadingEdge="horizontal"
             android:fadingEdgeLength="24dp"
-            android:requiresFadingEdge="vertical"
-            android:overScrollMode="never" />
+            android:requiresFadingEdge="vertical" />
 
     </LinearLayout>
 

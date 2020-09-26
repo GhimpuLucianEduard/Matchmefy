@@ -69,7 +69,7 @@ class SettingsViewModel(
 
     fun openWebsite() {
         AppAnalytics.trackEvent("website_clicked")
-        _openLinkInBrowserEvent.value = Event("https://matchmefy.com")
+        _openLinkInBrowserEvent.value = Event("http://www.matchmefy.com/")
     }
 
     fun openEmail() {

@@ -6,6 +6,7 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButton
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.noConnection.NoConnectionDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.termsAndPrivacy.TermsAndPrivacyDialog
 import com.lucianghimpu.matchmefy.presentation.login.LoginViewModel
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
 import com.lucianghimpu.matchmefy.presentation.matches.MatchesViewModel
@@ -17,6 +18,7 @@ import com.lucianghimpu.matchmefy.utilities.DIConstants.DOUBLE_BUTTON_DIALOG
 import com.lucianghimpu.matchmefy.utilities.DIConstants.LOADING_DIALOG
 import com.lucianghimpu.matchmefy.utilities.DIConstants.NO_CONNECTION_DIALOG
 import com.lucianghimpu.matchmefy.utilities.DIConstants.SINGLE_BUTTON_DIALOG
+import com.lucianghimpu.matchmefy.utilities.DIConstants.TERMS_AND_PRIVACY_DIALOG
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -43,4 +45,5 @@ val appModule = module {
     viewModel(named(LOADING_DIALOG)) { DialogViewModel<LoadingDialog>(get(), get()) }
     viewModel(named(DOUBLE_BUTTON_DIALOG)) { DialogViewModel<DoubleButtonDialog>(get(), get()) }
     viewModel(named(NO_CONNECTION_DIALOG)) { DialogViewModel<NoConnectionDialog>(get(), get()) }
+    viewModel(named(TERMS_AND_PRIVACY_DIALOG)) { DialogViewModel<TermsAndPrivacyDialog>(get(), get()) }
 }

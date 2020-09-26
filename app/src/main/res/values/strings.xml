@@ -77,6 +77,10 @@
     <string name="error_dialog_description">An error occurred\nPlease try again later</string>
     <string name="error_dialog_button">OK</string>
 
+    <string name="terms_and_privacy_dialog_title">Terms and Privacy</string>
+    <string name="terms_and_privacy_dialog_description">Before you start using our app we\nmust ask you to agree to the following:</string>
+    <string name="terms_and_privacy_dialog_positive_button">Accept</string>
+
     <string name="create">create</string>
     <string name="search_for_a_match">Search for a match</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -86,6 +90,7 @@
     <string name="get_started">Get Started</string>
     <string name="about">About</string>
     <string name="non_commercial_app_created_by">Non-commercial app created by:</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
 
 
 </resources>

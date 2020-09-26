@@ -31,7 +31,6 @@ class LoginViewModel(
     }
 
     fun onSignInClicked() {
-        AppAnalytics.trackEvent("login_button_clicked")
         isBusy.value = true
     }
 
