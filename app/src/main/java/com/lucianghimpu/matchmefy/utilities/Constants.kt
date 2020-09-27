@@ -38,6 +38,13 @@ object ApiConstants {
     const val MATCHMEFY_API_BASE_URL = "https://matchmefy-api.herokuapp.com"
 }
 
+object WebConstants {
+    const val MATCHMEFY_WEB = "https://www.matchmefy.com"
+    const val MATCHMEFY_MOBILE_TERMS = "https://www.matchmefy.com/mobile-terms"
+    const val MATCHMEFY_MOBILE_PRIVACY_POLICY = "https://www.matchmefy.com/mobile-privacy"
+    const val MATCHMEFY_GITHUB = "https://github.com/GhimpuLucianEduard/Matchmefy"
+}
+
 object DialogTagsConstants {
     const val SINGLE_BUTTON_DIALOG_TAG = "singleButtonDialog"
     const val DOUBLE_BUTTON_DIALOG_TAG = "doubleButtonDialog"

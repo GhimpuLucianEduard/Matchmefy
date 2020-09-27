@@ -31,7 +31,7 @@ class AboutFragment : BaseFragment<SettingsViewModel, FragmentAboutBinding>(
     }
 
     private fun initObservers() {
-        viewModel.openLinkInBrowserEvent.observe(this@AboutFragment, EventObserver {
+        viewModel.openLinkInBrowserAboutEvent.observe(this@AboutFragment, EventObserver {
             try {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
                 startActivity(browserIntent)

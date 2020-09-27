@@ -19,6 +19,7 @@ import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Event
 import com.lucianghimpu.matchmefy.utilities.PreferencesConstants
+import com.lucianghimpu.matchmefy.utilities.WebConstants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -44,6 +45,10 @@ class SettingsViewModel(
     val openLinkInBrowserEvent: MutableLiveData<Event<String>>
         get() = _openLinkInBrowserEvent
 
+    private var _openLinkInBrowserAboutEvent = MutableLiveData<Event<String>>()
+    val openLinkInBrowserAboutEvent: MutableLiveData<Event<String>>
+        get() = _openLinkInBrowserAboutEvent
+
     private var _openEmailEvent = MutableLiveData<Event<Any>>()
     val openEmailEvent: MutableLiveData<Event<Any>>
         get() = _openEmailEvent
@@ -57,6 +62,16 @@ class SettingsViewModel(
         _appVersion.value = "AppVersion: ${BuildConfig.VERSION_NAME}"
     }
 
+    fun openPrivacyPolicy() {
+        AppAnalytics.trackEvent("privacy_policy_settings_clicked")
+        _openLinkInBrowserEvent.value = Event(WebConstants.MATCHMEFY_MOBILE_PRIVACY_POLICY)
+    }
+
+    fun openTerms() {
+        AppAnalytics.trackEvent("terms_settings_clicked")
+        _openLinkInBrowserEvent.value = Event(WebConstants.MATCHMEFY_MOBILE_TERMS)
+    }
+
     fun onAboutClicked() {
         AppAnalytics.trackEvent("about_clicked")
         navigate(SettingsFragmentDirections.actionSettingsFragmentToAboutFragment())
@@ -64,12 +79,12 @@ class SettingsViewModel(
 
     fun openGitHubPage() {
         AppAnalytics.trackEvent("github_clicked")
-        _openLinkInBrowserEvent.value = Event("https://github.com/GhimpuLucianEduard")
+        _openLinkInBrowserAboutEvent.value = Event(WebConstants.MATCHMEFY_GITHUB)
     }
 
     fun openWebsite() {
         AppAnalytics.trackEvent("website_clicked")
-        _openLinkInBrowserEvent.value = Event("http://www.matchmefy.com/")
+        _openLinkInBrowserAboutEvent.value = Event(WebConstants.MATCHMEFY_WEB)
     }
 
     fun openEmail() {

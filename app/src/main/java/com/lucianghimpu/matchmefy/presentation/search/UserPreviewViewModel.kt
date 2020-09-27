@@ -29,7 +29,7 @@ class UserPreviewViewModel(
     fun onMatchClicked() {
         viewModelScope.launch {
             try {
-                isBusy.value = true
+                _isBusy.value = true
                 val data = withContext(Dispatchers.IO) {
                     matchmefyService.matchUsers(matchingUser.value!!.id)
                 }
@@ -40,7 +40,7 @@ class UserPreviewViewModel(
                 handleError(ex)
             }
             finally {
-                isBusy.value = false
+                _isBusy.value = false
             }
         }
     }

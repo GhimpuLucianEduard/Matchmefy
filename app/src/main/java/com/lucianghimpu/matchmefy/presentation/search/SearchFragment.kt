@@ -45,7 +45,11 @@ class SearchFragment() : BaseFragment<SearchViewModel, FragmentSearchBinding>(
 
         // updated empty state visibility when request ends
         viewModel.isBusy.observe(this@SearchFragment, Observer {
-            if (!it) {
+            if (it) {
+                progressIndicator.show()
+                emptyStateView.visibility = View.GONE
+            } else {
+                progressIndicator.hide()
                 if (viewModel.users.value.isNullOrEmpty()) {
                     emptyStateView.visibility = View.VISIBLE
                 } else {

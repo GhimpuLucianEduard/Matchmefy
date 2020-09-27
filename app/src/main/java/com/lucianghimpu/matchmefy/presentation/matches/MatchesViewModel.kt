@@ -27,7 +27,7 @@ class MatchesViewModel(
         get() = _matches
 
     init {
-        isBusy.value = false
+        _isBusy.value = false
         if (!matchmefyService.initialMatchesLoaded()) {
             Timber.d("Loading initial matches")
             loadInitialMatches()
@@ -51,7 +51,7 @@ class MatchesViewModel(
     private fun loadInitialMatches() {
         viewModelScope.launch {
             try {
-                isBusy.value = true
+                _isBusy.value = true
                 val matches = withContext(Dispatchers.IO) {
                     matchmefyService.loadInitialMatches()
                 }
@@ -60,7 +60,7 @@ class MatchesViewModel(
             } catch (ex: Exception) {
                 handleError(ex)
             } finally {
-                isBusy.value = false
+                _isBusy.value = false
             }
         }
     }

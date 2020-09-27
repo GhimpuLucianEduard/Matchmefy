@@ -73,7 +73,6 @@ class MatchResultViewModel(
         }
     }
 
-    // TODO: move to xml
     val isBackButtonVisible: LiveData<Boolean> = Transformations.map(_state) {
         it != MatchResultState.SCORE
     }

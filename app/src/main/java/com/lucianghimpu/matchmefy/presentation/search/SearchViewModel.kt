@@ -39,17 +39,17 @@ class SearchViewModel(
         get() = _users
 
     init {
-        isBusy.value = false
+        _isBusy.value = false
     }
 
     fun getSearchResults() {
         // avoid searching for the same query
-        if (searchText.value != lastSearchQuery) {
+        if (searchText.value != lastSearchQuery && searchText.value!!.length >= 3) {
             lastSearchQuery = searchText.value!!
             lastJob?.cancel("Cancelled last job caused by text change")
             lastJob = viewModelScope.launch {
                 try {
-                    isBusy.value = true
+                    _isBusy.value = true
                     // Debounce
                     delay(200)
                     val data = withContext(Dispatchers.IO) {
@@ -73,10 +73,7 @@ class SearchViewModel(
                     _users.value = null
                 }
                 finally {
-
-
-
-                    isBusy.value = false
+                    _isBusy.value = false
                 }
             }
         }
@@ -113,7 +110,7 @@ class SearchViewModel(
     private fun fetchRandomUser() {
         viewModelScope.launch {
             try {
-                isBusy.value = true
+                _isBusy.value = true
                 showDialog(LoadingDialog())
                 val randomUser = withContext(Dispatchers.IO) {
                     matchmefyService.getRandomUser()
@@ -128,7 +125,7 @@ class SearchViewModel(
                 handleError(ex)
             }
             finally {
-                isBusy.value = false
+                _isBusy.value = false
             }
         }
     }

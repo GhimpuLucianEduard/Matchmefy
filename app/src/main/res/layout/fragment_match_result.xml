@@ -92,18 +92,18 @@
                 visibleOrGone="@{viewModel.state == MatchResultState.PLAYLIST}">
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/BaseButton"
-                    android:layout_width="@dimen/button_width_small"
-                    android:layout_marginEnd="24dp"
-                    android:text="@string/create"
-                    android:onClick="@{() -> viewModel.onCreatePlaylistClicked()}"/>
-
-                <com.google.android.material.button.MaterialButton
                     style="@style/UnfilledSmallButton"
                     android:layout_width="@dimen/button_width_small"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
                     android:text="@string/not_now"
                     android:onClick="@{() -> viewModel.navigateToMatches()}"/>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/BaseButton"
+                    android:layout_width="@dimen/button_width_small"
+                    android:layout_marginStart="24dp"
+                    android:text="@string/create"
+                    android:onClick="@{() -> viewModel.onCreatePlaylistClicked()}"/>
 
             </LinearLayout>
 

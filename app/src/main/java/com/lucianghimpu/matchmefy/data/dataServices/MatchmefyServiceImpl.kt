@@ -7,6 +7,8 @@ import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.MatchResult
 import com.lucianghimpu.matchmefy.data.dataModels.matchmefyAPI.SearchUsersResult
 import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyApiService
 import com.lucianghimpu.matchmefy.data.networking.matchmefy.MatchmefyRetrofitServiceFactory
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MatchmefyServiceImpl(
     matchmefyRetrofitServiceFactory: MatchmefyRetrofitServiceFactory
@@ -64,7 +66,10 @@ class MatchmefyServiceImpl(
         if (filter.isNotEmpty()) {
             return userMatches
                 .filter {
-                    match -> match.matchingUser.display_name.contains(filter) }
+                    match -> match.matchingUser.display_name
+                        .toLowerCase(Locale.getDefault())
+                        .contains(filter)
+                }
                 .sortedByDescending {
                     it.matchingScore.toFloat()
                 }

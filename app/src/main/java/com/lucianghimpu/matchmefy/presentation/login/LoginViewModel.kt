@@ -31,7 +31,7 @@ class LoginViewModel(
     }
 
     fun onSignInClicked() {
-        isBusy.value = true
+        _isBusy.value = true
     }
 
     override fun onSuccess() {
@@ -41,13 +41,13 @@ class LoginViewModel(
 
     override fun onError(ex: Exception) {
         AppAnalytics.trackEvent("auth_error")
-        isBusy.value = false
+        _isBusy.value = false
         handleError(ex)
     }
 
     override fun onCancel() {
         AppAnalytics.trackEvent("auth_cancel")
-        isBusy.value = false
+        _isBusy.value = false
     }
 
     private fun getInitialData() {

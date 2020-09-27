@@ -25,8 +25,6 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    // TODO: move these in a Presentation Module
-
     // Used by MainActivity and other fragments
     viewModel { MainActivityViewModel(get(), get(), get()) }
 

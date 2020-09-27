@@ -2,6 +2,7 @@ package com.lucianghimpu.matchmefy.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDirections
 import com.lucianghimpu.matchmefy.MatchmefyApp
@@ -22,25 +23,33 @@ abstract class BaseViewModel(
     protected val preferencesService: PreferencesService
 ) : AndroidViewModel(application) {
 
-    // TODO: make them private and use LiveData
-    var showDialogEvent = MutableLiveData<Event<Dialog>>()
-    var navigationEvent = MutableLiveData<Event<NavigationCommand>>()
-    var isBusy = MutableLiveData<Boolean>()
+
+    private var _showDialogEvent = MutableLiveData<Event<Dialog>>()
+    val showDialogEvent: LiveData<Event<Dialog>>
+        get() = _showDialogEvent
+
+    private var _navigationEvent = MutableLiveData<Event<NavigationCommand>>()
+    val navigationEvent: LiveData<Event<NavigationCommand>>
+        get() = _navigationEvent
+
+    protected var _isBusy = MutableLiveData<Boolean>()
+    val isBusy: LiveData<Boolean>
+        get() = _isBusy
 
     private var _hideDialogEvent = MutableLiveData<Event<Any>>()
-    val hideDialogEvent: MutableLiveData<Event<Any>>
+    val hideDialogEvent: LiveData<Event<Any>>
         get() = _hideDialogEvent
 
     fun navigate(directions: NavDirections) {
-        navigationEvent.value = Event(NavigationCommand.To(directions))
+        _navigationEvent.value = Event(NavigationCommand.To(directions))
     }
 
     fun navigateBack() {
-        navigationEvent.value = Event(NavigationCommand.Back)
+        _navigationEvent.value = Event(NavigationCommand.Back)
     }
 
     fun showDialog(dialog: Dialog) {
-        showDialogEvent.value = Event(dialog)
+        _showDialogEvent.value = Event(dialog)
     }
 
     /**
