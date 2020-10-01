@@ -62,8 +62,8 @@ class LoginViewModel(
                 preferencesService.addObject(PreferencesConstants.USER_PROFILE_KEY, data.first)
 
                 Timber.d("Fetched profile for: ${data.first.display_name}")
-                Timber.d("Fetched top artists, with count: ${data.second.size} and top artist: ${data.second[0].name}")
-                Timber.d("Fetched top tracks, with count: ${data.third.size} and top track: ${data.third[0].name}")
+                Timber.d("Fetched top artists, with count: ${data.second.size}}")
+                Timber.d("Fetched top tracks, with count: ${data.third.size}}")
 
                 AppAnalytics.trackLog("Fetched user data")
 
@@ -88,6 +88,9 @@ class LoginViewModel(
 
             } catch (ex: Exception) {
                 handleError(ex)
+            }
+            finally {
+                _isBusy.value = false
             }
         }
     }

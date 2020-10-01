@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         mainActivityViewModel.connectivityChangedEvent.observe(this, EventObserver {
             if (it) {
-                AppAnalytics.trackLog("Dismissing no connection dialog")
+                AppAnalytics.trackLog("Dismissing no connection dialog if present")
                 noConnectionDialogFragment?.dismiss()
                 noConnectionDialogFragment = null
             } else {

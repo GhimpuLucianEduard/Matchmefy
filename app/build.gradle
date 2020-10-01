@@ -21,7 +21,7 @@ secretsProperties.load(new FileInputStream(secretsPropertiesFile))
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.lucianghimpu.matchmefy"
         manifestPlaceholders = [
@@ -36,8 +36,20 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
 
@@ -70,8 +82,6 @@ dependencies {
     def gsonVersion = "2.8.6"
     def retrofit2version = "2.7.1"
     def koin_version = "2.0.1"
-    def lottieVersion = "3.4.0"
-    def paging_version = "2.1.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -112,24 +122,11 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
-    // airbnb lottie
-    implementation "com.airbnb.android:lottie:$lottieVersion"
-
-    // paging
-    implementation "androidx.paging:paging-runtime:$paging_version"
-
-    // rxkotlin for search service (corutine issue)
-    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
-
     // view pager
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
-    // dits indicator
+    // dots indicator
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
-
-    // carousel
-    implementation 'com.yarolegovich:discrete-scrollview:1.4.9'
-    implementation 'com.ramotion.cardslider:card-slider:0.3.1'
 
     // flexbox layout
     implementation 'com.google.android:flexbox:2.0.1'
@@ -149,7 +146,6 @@ dependencies {
 
     // merlin
     implementation 'com.novoda:merlin:1.2.0'
-
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

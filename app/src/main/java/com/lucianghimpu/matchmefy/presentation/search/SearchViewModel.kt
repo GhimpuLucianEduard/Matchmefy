@@ -43,6 +43,13 @@ class SearchViewModel(
     }
 
     fun getSearchResults() {
+
+        // clear for
+        if (searchText.value == String.empty) {
+            _users.value = emptyList()
+            return
+        }
+
         // avoid searching for the same query
         if (searchText.value != lastSearchQuery && searchText.value!!.length >= 3) {
             lastSearchQuery = searchText.value!!

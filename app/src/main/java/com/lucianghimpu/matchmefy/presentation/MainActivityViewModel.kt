@@ -33,12 +33,8 @@ class MainActivityViewModel(
         }
 
         connectivityService.setConnectivityListener(object : ConnectivityServiceListener {
-            override fun onConnected() {
-                _connectivityChangedEvent.postValue(Event(true))
-            }
-
-            override fun onDisconnected() {
-                _connectivityChangedEvent.postValue(Event(false))
+            override fun onConnectivityChanged(hasConnection: Boolean) {
+                _connectivityChangedEvent.postValue(Event(hasConnection))
             }
         })
     }

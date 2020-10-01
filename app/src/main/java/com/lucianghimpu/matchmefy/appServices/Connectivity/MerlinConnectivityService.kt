@@ -3,6 +3,7 @@ package com.lucianghimpu.matchmefy.appServices.Connectivity
 import android.content.Context
 import com.lucianghimpu.matchmefy.appServices.AppAnalytics
 import com.novoda.merlin.Merlin
+import com.novoda.merlin.MerlinsBeard
 import timber.log.Timber
 
 
@@ -16,7 +17,12 @@ class MerlinConnectivityService(
         .withDisconnectableCallbacks()
         .build(context)
 
+    private val merlinBeard = MerlinsBeard
+        .Builder()
+        .build(context)
+
     private var hasConnection: Boolean = false
+
     private var connectivityServiceListener: ConnectivityServiceListener? = null
 
     override fun start() {
@@ -31,21 +37,27 @@ class MerlinConnectivityService(
         merlin.unbind()
     }
 
-    override fun hasConnection(): Boolean = hasConnection
+    override fun hasConnection() = hasConnection
 
     override fun setConnectivityListener(connectivityServiceListener: ConnectivityServiceListener) {
         this.connectivityServiceListener = connectivityServiceListener
     }
 
+    private fun checkInternetConnection() {
+        merlinBeard.hasInternetAccess { hasAccess ->
+            AppAnalytics.trackLog("Connectivity changed: $hasAccess")
+            hasConnection = hasAccess
+            connectivityServiceListener?.onConnectivityChanged(hasConnection)
+        }
+    }
+
     private fun onConnected() {
-        hasConnection = true
-        AppAnalytics.trackLog("Connected to Internet")
-        connectivityServiceListener?.onConnected()
+        AppAnalytics.trackLog("Connected to a network")
+        checkInternetConnection()
     }
 
     private fun onDisconnected() {
-        hasConnection = false
-        AppAnalytics.trackLog("Disconnected from Internet")
-        connectivityServiceListener?.onDisconnected()
+        AppAnalytics.trackLog("Disconnected from a network")
+        checkInternetConnection()
     }
 }
