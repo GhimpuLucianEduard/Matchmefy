@@ -21,7 +21,7 @@ import timber.log.Timber
 class LoginViewModel(
     application: Application,
     preferencesService: PreferencesService,
-    appAuthService: AppAuthService,
+    private val appAuthService: AppAuthService,
     private val spotifyService : SpotifyService,
     private val matchmefyService: MatchmefyService
 ) : BaseViewModel(application, preferencesService), AuthListener {
@@ -87,6 +87,7 @@ class LoginViewModel(
                 navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
 
             } catch (ex: Exception) {
+                preferencesService.deleteAll()
                 handleError(ex)
             }
             finally {

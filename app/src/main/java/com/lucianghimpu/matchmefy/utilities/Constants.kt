@@ -35,7 +35,7 @@ object PreferencesConstants {
 
 object ApiConstants {
     const val SPOTIFY_API_BASE_URL = "https://api.spotify.com"
-    const val MATCHMEFY_API_BASE_URL = "https://matchmefy-api.herokuapp.com"
+    const val MATCHMEFY_API_BASE_URL = BuildConfig.matchmefy_api_url
 }
 
 object WebConstants {

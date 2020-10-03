@@ -19,7 +19,19 @@ def secretsPropertiesFile = rootProject.file("secrets.properties");
 def secretsProperties = new Properties()
 secretsProperties.load(new FileInputStream(secretsPropertiesFile))
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
@@ -30,26 +42,23 @@ android {
         buildConfigField("String", "spotify_client_id", secretsProperties['spotify_client_id'])
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "matchmefy_api_url", secretsProperties['matchmefy_api_url_dev'])
+        }
+
         release {
-            // Enables code shrinking, obfuscation, and optimization for only
-            // your project's release build type.
+            buildConfigField("String", "matchmefy_api_url", secretsProperties['matchmefy_api_url_live'])
             minifyEnabled true
-
-            // Enables resource shrinking, which is performed by the
-            // Android Gradle plugin.
             shrinkResources true
-
-            // Includes the default ProGuard rules files that are packaged with
-            // the Android Gradle plugin. To learn more, go to the section about
-            // R8 configuration files.
             proguardFiles getDefaultProguardFile(
                     'proguard-android-optimize.txt'),
                     'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

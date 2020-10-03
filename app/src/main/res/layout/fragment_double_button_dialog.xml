@@ -64,16 +64,16 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/negativeButton"
                     style="@style/UnfilledSmallButton"
                     android:layout_marginEnd="@dimen/dialog_button_middle_margin"
-                    android:text="@{viewModel.dialog.positiveButtonText}"
-                    android:onClick="@{() -> viewModel.dialog.listener.onPositiveButtonClicked()}"/>
+                    android:text="@{viewModel.dialog.negativeButtonText}"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/positiveButton"
                     style="@style/UnfilledSmallButton"
                     android:layout_marginStart="@dimen/dialog_button_middle_margin"
-                    android:text="@{viewModel.dialog.negativeButtonText}"
-                    android:onClick="@{() -> viewModel.dialog.listener.onNegativeButtonClicked()}"/>
+                    android:text="@{viewModel.dialog.positiveButtonText}"/>
 
             </LinearLayout>
 

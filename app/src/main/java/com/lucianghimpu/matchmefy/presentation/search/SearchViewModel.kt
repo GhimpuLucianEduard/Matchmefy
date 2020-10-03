@@ -47,6 +47,7 @@ class SearchViewModel(
         // clear for
         if (searchText.value == String.empty) {
             _users.value = emptyList()
+            _isBusy.value = false
             return
         }
 
@@ -102,13 +103,11 @@ class SearchViewModel(
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("match_random_user")
-                    hideDialog()
                     fetchRandomUser()
                 }
 
                 override fun onNegativeButtonClicked() {
                     AppAnalytics.trackEvent("cancel_match_random_user")
-                    hideDialog()
                 }
             }
         ))
@@ -124,11 +123,11 @@ class SearchViewModel(
                 }
                 Timber.d("Fetched random user: ${randomUser.display_name}")
                 AppAnalytics.trackLog("Fetched random user")
-                hideDialog()
+                hideLoadingDialog()
                 navigate(SearchFragmentDirections.actionSearchFragmentToUserPreviewFragment(randomUser))
             }
             catch (ex: Exception) {
-                hideDialog()
+                hideLoadingDialog()
                 handleError(ex)
             }
             finally {

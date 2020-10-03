@@ -75,20 +75,20 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/negativeButton"
                     style="@style/UnfilledButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dialog_button_middle_margin"
-                    android:text="@string/cancel_dialog_button"
-                    android:onClick="@{() -> viewModel.dialog.listener.onNegativeButtonClicked()}"/>
+                    android:text="@string/cancel_dialog_button"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/positiveButton"
                     style="@style/UnfilledButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dialog_button_middle_margin"
-                    android:text="@string/terms_and_privacy_dialog_positive_button"
-                    android:onClick="@{() -> viewModel.dialog.listener.onPositiveButtonClicked()}"/>
+                    android:text="@string/terms_and_privacy_dialog_positive_button" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

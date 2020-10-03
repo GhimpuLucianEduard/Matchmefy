@@ -38,7 +38,7 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(
 
     protected lateinit var mainActivity: MainActivity
 
-    private var displayedDialog: DialogFragment? = null
+    private var displayedLoadingDialog: DialogFragment? = null
 
     private fun initBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
@@ -74,8 +74,10 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(
 
     private fun showDialogFragment(dialogFragment: DialogFragment, tag: String) {
         AppAnalytics.trackLog("Showing dialog of type: $tag in ${this::class.simpleName}")
-        displayedDialog = dialogFragment
-        displayedDialog!!.show(this.fragmentManager!!, tag)
+        if (tag == LOADING_DIALOG_TAG) {
+            displayedLoadingDialog = dialogFragment
+        }
+        dialogFragment.show(this.fragmentManager!!, tag)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -98,9 +100,9 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding>(
             }
         })
 
-        viewModel.hideDialogEvent.observe(viewLifecycleOwner, EventObserver {
-            if (displayedDialog != null) {
-                displayedDialog!!.dismiss()
+        viewModel.hideLoadingDialogEvent.observe(viewLifecycleOwner, EventObserver {
+            if (displayedLoadingDialog != null) {
+                displayedLoadingDialog!!.dismiss()
             }
         })
 

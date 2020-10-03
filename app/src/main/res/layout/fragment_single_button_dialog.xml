@@ -55,11 +55,11 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/button"
                 style="@style/UnfilledSmallButton"
                 android:layout_marginTop="@dimen/dialog_button_top_margin"
                 android:layout_marginBottom="@dimen/dialog_button_bottom_margin"
-                android:text="@{viewModel.dialog.buttonText}"
-                android:onClick="@{() -> viewModel.dialog.listener.onButtonClicked()}"/>
+                android:text="@{viewModel.dialog.buttonText}"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

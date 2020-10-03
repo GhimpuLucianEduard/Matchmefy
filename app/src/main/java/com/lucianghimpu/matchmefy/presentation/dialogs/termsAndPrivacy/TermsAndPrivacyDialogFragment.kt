@@ -7,6 +7,7 @@ import com.lucianghimpu.matchmefy.databinding.FragmentTermsAndPrivacyDialogBindi
 import com.lucianghimpu.matchmefy.presentation.dialogs.BaseDialogFragment
 import com.lucianghimpu.matchmefy.presentation.dialogs.DialogViewModel
 import com.lucianghimpu.matchmefy.utilities.DIConstants
+import kotlinx.android.synthetic.main.fragment_double_button_dialog.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 
@@ -23,5 +24,15 @@ class TermsAndPrivacyDialogFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.initData(termsAndPrivacyDialog)
+
+        negativeButton.setOnClickListener {
+            viewModel.dialog.value?.listener?.onNegativeButtonClicked()
+            dismiss()
+        }
+
+        positiveButton.setOnClickListener {
+            viewModel.dialog.value?.listener?.onPositiveButtonClicked()
+            dismiss()
+        }
     }
 }

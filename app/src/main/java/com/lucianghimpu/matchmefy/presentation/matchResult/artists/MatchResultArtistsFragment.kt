@@ -31,7 +31,7 @@ class MatchResultArtistsFragment : BaseFragment<MatchResultViewModel, FragmentMa
             adapter.submitList(result.matchingArtists.map {
                 CarouselItem(
                     title = it.name,
-                    imageUrl = it.images.first().url
+                    imageUrl = it.images.firstOrNull()?.url
                 )
             })
         })

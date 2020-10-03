@@ -23,7 +23,6 @@ abstract class BaseViewModel(
     protected val preferencesService: PreferencesService
 ) : AndroidViewModel(application) {
 
-
     private var _showDialogEvent = MutableLiveData<Event<Dialog>>()
     val showDialogEvent: LiveData<Event<Dialog>>
         get() = _showDialogEvent
@@ -36,9 +35,9 @@ abstract class BaseViewModel(
     val isBusy: LiveData<Boolean>
         get() = _isBusy
 
-    private var _hideDialogEvent = MutableLiveData<Event<Any>>()
-    val hideDialogEvent: LiveData<Event<Any>>
-        get() = _hideDialogEvent
+    private var _hideLoadingDialogEvent = MutableLiveData<Event<Any>>()
+    val hideLoadingDialogEvent: LiveData<Event<Any>>
+        get() = _hideLoadingDialogEvent
 
     fun navigate(directions: NavDirections) {
         _navigationEvent.value = Event(NavigationCommand.To(directions))
@@ -53,10 +52,10 @@ abstract class BaseViewModel(
     }
 
     /**
-     * Hides last visible dialog
+     * Hides last visible loading dialog
      */
-    fun hideDialog() {
-        _hideDialogEvent.value = Event(Any())
+    fun hideLoadingDialog() {
+        _hideLoadingDialogEvent.value = Event(Any())
     }
 
     fun handleError(ex: Exception) {
@@ -71,7 +70,7 @@ abstract class BaseViewModel(
                 buttonText = context.getString(R.string.error_dialog_button),
                 listener = object : SingleButtonDialogListener {
                     override fun onButtonClicked() {
-                        hideDialog()
+                        AppAnalytics.trackEvent("session_expired_redirect_to_login_clicked")
                         preferencesService.deleteAll()
                         navigate(NavigationGraphDirections.actionGlobalLoginFragment())
                     }
@@ -86,7 +85,7 @@ abstract class BaseViewModel(
                 buttonText = context.getString(R.string.error_dialog_button),
                 listener = object : SingleButtonDialogListener {
                     override fun onButtonClicked() {
-                        hideDialog()
+                        AppAnalytics.trackEvent("generic_error_ok_clicked")
                     }
                 }
             ))

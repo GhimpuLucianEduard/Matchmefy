@@ -19,6 +19,8 @@ import com.lucianghimpu.matchmefy.presentation.BaseViewModel
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialog
 import com.lucianghimpu.matchmefy.presentation.dialogs.doubleButton.DoubleButtonDialogListener
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialog
+import com.lucianghimpu.matchmefy.presentation.dialogs.singleButton.SingleButtonDialogListener
 import com.lucianghimpu.matchmefy.utilities.ColoredTextSpan
 import com.lucianghimpu.matchmefy.utilities.Event
 import kotlinx.coroutines.Dispatchers
@@ -97,26 +99,38 @@ class MatchResultViewModel(
 
     fun onCreatePlaylistClicked() {
         AppAnalytics.trackEvent("create_playlist_clicked")
-        showDialog(DoubleButtonDialog(
-            title = context.getString(R.string.create_playlist_dialog_title),
-            description = context.getString(R.string.create_playlist_dialog_description),
-            descriptionSpan = ColoredTextSpan(26, 47),
-            imageId = R.drawable.dialog_warning,
-            positiveButtonText = context.getString(R.string.create_dialog_button),
-            negativeButtonText = context.getString(R.string.cancel_dialog_button),
-            listener = object : DoubleButtonDialogListener {
-                override fun onPositiveButtonClicked() {
-                    AppAnalytics.trackEvent("create_playlist_confirmation_clicked")
-                    hideDialog()
-                    createPlaylist()
+        if (matchResult.value!!.user.id == matchResult.value!!.matchingUser.id) {
+            showDialog(SingleButtonDialog(
+                title = context.getString(R.string.create_playlist_dialog_error_title),
+                description = context.getString(R.string.create_playlist_dialog_error_description),
+                imageId = R.drawable.dialog_warning,
+                buttonText = context.getString(R.string.error_dialog_button),
+                listener = object : SingleButtonDialogListener {
+                    override fun onButtonClicked() {
+                        AppAnalytics.trackEvent("create_playlist_self_error_clicked")
+                    }
                 }
+            ))
+        } else {
+            showDialog(DoubleButtonDialog(
+                title = context.getString(R.string.create_playlist_dialog_title),
+                description = context.getString(R.string.create_playlist_dialog_description),
+                descriptionSpan = ColoredTextSpan(26, 47),
+                imageId = R.drawable.dialog_warning,
+                positiveButtonText = context.getString(R.string.create_dialog_button),
+                negativeButtonText = context.getString(R.string.cancel_dialog_button),
+                listener = object : DoubleButtonDialogListener {
+                    override fun onPositiveButtonClicked() {
+                        AppAnalytics.trackEvent("create_playlist_confirmation_clicked")
+                        createPlaylist()
+                    }
 
-                override fun onNegativeButtonClicked() {
-                    AppAnalytics.trackEvent("cancel_create_playlist")
-                    hideDialog()
+                    override fun onNegativeButtonClicked() {
+                        AppAnalytics.trackEvent("cancel_create_playlist")
+                    }
                 }
-            }
-        ))
+            ))
+        }
     }
 
     private fun createPlaylist() {
@@ -140,11 +154,11 @@ class MatchResultViewModel(
 
                 AppAnalytics.trackLog("Added tracks to Spotify playlist")
 
-                hideDialog()
+                hideLoadingDialog()
                 onPlaylistCreated()
 
             } catch (ex: Exception) {
-                hideDialog()
+                hideLoadingDialog()
                 handleError(ex)
             }
             // N.B. don't hide the loading dialog in a finally clause
@@ -162,12 +176,10 @@ class MatchResultViewModel(
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("open_playlist_clicked")
                     _openPlaylistEvent.value = Event(playlist)
-                    hideDialog()
                 }
 
                 override fun onNegativeButtonClicked() {
                     AppAnalytics.trackEvent("cancel_open_playlist")
-                    hideDialog()
                     navigateToMatches()
                 }
             }

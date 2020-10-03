@@ -33,7 +33,7 @@ class MatchResultTracksFragment : BaseFragment<MatchResultViewModel, FragmentMat
                     subtitle = it.artists.joinToString { artist ->
                         artist.name
                     },
-                    imageUrl = it.album.images.first().url
+                    imageUrl = it.album.images.firstOrNull()?.url
                 )
             })
         })

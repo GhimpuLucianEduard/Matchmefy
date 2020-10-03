@@ -18,7 +18,7 @@ class AppAnalytics {
             firebaseAnalytics = FirebaseAnalytics.getInstance(application)
             firebaseCrashlytics = FirebaseCrashlytics.getInstance()
 
-            if (BuildConfig.DEBUG) {
+            if (BuildConfig.BUILD_TYPE.equals("debug")) {
                 FirebaseCrashlytics.getInstance().setCustomKey("debug", true)
                 Timber.plant(object : Timber.DebugTree() {
                     override fun createStackElementTag(element: StackTraceElement): String? {

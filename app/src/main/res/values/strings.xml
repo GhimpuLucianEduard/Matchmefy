@@ -56,6 +56,9 @@
     <string name="create_playlist_dialog_title">Create Playlist?</string>
     <string name="create_playlist_dialog_description">This action will create a new Spotify playlist for your account. You can delete it in Spotify at any time</string>
 
+    <string name="create_playlist_dialog_error_title">Ops</string>
+    <string name="create_playlist_dialog_error_description">We cannot create a playlist with yourself \n \n ¯\\_(ツ)_/¯</string>
+
     <string name="playlist_created_dialog_title">Playlist Created</string>
     <string name="playlist_created_dialog_description">Your playlist has been created!\nYou can open it in Spotify</string>
 

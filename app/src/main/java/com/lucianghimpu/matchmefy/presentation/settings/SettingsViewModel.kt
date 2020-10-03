@@ -107,13 +107,11 @@ class SettingsViewModel(
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("sign_out")
-                    hideDialog()
                     signOut()
                 }
 
                 override fun onNegativeButtonClicked() {
                     AppAnalytics.trackEvent("cancel_sign_out")
-                    hideDialog()
                 }
             }
         )
@@ -135,13 +133,11 @@ class SettingsViewModel(
             listener = object : DoubleButtonDialogListener {
                 override fun onPositiveButtonClicked() {
                     AppAnalytics.trackEvent("delete_data")
-                    hideDialog()
                     deleteUserData()
                 }
 
                 override fun onNegativeButtonClicked() {
                     AppAnalytics.trackEvent("cancel_delete_data")
-                    hideDialog()
                 }
 
             }
@@ -156,11 +152,11 @@ class SettingsViewModel(
                 withContext(Dispatchers.IO) {
                     matchmefyService.deleteUserData(_user.value!!.id)
                 }
-                hideDialog()
+                hideLoadingDialog()
                 signOut()
                 Timber.d("User data deleted")
             } catch (ex: Exception) {
-                hideDialog()
+                hideLoadingDialog()
                 handleError(ex)
             }
         }

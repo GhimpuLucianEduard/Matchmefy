@@ -32,7 +32,7 @@ fun ImageView.bindImageFromUriWithGlide(images: List<Image>?) {
 }
 
 @BindingAdapter("imageFromUriWithGlide")
-fun ImageView.bindImageFromUriWithGlide(imageUrl: String) {
+fun ImageView.bindImageFromUriWithGlide(imageUrl: String?) {
     Glide.with(context)
         .load(imageUrl)
         .centerCrop()
