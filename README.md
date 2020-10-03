@@ -1,5 +1,9 @@
 # Matchmefy 
 
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Graphic.png">
+
+<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Search.png" width="300"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Match.png" width="300"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Artists.png" width="300"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Tracks.png" width="300"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Genres.png" width="300"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/google-play-graphics/Playlist.png" width="300">
+
 Android mobile app used to showcase the usage of the latest Android Jetpack libraries, coroutines, and the latest best practices in android.
 
 The app retrieves data about the user from the Spotify API, stores it in a secure database.
@@ -36,17 +40,3 @@ Other Android libraries used:
 
 Special Thanks to [Undarw](https://undraw.co/search) for the amazing free illustrations :pray:
 
-
-## Adobe XD images
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/signin.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/welcome.png" width="250">
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/serch.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/empty.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match.png" width="250"> 
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match80.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match60.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match40.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match20.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/match0.png" width="250"> 
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/matchingArtists.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/matchingTracks.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/matchingGenres.png" width="250"> 
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/createPlaylist.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/createPlaylistConfirmation.png" width="250"> <img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/playlistCreated.png" width="250">
-
-<img src="https://github.com/GhimpuLucianEduard/Matchmefy/blob/master/images/settings.png" width="250"> 
