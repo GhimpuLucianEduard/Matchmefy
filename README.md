@@ -1,9 +1,11 @@
-# Matchmefy
+# Matchmefy 
 
 Android mobile app used to showcase the usage of the latest Android Jetpack libraries, coroutines, and the latest best practices in android.
 
 The app retrieves data about the user from the Spotify API, stores it in a secure database.
-Then the user can search for friends or strangers and get a "match score" which calculates how compatible their music tastes are. In the end, the user gets a Spotify playlist with songs from his match.
+Then the user can search for friends or random people and get a "match score" which calculates how compatible their music tastes are. In the end, the user gets a Spotify playlist with songs from his match.
+
+:heart: [Website](https://www.matchmefy.com)
 
 ## APIs 
 
@@ -20,15 +22,17 @@ Custom REST API developt in **Node.js**, used to store user data in a **Mongo DB
 
 ## Architecture
 
-The app is built with the latest **Android Jetpack** libraries using the **MVVM** architectural pattern, **data binding** and **LiveData**
+The app is built with the latest **Android Jetpack** :rocket: libraries using the **MVVM** :triangular_ruler: architectural pattern, **data binding** and **LiveData**
 
 Other Android libraries used:
-
-1. `Jetpack Navigation` -> MVVM navigation, all handled in the view models
-2. `Coroutines` -> used to handle http requests and other async calls
-3. `Koin` -> DI
-4. `Retrofit` + `OkHttp` -> staples libraries used to handle http calls to REST apis
-5. `AppAuth` -> used to handle `OAuth2` using `Authorization Code Flow + PKCE`
+ 
+1. `Jetpack Navigation` -> MVVM navigation, all handled in the view models :rocket:
+2. `Coroutines` -> used to handle http requests and other async calls :sunglasses:
+3. `Koin` -> DI :pushpin:
+4. `Retrofit` + `OkHttp` -> staples libraries used to handle http calls to REST apis :cloud:
+5. `AppAuth` -> used to handle `OAuth2` using `Authorization Code Flow + PKCE` :police_car:
+6. `Timber` -> Better Logging :chart_with_upwards_trend:
+7. `Firebase` -> Analytics and Crashalytics :boom:
 
 
 ## Adobe XD images
