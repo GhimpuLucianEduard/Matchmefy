@@ -34,6 +34,8 @@ Other Android libraries used:
 6. `Timber` -> Better Logging :chart_with_upwards_trend:
 7. `Firebase` -> Analytics and Crashalytics :boom:
 
+Special Thanks to [Undarw](https://undraw.co/search) for the amazing free illustrations :pray:
+
 
 ## Adobe XD images
 
