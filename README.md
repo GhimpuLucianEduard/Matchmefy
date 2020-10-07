@@ -17,7 +17,7 @@ Then the user can search for friends or random people and get a "match score" wh
 
 Used to fetch the user profile and their top 50 artists and tracks
 
-### 2. [Matchmefy API used to store the data](https://github.com/GhimpuLucianEduard/matchmefy-api) 
+### 2. [Matchmefy API](https://github.com/GhimpuLucianEduard/matchmefy-api) 
 
 _Note: Matchmefy Api repository has been made private for security reasons_
 
