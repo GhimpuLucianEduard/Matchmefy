@@ -11,6 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.lucianghimpu.matchmefy.presentation.MainActivity
 import com.lucianghimpu.matchmefy.presentation.dialogs.loading.LoadingDialogFragment
+import com.lucianghimpu.matchmefy.utilities.DisplayUtil
 
 
 /**
@@ -63,7 +64,12 @@ abstract class BaseDialogFragment<VM : DialogViewModel<T>, DB : ViewDataBinding,
 
         val width = size.x
 
-        val sizeFactor = if (isLoadingDialogFragment) 0.27 else 0.83
+        val sizeFactor = if (DisplayUtil.isTablet(activity!!)) {
+            if (isLoadingDialogFragment) 0.27 else 0.5
+        } else {
+            if (isLoadingDialogFragment) 0.27 else 0.83
+        }
+
         window.setLayout((width * sizeFactor).toInt(), WindowManager.LayoutParams.WRAP_CONTENT)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window.setGravity(Gravity.CENTER)

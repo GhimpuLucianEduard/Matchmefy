@@ -8,7 +8,7 @@ import com.lucianghimpu.matchmefy.databinding.FragmentMatchResultArtistsBinding
 import com.lucianghimpu.matchmefy.presentation.BaseFragment
 import com.lucianghimpu.matchmefy.presentation.matchResult.CarouselItem
 import com.lucianghimpu.matchmefy.presentation.matchResult.MatchResultViewModel
-import com.lucianghimpu.matchmefy.utilities.DensityUtil.Companion.pixelToDp
+import com.lucianghimpu.matchmefy.utilities.DisplayUtil.Companion.pixelToDp
 import com.lucianghimpu.matchmefy.utilities.extensions.disableScrollAnimation
 import com.lucianghimpu.matchmefy.utilities.extensions.setShowSideItems
 import kotlinx.android.synthetic.main.fragment_match_result_artists.*
