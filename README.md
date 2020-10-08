@@ -40,11 +40,13 @@ Other Android libraries used:
 
 Special Thanks to [Undarw](https://undraw.co/search) for the amazing free illustrations :pray:
 
-# FAQ
+## FAQ
 
-Q: Will Matchmefy be available on iOS and Web?
-A: It is planned, but not a priority. If you are an iOS dev. or web dev. and looking to extend this project, contact me and I can provided deisgn specs, api, db access and all.
+**Q: Will Matchmefy be available on iOS and Web?**
 
-Q: I can match with myself, is this intended?
-A: Yes! You can match with yourself but you will not be able to create a playlist.
+**A:** It is planned, but not a priority. If you are an iOS dev. or web dev. and looking to extend this project, contact me and I can provided deisgn specs, api, db access and all.
+
+**Q: I can match with myself, is this intended?**
+
+**A:** Yes! You can match with yourself but you will not be able to create a playlist.
 
