@@ -32,7 +32,7 @@ class MatchResultGenresFragment : BaseFragment<MatchResultViewModel, FragmentMat
         genresAdapter = GenresAdapter()
 
         viewModel.matchResult.observe(viewLifecycleOwner, Observer {
-            genresAdapter.submitList(it.matchingGenres)
+            genresAdapter.submitList(it.matchingGenres.filterNotNull())
         })
 
         genresRecyclerView.apply {
